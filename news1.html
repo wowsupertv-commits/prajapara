@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prajapara News Kannada</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family: Arial, Helvetica, sans-serif;line-height:1.4;color:#222;background:#fff}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .topbar{background:#e8f0f4;padding:6px 12px;font-size:13px;color:#333}
+    .topbar .langs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+    .header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #eee;flex-wrap:wrap}
+    .logo{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .logo img{height:46px}
+
+    .search{min-width:220px;text-align:right;flex:1}
+
+    /* Mobile menu */
+    .menu-toggle{display:none;font-size:22px;cursor:pointer}
+    nav.mainnav{background:#fff;padding:8px 20px;border-bottom:4px solid #f5f5f5}
+    nav.mainnav ul{display:flex;gap:14px;flex-wrap:wrap;list-style:none;font-weight:600}
+    nav.mainnav li{padding:6px 8px;border-radius:3px}
+    nav.mainnav li a:hover{background:#f7f7f7}
+
+    @media (max-width:768px){
+      .menu-toggle{display:block}
+      nav.mainnav ul{display:none;flex-direction:column;width:100%;margin-top:8px}
+      nav.mainnav ul.active{display:flex}
+    }
+
+    /* --- Trending news ticker --- */
+    .ticker-wrapper{display:flex;align-items:center;background:#f5f5f5;color:#b20000;padding:8px 0;font-weight:700;overflow:hidden;white-space:nowrap;flex-wrap:wrap}
+    .ticker-title{background:#b20000;color:#fff;padding:6px 12px;font-weight:700;margin-right:10px;flex-shrink:0}
+    .ticker{overflow:hidden;flex:1}
+    .ticker span{display:inline-block;padding-left:100%;animation:scroll-left 20s linear infinite}
+    @keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+    .container{max-width:1200px;margin:20px auto;padding:0 16px}
+    .banner{background:#f3f3f3;padding:12px;margin-bottom:18px;display:flex;justify-content:center}
+    .banner img{height:90px;object-fit:cover}
+
+    .grid{display:grid;grid-template-columns:1fr 360px 300px;gap:18px;align-items:start}
+    .left{padding:6px}
+    .lead-card{display:flex;gap:14px;border-bottom:1px solid #eee;padding-bottom:14px;margin-bottom:14px;flex-wrap:wrap}
+    .lead-card .thumb{flex:0 0 320px}
+    .lead-card .thumb img{height:180px;object-fit:cover;border-radius:2px;width:100%}
+    .lead-card .meta{flex:1;min-width:220px}
+    .lead-card h2{font-size:18px;margin-bottom:8px}
+
+    .small-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .small-item{display:flex;gap:8px;align-items:center}
+    .small-item img{width:70px;height:50px;object-fit:cover;border-radius:2px}
+
+    .center .live{background:#000;color:#fff;padding:0;border-radius:3px;overflow:hidden;margin-bottom:14px}
+    .center .live .label{background:#d62828;color:#fff;padding:10px 12px;font-weight:700}
+    .center .live .player{height:220px;background:#111;display:flex;align-items:center;justify-content:center;color:#999}
+    .trending{margin-top:14px}
+    .trending h3{margin-bottom:8px}
+    .trending .video-item{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #f1f1f1}
+    .trending .video-item img{width:110px;height:68px;object-fit:cover}
+
+    .right .ad{background:#fafafa;padding:10px;border:1px solid #eee}
+    .topstories{margin-top:14px}
+    .topstories li{display:flex;gap:8px;padding:10px 0;align-items:center;border-bottom:1px solid #f2f2f2}
+    .topstories img{width:56px;height:56px;border-radius:4px;object-fit:cover}
+
+    footer{padding:24px 16px;text-align:center;color:#777;font-size:14px}
+
+    /* Responsive Layouts */
+    @media (max-width:1100px){
+      .grid{grid-template-columns:1fr 320px}
+    }
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+      .banner img{height:70px}
+      .lead-card .thumb{flex:0 0 100%}
+      .lead-card .thumb img{height:160px}
+      .small-list{grid-template-columns:1fr}
+      .search{text-align:left;margin-top:10px}
+    }
+
+/* Basic structure */
+    body {
+      font-family: "Noto Sans Kannada", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #222;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    /* 3 column layout */
+    .news-sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    /* Section titles */
+    h2, h4 {
+      border-bottom: 3px solid #ff6600;
+      display: inline-block;
+      padding-bottom: 4px;
+      margin-bottom: 15px;
+    }
+
+    /* ---------- TOP STORIES ---------- */
+    .topstories ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .topstories li {
+      margin-bottom: 12px;
+    }
+
+    .topstories a {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topstories img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    /* ---------- VIDEO GALLERY ---------- */
+    .video-gallery .video-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .video-card iframe {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+    }
+
+    .video-card h3 {
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    /* ---------- TRENDING NEWS ---------- */
+    .trend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .trend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .trend-item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .trend-item div {
+      font-size: 15px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .video-card iframe {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar" style="display:flex;justify-content:space-between;align-items:center;padding:8px 15px;background:#f4f4f4;">
+  
+  </div>
+
+ 
+
+  <header class="header container">
+    <div class="logo">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
+        <img src="Z:\prajapara\assets\images\logo.png" alt="logo" style="height:56px;object-fit:contain;border-radius:4px">
+        <div>
+          <div style="font-weight:800;font-size:20px">ಪ್ರಜಾಪರ ನ್ಯೂಸ್</div>
+          <div style="font-size:12px;color:#666">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
+        </div>
+      </a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="social-buttons" style="display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap">
+
+  <!-- WhatsApp -->
+  <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34" target="_blank" title="Join WhatsApp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" 
+         alt="WhatsApp" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/prajaparanews" target="_blank" title="Facebook">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" 
+         alt="Facebook" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/prajaparanews/" target="_blank" title="Instagram">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" 
+         alt="Instagram" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- X (Twitter) -->
+  <a href="https://x.com/prajaparanews" target="_blank" title="X (Twitter)">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" 
+         alt="X" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/@prajaparanews" target="_blank" title="YouTube">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" 
+         alt="YouTube" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  
+  <!-- Share Website Button -->
+  <button onclick="shareWebsite()" 
+  style="background:#FFFFFF;color:#000;padding:10px 20px;border:none;border-radius:6px;
+         font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;
+         box-shadow:0 2px 6px rgba(0,0,0,0.1)">
+  
+  <!-- Share Icon Image -->
+  <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" 
+       alt="Share" 
+       width="20" 
+       height="20" 
+       style="display:inline-block;vertical-align:middle;">
+       
+  Share
+
+ 
+</button>
+
+
+</div>
+
+<script>
+function shareWebsite() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      text: "Check out this website!",
+      url: window.location.href
+    }).then(() => console.log('Thanks for sharing!'))
+      .catch(console.error);
+  } else {
+    alert("Sharing not supported on this browser. Copy the link manually.");
+  }
+}
+</script>
+
+
+  </header>
+
+  <nav class="mainnav container">
+  <ul>
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="category.html?category_state.html">ತಾಜಾಸುದ್ದಿ</a></li>
+    <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
+    <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
+    <li><a href="category.html?category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
+    <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
+    <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
+    <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
+    <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
+    <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
+    <li><a href="category.html?category_filmi.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
+  </ul>
+</nav>
+
+
+  <!-- Trending News Ticker -->
+<div class="ticker-wrapper">
+  <div class="ticker-title">📢 TRADING NEWS</div>
+  <div class="ticker">
+    <span>
+      <a href="news1.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 1</a> • 
+      <a href="news2.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 2</a> • 
+      <a href="news3.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 3</a> • 
+      <a href="news4.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 4</a> • 
+      <a href="news5.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 5</a> 🔥
+    </span>
+  </div>
+</div>
+
+<div class="container">
+    <div class="banner"><img src="ADD" alt="top banner"></div>
+
+ <div class="container">
+  <article class="news-article">
+    <h1 style="margin-bottom:12px;">Big Breaking: City Traffic Gets Smooth During Diwali</h1>
+    <p style="color:#888;font-size:13px;">By Prajapara News • 2 hours ago</p>
+    <img src="Z:\prajapara\assets\images\p1.jpg" alt="lead news" style="margin:14px 0;height:auto;width:100%;border-radius:4px;object-fit:cover;">
+
+    <p>ಪೂರ್ಣ ಲೇಖನದ ವಿಷಯ ಇಲ್ಲಿ ಬರೆಯಿರಿ. ಸಣ್ಣ ವಿವರಣೆ ಅಥವಾ ಡೆಸ್ಕ್ರಿಪ್ಷನ್ ಅನ್ನು ದೂರವಾಣಿ, ಡೆಸ್ಕ್‌ಟಾಪ್ ಅಥವಾ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಓದಲು ಸುಲಭವಾಗುವಂತೆ ರೂಪಿಸಬಹುದು.</p>
+    <p>ಇಲ್ಲಿ ಇನ್ನಷ್ಟು ಪ್ಯಾರಾಗ್ರಾಫ್‌ಗಳು, ಚಿತ್ರಗಳು, ವಿಡಿಯೋ ಅಥವಾ ಸಾಮಾಜಿಕ ಶೇರ್ ಬಟನ್‌ಗಳನ್ನು ಸೇರಿಸಬಹುದು.</p>
+
+    <!-- Social Share -->
+    <div class="share-buttons" style="margin-top:20px;display:flex;gap:10px;">
+      <!-- Facebook -->
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" 
+     target="_blank" title="Share on Facebook">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" 
+         alt="Facebook" width="32" height="32" style="border-radius:50%;">
+  </a>
+
+  <!-- X / Twitter -->
+  <a href="https://twitter.com/intent/tweet?url=https://example.com&text=Check%20out%20this%20news" 
+     target="_blank" title="Share on X (Twitter)">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" 
+         alt="Twitter" width="32" height="32" style="border-radius:50%;">
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/?text=https://example.com" 
+     target="_blank" title="Share on WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
+         alt="WhatsApp" width="32" height="32" style="border-radius:50%;">
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com" 
+     target="_blank" title="Visit Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" 
+         alt="Instagram" width="32" height="32" style="border-radius:50%;">
+  </a>
+
+  <!-- Gmail -->
+  <a href="mailto:?subject=Check%20out%20this%20news&body=https://example.com" 
+     target="_blank" title="Share via Gmail">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" 
+         alt="Gmail" width="32" height="32" style="border-radius:50%;">
+  </a>
+</div>
+
+  </article>
+</div>
+
+         
+      </section>
+
+      <!-- Right Column - Ads & Top Stories -->
+<aside class="right">
+
+  <div class="ad">
+    <img src="Z:\prajapara\images\p1.jpg" alt="ad" style="height:240px;object-fit:cover">
+  </div>
+
+  <div class="container news-sections">
+    <!-- 📰 Top Stories -->
+    <aside class="topstories">
+      <h4>📰 Top Stories</h4>
+      <ul>
+        <li>
+          <a href="news1.html">
+            <img src="images/p1.jpg" alt="s1">
+            <div>ಶೀರ್ಷಿಕೆ 1 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+          </a>
+        </li>
+        <li>
+          <a href="news2.html">
+            <img src="images/p1.jpg" alt="s2">
+            <div>ಶೀರ್ಷಿಕೆ 2 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+          </a>
+        </li>
+        <li>
+          <a href="news3.html">
+            <img src="images/p1.jpg" alt="s3">
+            <div>ಶೀರ್ಷಿಕೆ 3 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+          </a>
+        </li>
+        <li>
+          <a href="news4.html">
+            <img src="images/p1.jpg" alt="s4">
+            <div>ಶೀರ್ಷಿಕೆ 4 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+          </a>
+        </li>
+        <li>
+          <a href="news5.html">
+            <img src="images/p1.jpg" alt="s5">
+            <div>ಶೀರ್ಷಿಕೆ 5 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- 🎥 Video Gallery -->
+    <aside class="video-gallery">
+      <h2>🎬 ವಿಡಿಯೋ ಗ್ಯಾಲರಿ</h2>
+      <div class="video-grid">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/nA9k3qYJb0s" title="News Video 1" frameborder="0" allowfullscreen></iframe>
+          <h3>ಬೆಂಗಳೂರು ದೀಪಾವಳಿ ದಿನ ಟ್ರಾಫಿಕ್ ಸುಲಭಗೊಂಡಿತು</h3>
+        </div>
+
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/2Xc9gXyf2G4" title="News Video 2" frameborder="0" allowfullscreen></iframe>
+          <h3>ಜಗ್ಗೇಶ್ ಹೇಳಿಕೆ – ಸತ್ಯ ಏನು?</h3>
+        </div>
+
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="News Video 3" frameborder="0" allowfullscreen></iframe>
+          <h3>ಮೋದಿ–ಬೈಡನ್ ಮಾತುಕತೆ: ಪ್ರಮುಖ ಅಂಶಗಳು</h3>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 🔥 Trending News -->
+    <section class="trending-news">
+      <h2>🔥 ಟ್ರೆಂಡಿಂಗ್‌ ನ್ಯೂಸ್</h2>
+      <div class="trend-list">
+        <a href="news1.html" class="trend-item">
+          <img src="images/p1.jpg" alt="t1">
+          <div>ಬೆಂಗಳೂರು ನಗರದಲ್ಲಿ ದೀಪಾವಳಿ ಸಂಭ್ರಮದ ಸನ್ನಿವೇಶಗಳು</div>
+        </a>
+
+        <a href="news2.html" class="trend-item">
+          <img src="images/p1.jpg" alt="t2">
+          <div>ರಾಜಕೀಯ ವಲಯದಲ್ಲಿ ಹೊಸ ಚಟುವಟಿಕೆ – ವಿಶ್ಲೇಷಣೆ</div>
+        </a>
+
+        <a href="news3.html" class="trend-item">
+          <img src="images/p1.jpg" alt="t3">
+          <div>ಕನ್ನಡ ಸಿನಿಮಾ ಜಗತ್ತು – ಹೊಸ ಚಿತ್ರಗಳ ಘೋಷಣೆ</div>
+        </a>
+
+        <a href="news4.html" class="trend-item">
+          <img src="images/p1.jpg" alt="t4">
+          <div>ವಿದೇಶದಲ್ಲಿ ಭಾರತೀಯರ ಸಾಧನೆಗೆ ಪ್ರಶಂಸೆ</div>
+        </a>
+      </div>
+    </section>
+  </div>
+
+
+  <footer>
+  © Copyright 2025, 
+  <a href="https://www.prajapara.com" target="_blank" style="color: inherit; text-decoration: underline;">
+    www.prajapara.com
+  </a> 
+  | All Rights Reserved &nbsp; Created by: DigiInfotech
+</footer>
+
+
+  <script>
+    function toggleMenu(){
+      const menu = document.querySelector('nav.mainnav ul');
+      menu.classList.toggle('active');
+    }
+  </script>
+
+<script>
+function shareWebsite() {
+  const shareData = {
+    title: "Prajapara News Kannada",
+    text: "Check out the latest news on Prajapara News Kannada!",
+    url: "https://yourwebsite.com"  // 👈 Replace this with your real website link
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData)
+      .then(() => console.log('Shared successfully'))
+      .catch((error) => console.log('Sharing failed', error));
+  } else {
+    // Fallback for browsers that don’t support navigator.share
+    alert("Copy this link to share:\n" + shareData.url);
+  }
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

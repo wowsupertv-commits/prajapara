@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prajapara News Kannada</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family: Arial, Helvetica, sans-serif;line-height:1.4;color:#222;background:#fff}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .topbar{background:#e8f0f4;padding:6px 12px;font-size:13px;color:#333}
+    .topbar .langs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+    .header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #eee;flex-wrap:wrap}
+    .logo{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .logo img{height:46px}
+
+    .search{min-width:220px;text-align:right;flex:1}
+
+    /* Mobile menu */
+    .menu-toggle{display:none;font-size:22px;cursor:pointer}
+    nav.mainnav{background:#fff;padding:8px 20px;border-bottom:4px solid #f5f5f5}
+    nav.mainnav ul{display:flex;gap:14px;flex-wrap:wrap;list-style:none;font-weight:600}
+    nav.mainnav li{padding:6px 8px;border-radius:3px}
+    nav.mainnav li a:hover{background:#f7f7f7}
+
+    @media (max-width:768px){
+      .menu-toggle{display:block}
+      nav.mainnav ul{display:none;flex-direction:column;width:100%;margin-top:8px}
+      nav.mainnav ul.active{display:flex}
+    }
+
+    /* --- Trending news ticker --- */
+    .ticker-wrapper{display:flex;align-items:center;background:#f5f5f5;color:#b20000;padding:8px 0;font-weight:700;overflow:hidden;white-space:nowrap;flex-wrap:wrap}
+    .ticker-title{background:#b20000;color:#fff;padding:6px 12px;font-weight:700;margin-right:10px;flex-shrink:0}
+    .ticker{overflow:hidden;flex:1}
+    .ticker span{display:inline-block;padding-left:100%;animation:scroll-left 20s linear infinite}
+    @keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+    .container{max-width:1200px;margin:20px auto;padding:0 16px}
+    .banner{background:#f3f3f3;padding:12px;margin-bottom:18px;display:flex;justify-content:center}
+    .banner img{height:90px;object-fit:cover}
+
+    .grid{display:grid;grid-template-columns:1fr 360px 300px;gap:18px;align-items:start}
+    .left{padding:6px}
+    .lead-card{display:flex;gap:14px;border-bottom:1px solid #eee;padding-bottom:14px;margin-bottom:14px;flex-wrap:wrap}
+    .lead-card .thumb{flex:0 0 320px}
+    .lead-card .thumb img{height:180px;object-fit:cover;border-radius:2px;width:100%}
+    .lead-card .meta{flex:1;min-width:220px}
+    .lead-card h2{font-size:18px;margin-bottom:8px}
+
+    .small-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .small-item{display:flex;gap:8px;align-items:center}
+    .small-item img{width:70px;height:50px;object-fit:cover;border-radius:2px}
+
+    .center .live{background:#000;color:#fff;padding:0;border-radius:3px;overflow:hidden;margin-bottom:14px}
+    .center .live .label{background:#d62828;color:#fff;padding:10px 12px;font-weight:700}
+    .center .live .player{height:220px;background:#111;display:flex;align-items:center;justify-content:center;color:#999}
+    .trending{margin-top:14px}
+    .trending h3{margin-bottom:8px}
+    .trending .video-item{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #f1f1f1}
+    .trending .video-item img{width:110px;height:68px;object-fit:cover}
+
+    .right .ad{background:#fafafa;padding:10px;border:1px solid #eee}
+    .topstories{margin-top:14px}
+    .topstories li{display:flex;gap:8px;padding:10px 0;align-items:center;border-bottom:1px solid #f2f2f2}
+    .topstories img{width:56px;height:56px;border-radius:4px;object-fit:cover}
+
+    footer{padding:24px 16px;text-align:center;color:#777;font-size:14px}
+
+    /* Responsive Layouts */
+    @media (max-width:1100px){
+      .grid{grid-template-columns:1fr 320px}
+    }
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+      .banner img{height:70px}
+      .lead-card .thumb{flex:0 0 100%}
+      .lead-card .thumb img{height:160px}
+      .small-list{grid-template-columns:1fr}
+      .search{text-align:left;margin-top:10px}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar" style="display:flex;justify-content:space-between;align-items:center;padding:8px 15px;background:#f4f4f4;">
+  
+  </div>
+
+ 
+
+  <header class="header container">
+    <div class="logo">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
+        <img src="Z:\prajapara\assets\images\logo.png" alt="logo" style="height:56px;object-fit:contain;border-radius:4px">
+        <div>
+          <div style="font-weight:800;font-size:20px">ಪ್ರಜಾಪರ ನ್ಯೂಸ್</div>
+          <div style="font-size:12px;color:#666">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
+        </div>
+      </a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="social-buttons" style="display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap">
+
+  <!-- WhatsApp -->
+  <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34" target="_blank" title="Join WhatsApp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" 
+         alt="WhatsApp" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/prajaparanews" target="_blank" title="Facebook">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" 
+         alt="Facebook" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/prajaparanews/" target="_blank" title="Instagram">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" 
+         alt="Instagram" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- X (Twitter) -->
+  <a href="https://x.com/prajaparanews" target="_blank" title="X (Twitter)">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" 
+         alt="X" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  <!-- YouTube -->
+  <a href="https://www.youtube.com/@prajaparanews" target="_blank" title="YouTube">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" 
+         alt="YouTube" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
+  </a>
+
+  
+  <!-- Share Website Button -->
+  <button onclick="shareWebsite()" 
+  style="background:#FFFFFF;color:#000;padding:10px 20px;border:none;border-radius:6px;
+         font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;
+         box-shadow:0 2px 6px rgba(0,0,0,0.1)">
+  
+  <!-- Share Icon Image -->
+  <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" 
+       alt="Share" 
+       width="20" 
+       height="20" 
+       style="display:inline-block;vertical-align:middle;">
+       
+  Share
+
+ 
+</button>
+
+
+</div>
+
+<script>
+function shareWebsite() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      text: "Check out this website!",
+      url: window.location.href
+    }).then(() => console.log('Thanks for sharing!'))
+      .catch(console.error);
+  } else {
+    alert("Sharing not supported on this browser. Copy the link manually.");
+  }
+}
+</script>
+
+
+  </header>
+
+  <nav class="mainnav container">
+  <ul>
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="category.html?category_state.html">ತಾಜಾಸುದ್ದಿ</a></li>
+    <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
+    <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
+    <li><a href="category.html?category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
+    <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
+    <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
+    <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
+    <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
+    <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
+    <li><a href="category.html?category_filmi.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
+  </ul>
+</nav>
+
+<div class="ticker-wrapper">
+  <div class="ticker-title">📢 TRADING NEWS</div>
+  <div class="ticker">
+    <span>
+      <a href="news1.html" style="color:#b20000;">ಪ್ರಮುಖ ಸುದ್ದಿ 1</a> • 
+      <a href="news2.html" style="color:#b20000;">ಪ್ರಮುಖ ಸುದ್ದಿ 2</a> • 
+      <a href="news3.html" style="color:#b20000;">ಪ್ರಮುಖ ಸುದ್ದಿ 3</a> • 
+      <a href="news4.html" style="color:#b20000;">ಪ್ರಮುಖ ಸುದ್ದಿ 4</a> • 
+      <a href="news5.html" style="color:#b20000;">ಪ್ರಮುಖ ಸುದ್ದಿ 5</a> 🔥
+    </span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="banner"><img src="ADD" alt="top banner"></div>
+
+  <div class="grid">
+    <section class="left">
+      <h3 id="categoryTitle" style="margin-bottom:12px">Category News</h3>
+      <div id="newsContainer"></div>
+    </section>
+
+    <aside class="center">
+      <div class="trending">
+        <h3>Trending Video</h3>
+        <div class="video-item"><img src="Z:\prajapara\images\p1.jpg" alt="v1"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+        <div class="video-item"><img src="Z:\prajapara\images\p1.jpg" alt="v2"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+        <div class="video-item"><img src="Z:\prajapara\images\p1.jpg" alt="v3"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+      </div>
+    </aside>
+
+    <aside class="right">
+      <div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+      <div class="topstories">
+        <h4 style="margin-top:12px;margin-bottom:8px">Top Stories</h4>
+        <ul style="list-style:none;padding:0">
+          <li><img src="tv8.jpg" alt="s1"><div style="flex:1;margin-left:8px;display:inline-block;vertical-align:middle">ಶೀರ್ಷಿಕೆ — ಸಣ್ಣ ವಿವರಣೆ</div></li>
+          <li><img src="tv8.jpg" alt="s2"><div style="flex:1;margin-left:8px;display:inline-block;vertical-align:middle">ಶೀರ್ಷಿಕೆ — ಸಣ್ಣ ವಿವರಣೆ</div></li>
+          <li><img src="tv8.jpg" alt="s3"><div style="flex:1;margin-left:8px;display:inline-block;vertical-align:middle">ಶೀರ್ಷಿಕೆ — ಸಣ್ಣ ವಿವರಣೆ</div></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+
+ <footer>
+  © Copyright 2025, 
+  <a href="https://www.prajapara.com" target="_blank" style="color: inherit; text-decoration: underline;">
+    www.prajapara.com
+  </a> 
+  | All Rights Reserved &nbsp; Created by: DigiInfotech
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const category = params.get('category') || 'state';
+
+const categoryNames = {
+  state: "ರಾಜ್ಯ", national: "ರಾಷ್ಟ್ರೀಯ", world: "ವಿದೇಶ",
+  medical: "ವೈದ್ಯಕೀಯ", finance: "ಆರ್ಥಿಕ", viral: "ವೈರಲ್‌ ಸುದ್ದಿ", filmi: "ಫಿಲ್ಮೀ ಮಾತು"
+};
+document.getElementById('categoryTitle').innerText = categoryNames[category];
+
+const newsByCategory = {
+  state: [
+    {title: "ರಾಜ್ಯ ಸುದ್ದಿ 1", link: "news1.html", desc: "ಇದು ರಾಜ್ಯದ ಪ್ರಮುಖ ಸುದ್ದಿಯ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ"},
+    {title: "ರಾಜ್ಯ ಸುದ್ದಿ 2", link: "news2.html", desc: "ಇದು ಮತ್ತೊಂದು ಚಿಕ್ಕ ಸುದ್ದಿಯ ವಿವರಣೆ"}
+  ],
+  national: [
+    {title: "ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿ 1", link: "news1.html", desc: "ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿಯ ವಿವರ"}
+  ],
+  world: [
+    {title: "ವಿದೇಶ ಸುದ್ದಿ 1", link: "news1.html", desc: "ವಿದೇಶ ಸುದ್ದಿ ವಿವರ"}
+  ],
+  medical: [
+    {title: "ವೈದ್ಯಕೀಯ ಸುದ್ದಿ 1", link: "news1.html", desc: "ವೈದ್ಯಕೀಯ ವಿಷಯದ ವಿವರ"}
+  ],
+  finance: [
+    {title: "ಆರ್ಥಿಕ ಸುದ್ದಿ 1", link: "news1.html", desc: "ಆರ್ಥಿಕ ಸುದ್ದಿ ಸಂಕ್ಷಿಪ್ತ"}
+  ],
+  viral: [
+    {title: "ವೈರಲ್ ಸುದ್ದಿ 1", link: "news1.html", desc: "ವೈರಲ್ ಸುದ್ದಿಯ ವಿವರ"}
+  ],
+  filmi: [
+    {title: "ಫಿಲ್ಮೀ ಸುದ್ದಿ 1", link: "news1.html", desc: "ಫಿಲ್ಮೀ ಸುದ್ದಿಯ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ"}
+  ]
+};
+
+const container = document.getElementById('newsContainer');
+const newsList = newsByCategory[category] || [];
+
+if(newsList.length > 0) {
+  // First news - big featured card
+  const firstNews = newsList[0];
+  const bigArticle = document.createElement('article');
+  bigArticle.className = 'lead-card big-card';
+  bigArticle.innerHTML = `
+    <div class="thumb"><img src="Z:\\prajapara\\assets\\images\\p1.jpg" alt="news"></div>
+    <div class="meta">
+      <h1><a href="${firstNews.link}">${firstNews.title}</a></h1>
+      <p style="color:#555;margin-bottom:12px;font-size:16px">${firstNews.desc}</p>
+      <p style="font-size:13px;color:#888">ಮೂಲ: ಪ್ರಜಾಪರ ನ್ಯೂಸ್ • 2 hours ago</p>
+    </div>`;
+  container.appendChild(bigArticle);
+
+  // Remaining news - list style with image on left
+  const listContainer = document.createElement('div');
+  listContainer.className = 'news-list';
+  newsList.slice(1).forEach(news => {
+    const listItem = document.createElement('div');
+    listItem.className = 'list-item';
+    listItem.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div style="flex:1; margin-right:10px;">
+          <img src="Z:\\prajapara\\assets\\images\\p1.jpg" alt="news" style="width:100%; height:auto; border-radius:4px;">
+        </div>
+        <div style="flex:2;">
+          <h3><a href="${news.link}">${news.title}</a></h3>
+          <p style="color:#555;font-size:14px">${news.desc}</p>
+        </div>
+      </div>`;
+    listContainer.appendChild(listItem);
+  });
+  container.appendChild(listContainer);
+}
+</script>
+
+
+
+<script>
+    function toggleMenu(){
+      const menu = document.querySelector('nav.mainnav ul');
+      menu.classList.toggle('active');
+    }
+  </script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'kn', 
+    includedLanguages: 'en,kn', 
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+
+<script>
+function shareWebsite() {
+  const shareData = {
+    title: "Prajapara News Kannada",
+    text: "Check out the latest news on Prajapara News Kannada!",
+    url: "https://yourwebsite.com"  // 👈 Replace this with your real website link
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData)
+      .then(() => console.log('Shared successfully'))
+      .catch((error) => console.log('Sharing failed', error));
+  } else {
+    // Fallback for browsers that don’t support navigator.share
+    alert("Copy this link to share:\n" + shareData.url);
+  }
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
