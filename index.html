@@ -33,6 +33,11 @@
       nav.mainnav ul.active{display:flex}
     }
 
+// Load Header
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => document.getElementById('header').innerHTML = data);
+
     /* --- Trending news ticker --- */
     .ticker-wrapper{display:flex;align-items:center;background:#f5f5f5;color:#b20000;padding:8px 0;font-weight:700;overflow:hidden;white-space:nowrap;flex-wrap:wrap}
     .ticker-title{background:#b20000;color:#fff;padding:6px 12px;font-weight:700;margin-right:10px;flex-shrink:0}
@@ -87,124 +92,7 @@
 </head>
 <body>
 
-  <div class="topbar" style="display:flex;justify-content:space-between;align-items:center;padding:8px 15px;background:#f4f4f4;">
-  
-  </div>
-
-  <header class="header container">
-    <div class="logo">
-      <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
-        <img src="assets/images/logo.png" alt="logo" style="height:56px;object-fit:contain;border-radius:4px">
-        <div>
-          <div style="font-weight:1000;font-size:20px">ಪ್ರಜಾಪರ ನ್ಯೂಸ್</div>
-          <div style="font-size:12px;color:#666">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
-          <link rel="stylesheet" href="styles.css">
-        </div>
-      </a>
-    </div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <div class="social-buttons" style="display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap">
-
-  <!-- WhatsApp -->
-  <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34" target="_blank" title="Join WhatsApp">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" 
-         alt="WhatsApp" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
-  </a>
-
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/prajaparanews" target="_blank" title="Facebook">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" 
-         alt="Facebook" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/prajaparanews/" target="_blank" title="Instagram">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" 
-         alt="Instagram" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
-  </a>
-
-  <!-- X (Twitter) -->
-  <a href="https://x.com/prajaparanews" target="_blank" title="X (Twitter)">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" 
-         alt="X" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
-  </a>
-
-  <!-- YouTube -->
-  <a href="https://www.youtube.com/@prajaparanews" target="_blank" title="YouTube">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" 
-         alt="YouTube" style="width:33px;height:33px;border-radius:50%;background:#FFFFFF;padding:6px;">
-  </a>
-
-  
-  <!-- Share Website Button -->
-  <button onclick="shareWebsite()" 
-  style="background:#FFFFFF;color:#000;padding:10px 20px;border:none;border-radius:6px;
-         font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;
-         box-shadow:0 2px 6px rgba(0,0,0,0.1)">
-  
-  <!-- Share Icon Image -->
-  <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" 
-       alt="Share" 
-       width="20" 
-       height="20" 
-       style="display:inline-block;vertical-align:middle;">
-       
-  Share
-
- 
-</button>
-
-
-</div>
-
-<script>
-function shareWebsite() {
-  if (navigator.share) {
-    navigator.share({
-      title: document.title,
-      text: "Check out this website!",
-      url: window.location.href
-    }).then(() => console.log('Thanks for sharing!'))
-      .catch(console.error);
-  } else {
-    alert("Sharing not supported on this browser. Copy the link manually.");
-  }
-}
-</script>
-
-
-  </header>
-
-  <nav class="mainnav container">
-  <ul>
-    <li><a href="index.html">🏠 Home</a></li>
-    <li><a href="category.html?category_state.html">ತಾಜಾಸುದ್ದಿ</a></li>
-    <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
-    <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
-    <li><a href="category.html?category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
-    <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
-    <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
-    <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
-    <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
-    <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
-    <li><a href="category.html?category_filmi.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
-  </ul>
-</nav>
-
-
-  <!-- Trending News Ticker -->
-  <div class="ticker-wrapper">
-    <div class="ticker-title">📢 TRADING NEWS</div>
-    <div class="ticker">
-      <span>
-        <a href="news1.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 1</a> • 
-        <a href="news2.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 2</a> • 
-        <a href="news3.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 3</a> • 
-        <a href="news4.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 4</a> • 
-        <a href="news5.html" style="color:#b20000;text-decoration:none;">ಪ್ರಮುಖ ಸುದ್ದಿ 5</a> 🔥
-      </span>
-    </div>
-  </div>
+   <div id="header"></div>
 
   <div class="container">
     <div class="banner"><img src="ADD" alt="top banner"></div>
@@ -305,15 +193,9 @@ function shareWebsite() {
     </div>
   </div>
 
-  <footer>
-    
-  © Copyright 2025, 
-  <a href="https://www.prajapara.com" target="_blank" style="color: inherit; text-decoration: underline;">
-    www.prajapara.com
-  </a> 
-  | All Rights Reserved &nbsp; Created by: DigiInfotech
-</footer>
+  <div id="footer"></div>
 
+  <script src="scripts.js"></script>
 
   <script>
     function toggleMenu(){
@@ -322,6 +204,17 @@ function shareWebsite() {
     }
   </script>
 
+<script>
+    // Load header
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+
+    // Load footer
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
 
 
 <script>
@@ -342,6 +235,14 @@ function shareWebsite() {
   }
 }
 </script>
+
+<script>
+    // Load header dynamically
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header').innerHTML = data)
+      .catch(err => console.error('Header load error:', err));
+  </script>
 
 
 
