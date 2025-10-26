@@ -1,361 +1,366 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="kn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prajapara News Kannada</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family: Arial, Helvetica, sans-serif;line-height:1.4;color:#222;background:#fff}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    .topbar{background:#e8f0f4;padding:6px 12px;font-size:13px;color:#333}
-    .topbar .langs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-
-    .header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #eee;flex-wrap:wrap}
-    .logo{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-    .logo img{height:46px}
-
-    .search{min-width:220px;text-align:right;flex:1}
-
-    /* Mobile menu */
-    .menu-toggle{display:none;font-size:22px;cursor:pointer}
-    nav.mainnav{background:#fff;padding:8px 20px;border-bottom:4px solid #f5f5f5}
-    nav.mainnav ul{display:flex;gap:14px;flex-wrap:wrap;list-style:none;font-weight:600}
-    nav.mainnav li{padding:6px 8px;border-radius:3px}
-    nav.mainnav li a:hover{background:#f7f7f7}
-
-    @media (max-width:768px){
-      .menu-toggle{display:block}
-      nav.mainnav ul{display:none;flex-direction:column;width:100%;margin-top:8px}
-      nav.mainnav ul.active{display:flex}
-    }
-
-    /* --- Trending news ticker --- */
-    .ticker-wrapper{display:flex;align-items:center;background:#f5f5f5;color:#b20000;padding:8px 0;font-weight:700;overflow:hidden;white-space:nowrap;flex-wrap:wrap}
-    .ticker-title{background:#b20000;color:#fff;padding:6px 12px;font-weight:700;margin-right:10px;flex-shrink:0}
-    .ticker{overflow:hidden;flex:1}
-    .ticker span{display:inline-block;padding-left:100%;animation:scroll-left 20s linear infinite}
-    @keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-
-    .container{max-width:1200px;margin:20px auto;padding:0 16px}
-    .banner{background:#f3f3f3;padding:12px;margin-bottom:18px;display:flex;justify-content:center}
-    .banner img{height:90px;object-fit:cover}
-
-    .grid{display:grid;grid-template-columns:1fr 360px 300px;gap:18px;align-items:start}
-    .left{padding:6px}
-    .lead-card{display:flex;gap:14px;border-bottom:1px solid #eee;padding-bottom:14px;margin-bottom:14px;flex-wrap:wrap}
-    .lead-card .thumb{flex:0 0 320px}
-    .lead-card .thumb img{height:180px;object-fit:cover;border-radius:2px;width:100%}
-    .lead-card .meta{flex:1;min-width:220px}
-    .lead-card h2{font-size:18px;margin-bottom:8px}
-
-    .small-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .small-item{display:flex;gap:8px;align-items:center}
-    .small-item img{width:70px;height:50px;object-fit:cover;border-radius:2px}
-
-    .center .live{background:#000;color:#fff;padding:0;border-radius:3px;overflow:hidden;margin-bottom:14px}
-    .center .live .label{background:#d62828;color:#fff;padding:10px 12px;font-weight:700}
-    .center .live .player{height:220px;background:#111;display:flex;align-items:center;justify-content:center;color:#999}
-    .trending{margin-top:14px}
-    .trending h3{margin-bottom:8px}
-    .trending .video-item{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #f1f1f1}
-    .trending .video-item img{width:110px;height:68px;object-fit:cover}
-
-    .right .ad{background:#fafafa;padding:10px;border:1px solid #eee}
-    .topstories{margin-top:14px}
-    .topstories li{display:flex;gap:8px;padding:10px 0;align-items:center;border-bottom:1px solid #f2f2f2}
-    .topstories img{width:56px;height:56px;border-radius:4px;object-fit:cover}
-
-    footer{padding:24px 16px;text-align:center;color:#777;font-size:14px}
-
-    /* Responsive Layouts */
-    @media (max-width:1100px){
-      .grid{grid-template-columns:1fr 320px}
-    }
-    @media (max-width:860px){
-      .grid{grid-template-columns:1fr}
-      .banner img{height:70px}
-      .lead-card .thumb{flex:0 0 100%}
-      .lead-card .thumb img{height:160px}
-      .small-list{grid-template-columns:1fr}
-      .search{text-align:left;margin-top:10px}
-    }
-
-/* Basic structure */
-    body {
-      font-family: "Noto Sans Kannada", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fff;
-      color: #222;
-    }
-
-    .container {
-      width: 95%;
-      max-width: 1200px;
-      margin: 20px auto;
-    }
-
-    /* 3 column layout */
-    .news-sections {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-    }
-
-    /* Section titles */
-    h2, h4 {
-      border-bottom: 3px solid #ff6600;
-      display: inline-block;
-      padding-bottom: 4px;
-      margin-bottom: 15px;
-    }
-
-    /* ---------- TOP STORIES ---------- */
-    .topstories ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .topstories li {
-      margin-bottom: 12px;
-    }
-
-    .topstories a {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .topstories img {
-      width: 70px;
-      height: 70px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    /* ---------- VIDEO GALLERY ---------- */
-    .video-gallery .video-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .video-card iframe {
-      width: 100%;
-      height: 180px;
-      border-radius: 8px;
-    }
-
-    .video-card h3 {
-      font-size: 15px;
-      margin-top: 6px;
-    }
-
-    /* ---------- TRENDING NEWS ---------- */
-    .trend-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .trend-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .trend-item img {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .trend-item div {
-      font-size: 15px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .video-card iframe {
-        height: 200px;
-      }
-    }
-  </style>
+<meta charset="utf-8"/>
+<title>Bootstrap News Template - Free HTML Templates</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Bootstrap News Template - Free HTML Templates" name="keywords"/>
+<meta content="Bootstrap News Template - Free HTML Templates" name="description"/>
+<!-- Favicon -->
+<link href="img/favicon.ico" rel="icon"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&amp;display=swap" rel="stylesheet"/>
+<!-- CSS Libraries -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
+<link href="lib/slick/slick.css" rel="stylesheet"/>
+<link href="lib/slick/slick-theme.css" rel="stylesheet"/>
+<!-- Template Stylesheet -->
+<link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
-   <div id="header"></div>
+ <div id="header"></div>
 
+<!-- Nav Bar End -->
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
 <div class="container">
-    <div class="banner"><img src="ADD" alt="top banner"></div>
-
- <div class="container">
-  <article class="news-article">
-    <h1 style="margin-bottom:12px;">Big Breaking: City Traffic Gets Smooth During Diwali</h1>
-    <p style="color:#888;font-size:13px;">By Prajapara News • 2 hours ago</p>
-    <img src="Z:\prajapara\assets\images\p1.jpg" alt="lead news" style="margin:14px 0;height:auto;width:100%;border-radius:4px;object-fit:cover;">
-
-    <p>ಪೂರ್ಣ ಲೇಖನದ ವಿಷಯ ಇಲ್ಲಿ ಬರೆಯಿರಿ. ಸಣ್ಣ ವಿವರಣೆ ಅಥವಾ ಡೆಸ್ಕ್ರಿಪ್ಷನ್ ಅನ್ನು ದೂರವಾಣಿ, ಡೆಸ್ಕ್‌ಟಾಪ್ ಅಥವಾ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಓದಲು ಸುಲಭವಾಗುವಂತೆ ರೂಪಿಸಬಹುದು.</p>
-    <p>ಇಲ್ಲಿ ಇನ್ನಷ್ಟು ಪ್ಯಾರಾಗ್ರಾಫ್‌ಗಳು, ಚಿತ್ರಗಳು, ವಿಡಿಯೋ ಅಥವಾ ಸಾಮಾಜಿಕ ಶೇರ್ ಬಟನ್‌ಗಳನ್ನು ಸೇರಿಸಬಹುದು.</p>
-
-    <!-- Social Share -->
-    <div class="share-buttons" style="margin-top:20px;display:flex;gap:10px;">
-      <!-- Facebook -->
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" 
-     target="_blank" title="Share on Facebook">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" 
-         alt="Facebook" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- X / Twitter -->
-  <a href="https://twitter.com/intent/tweet?url=https://example.com&text=Check%20out%20this%20news" 
-     target="_blank" title="Share on X (Twitter)">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" 
-         alt="Twitter" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- WhatsApp -->
-  <a href="https://wa.me/?text=https://example.com" 
-     target="_blank" title="Share on WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
-         alt="WhatsApp" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com" 
-     target="_blank" title="Visit Instagram">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" 
-         alt="Instagram" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- Gmail -->
-  <a href="mailto:?subject=Check%20out%20this%20news&body=https://example.com" 
-     target="_blank" title="Share via Gmail">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" 
-         alt="Gmail" width="32" height="32" style="border-radius:50%;">
-  </a>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="#">ಮುಖಪುಟ</a></li>
+<li class="breadcrumb-item"><a href="#">News</a></li>
+<li class="breadcrumb-item active">News details</li>
+</ul>
 </div>
-
-  </article>
 </div>
+<!-- Breadcrumb End -->
+<!-- Single News Start-->
+<div class="single-news">
+<div class="container">
+<div class="row">
+<div class="col-lg-8">
+<div class="sn-container">
+<div class="sn-img">
+<img src="img/news-825x525.jpg">
+</img></div>
+<div class="sn-content">
+<h1 class="sn-title">Lorem ipsum dolor sit amet</h1>
+<p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer molestie, lorem eu eleifend bibendum, augue purus mollis sapien, non rhoncus eros leo in nunc. Donec a nulla vel turpis consectetur tempor ac vel justo. In hac habitasse platea dictumst. Cras nec sollicitudin eros. Nunc eu enim non turpis sagittis rhoncus consectetur id augue. Mauris dignissim neque felis. Phasellus mollis mi a pharetra cursus. Maecenas vulputate augue placerat lacus mattis, nec ornare risus sollicitudin.
+                                </p>
+<p>
+                                    Mauris eu pulvinar tellus, eu luctus nisl. Pellentesque suscipit mi eu varius pulvinar. Aenean vulputate, massa eget elementum finibus, ipsum arcu commodo est, ut mattis eros orci ac risus. Suspendisse ornare, massa in feugiat facilisis, eros nisl auctor lacus, laoreet tempus elit dolor eu lorem. Nunc a arcu suscipit, suscipit quam quis, semper augue.
+                                </p>
+<p>
+                                    Quisque arcu nulla, convallis nec orci vel, suscipit elementum odio. Curabitur volutpat velit non diam tincidunt sodales. Nullam sapien libero, bibendum nec viverra in, iaculis ut eros.
+                                </p>
+<h3>Lorem ipsum dolor sit amet</h3>
+<p>
+                                    Vestibulum sit amet ullamcorper sem. Integer hendrerit elit eget purus sodales maximus. Quisque ac nulla arcu. Morbi venenatis arcu ac arcu cursus pharetra. Morbi sit amet viverra augue, ac ultricies libero. Praesent elementum lectus mi, eu elementum urna venenatis sed. Donec auctor purus ut mattis feugiat. Integer mi erat, consectetur sed tincidunt vitae, sagittis elementum libero. Vivamus a mauris consequat, hendrerit lectus in, fermentum libero. Integer mattis bibendum neque et porttitor.
+                                </p>
+<p>
+                                    Mauris quis arcu finibus, posuere dolor eu, viverra felis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In porta, ex vitae accumsan facilisis, nisi tellus dictum metus, quis fringilla dui tellus in tellus. Praesent pharetra orci at vehicula posuere. Sed molestie fringilla lorem, vel imperdiet tortor blandit at. Quisque non ultrices lorem, eget rhoncus orci. Fusce porttitor placerat diam et mattis. Nam laoreet, ex eu posuere sollicitudin, sem tortor pellentesque ipsum, quis mattis purus lectus ut lacus. Integer eu risus ac est interdum scelerisque.
+                                </p>
+<h4>Lorem ipsum dolor sit amet</h4>
+<p>
+                                    Praesent ultricies, mauris eget vestibulum viverra, neque lorem malesuada mauris, eget rhoncus lectus enim a lorem. Vivamus at vehicula risus, eget facilisis massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et posuere sapien. Fusce bibendum lorem sem, quis tincidunt felis mattis nec.
+                                </p>
+<p>
+                                    Proin vel nulla purus. Nunc nec eros in nisi efficitur rutrum quis sed eros. Mauris felis dolor, rhoncus eget gravida vitae, pretium vel arcu. Cras blandit tellus eget tellus dictum venenatis. Sed ultricies bibendum dictum. Etiam facilisis erat id turpis tincidunt malesuada. Duis bibendum sapien eu condimentum sagittis. Proin nunc lorem, ullamcorper vel tortor sodales, imperdiet lacinia dui. Sed congue, felis id rhoncus varius, urna lacus imperdiet nunc, ut porttitor mauris mi quis mi. Integer rutrum est finibus metus eleifend scelerisque. Morbi auctor dignissim purus in interdum. Vestibulum eu dictum enim. Suspendisse et sem vitae velit feugiat facilisis.
+                                </p>
+<p>
+                                    Nam sodales scelerisque nunc sed convallis. Vestibulum facilisis porta erat, sit amet pharetra tortor blandit id. Nunc velit tellus, consectetur sed convallis in, tincidunt finibus nulla. Integer vel ex in mauris tincidunt tincidunt nec sed elit. Etiam pretium lectus lectus, sed aliquet erat tristique euismod. Praesent faucibus nisl augue, ac tempus libero pellentesque malesuada. Vivamus iaculis imperdiet laoreet. Aliquam vel felis felis. Proin sed sapien erat. Etiam a quam et metus tempor rutrum. Curabitur in faucibus justo. Etiam imperdiet iaculis urna.
+                                </p>
+</div>
+</div>
+<div class="sn-related">
+<h2>ಸಂಬಂಧಿತ ಸುದ್ದಿ</h2>
+<div class="row sn-slider">
+<div class="col-md-4">
+<div class="sn-img">
+<img src="img/news-350x223-1.jpg">
+<div class="sn-title">
+<a href="">Interdum et fames ac ante</a>
+</div>
+</img></div>
+</div>
+<div class="col-md-4">
+<div class="sn-img">
+<img src="img/news-350x223-2.jpg"/>
+<div class="sn-title">
+<a href="">Interdum et fames ac ante</a>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="sn-img">
+<img src="img/news-350x223-3.jpg"/>
+<div class="sn-title">
+<a href="">Interdum et fames ac ante</a>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="sn-img">
+<img src="img/news-350x223-4.jpg"/>
+<div class="sn-title">
+<a href="">Interdum et fames ac ante</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="sidebar">
+<div class="sidebar-widget">
+<h2 class="sw-title">ಈ ವರ್ಗದಲ್ಲಿ</h2>
+<div class="news-list">
+<div class="nl-item">
+<div class="nl-img">
+<img src="img/news-350x223-1.jpg"/>
+</div>
+<div class="nl-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="nl-item">
+<div class="nl-img">
+<img src="img/news-350x223-2.jpg"/>
+</div>
+<div class="nl-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="nl-item">
+<div class="nl-img">
+<img src="img/news-350x223-3.jpg"/>
+</div>
+<div class="nl-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="nl-item">
+<div class="nl-img">
+<img src="img/news-350x223-4.jpg"/>
+</div>
+<div class="nl-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="nl-item">
+<div class="nl-img">
+<img src="img/news-350x223-5.jpg"/>
+</div>
+<div class="nl-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sidebar-widget">
+<div class="image">
+<a href="https://htmlcodex.com"><img alt="Image" src="img/ads-2.jpg"/></a>
+</div>
+</div>
+<div class="sidebar-widget">
+<div class="tab-news">
+<ul class="nav nav-pills nav-justified">
+<li class="nav-item">
+<a class="nav-link active" data-toggle="pill" href="#featured">ವಿಶೇಷ</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="pill" href="#popular">ಜನಪ್ರಿಯ</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-toggle="pill" href="#latest">ಇತ್ತೀಚಿನ</a>
+</li>
+</ul>
+<div class="tab-content">
+<div class="container tab-pane active" id="featured">
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-1.jpg">
+</img></div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-2.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-3.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-4.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-5.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+</div>
+<div class="container tab-pane fade" id="popular">
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-4.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-3.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-2.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-1.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-2.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+</div>
+<div class="container tab-pane fade" id="latest">
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-3.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-4.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-5.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-4.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+<div class="tn-news">
+<div class="tn-img">
+<img src="img/news-350x223-3.jpg"/>
+</div>
+<div class="tn-title">
+<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sidebar-widget">
+<div class="image">
+<a href="https://htmlcodex.com"><img alt="Image" src="img/ads-2.jpg"/></a>
+</div>
+</div>
+<div class="sidebar-widget">
+<h2 class="sw-title">ಸುದ್ದಿ ವಿಭಾಗ</h2>
+<div class="category">
+<ul>
+<li><a href="">National</a><span>(98)</span></li>
+<li><a href="">International</a><span>(87)</span></li>
+<li><a href="">Economics</a><span>(76)</span></li>
+<li><a href="">Politics</a><span>(65)</span></li>
+<li><a href="">Lifestyle</a><span>(54)</span></li>
+<li><a href="">Technology</a><span>(43)</span></li>
+<li><a href="">Trades</a><span>(32)</span></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-widget">
+<div class="image">
+<a href="https://htmlcodex.com"><img alt="Image" src="img/ads-2.jpg"/></a>
+</div>
+</div>
+<div class="sidebar-widget">
+<h2 class="sw-title">ಟ್ಯಾಗ್‌ಗಳ ಮೋಡ</h2>
+<div class="tags">
+<a href="">National</a>
+<a href="">International</a>
+<a href="">Economics</a>
+<a href="">Politics</a>
+<a href="">Lifestyle</a>
+<a href="">Technology</a>
+<a href="">Trades</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Single News End-->
 
-         
-      </section>
+<div id="footer"></div>
 
-      <!-- Right Column - Ads & Top Stories -->
-<aside class="right">
-
-  <div class="ad">
-    <img src="Z:\prajapara\images\p1.jpg" alt="ad" style="height:240px;object-fit:cover">
-  </div>
-
-  <div class="container news-sections">
-    <!-- 📰 Top Stories -->
-    <aside class="topstories">
-      <h4>📰 Top Stories</h4>
-      <ul>
-        <li>
-          <a href="news1.html">
-            <img src="images/p1.jpg" alt="s1">
-            <div>ಶೀರ್ಷಿಕೆ 1 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-          </a>
-        </li>
-        <li>
-          <a href="news2.html">
-            <img src="images/p1.jpg" alt="s2">
-            <div>ಶೀರ್ಷಿಕೆ 2 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-          </a>
-        </li>
-        <li>
-          <a href="news3.html">
-            <img src="images/p1.jpg" alt="s3">
-            <div>ಶೀರ್ಷಿಕೆ 3 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-          </a>
-        </li>
-        <li>
-          <a href="news4.html">
-            <img src="images/p1.jpg" alt="s4">
-            <div>ಶೀರ್ಷಿಕೆ 4 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-          </a>
-        </li>
-        <li>
-          <a href="news5.html">
-            <img src="images/p1.jpg" alt="s5">
-            <div>ಶೀರ್ಷಿಕೆ 5 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-          </a>
-        </li>
-      </ul>
-    </aside>
-
-    <!-- 🎥 Video Gallery -->
-    <aside class="video-gallery">
-      <h2>🎬 ವಿಡಿಯೋ ಗ್ಯಾಲರಿ</h2>
-      <div class="video-grid">
-        <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/nA9k3qYJb0s" title="News Video 1" frameborder="0" allowfullscreen></iframe>
-          <h3>ಬೆಂಗಳೂರು ದೀಪಾವಳಿ ದಿನ ಟ್ರಾಫಿಕ್ ಸುಲಭಗೊಂಡಿತು</h3>
-        </div>
-
-        <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/2Xc9gXyf2G4" title="News Video 2" frameborder="0" allowfullscreen></iframe>
-          <h3>ಜಗ್ಗೇಶ್ ಹೇಳಿಕೆ – ಸತ್ಯ ಏನು?</h3>
-        </div>
-
-        <div class="video-card">
-          <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="News Video 3" frameborder="0" allowfullscreen></iframe>
-          <h3>ಮೋದಿ–ಬೈಡನ್ ಮಾತುಕತೆ: ಪ್ರಮುಖ ಅಂಶಗಳು</h3>
-        </div>
-      </div>
-    </aside>
-
-    <!-- 🔥 Trending News -->
-    <section class="trending-news">
-      <h2>🔥 ಟ್ರೆಂಡಿಂಗ್‌ ನ್ಯೂಸ್</h2>
-      <div class="trend-list">
-        <a href="news1.html" class="trend-item">
-          <img src="images/p1.jpg" alt="t1">
-          <div>ಬೆಂಗಳೂರು ನಗರದಲ್ಲಿ ದೀಪಾವಳಿ ಸಂಭ್ರಮದ ಸನ್ನಿವೇಶಗಳು</div>
-        </a>
-
-        <a href="news2.html" class="trend-item">
-          <img src="images/p1.jpg" alt="t2">
-          <div>ರಾಜಕೀಯ ವಲಯದಲ್ಲಿ ಹೊಸ ಚಟುವಟಿಕೆ – ವಿಶ್ಲೇಷಣೆ</div>
-        </a>
-
-        <a href="news3.html" class="trend-item">
-          <img src="images/p1.jpg" alt="t3">
-          <div>ಕನ್ನಡ ಸಿನಿಮಾ ಜಗತ್ತು – ಹೊಸ ಚಿತ್ರಗಳ ಘೋಷಣೆ</div>
-        </a>
-
-        <a href="news4.html" class="trend-item">
-          <img src="images/p1.jpg" alt="t4">
-          <div>ವಿದೇಶದಲ್ಲಿ ಭಾರತೀಯರ ಸಾಧನೆಗೆ ಪ್ರಶಂಸೆ</div>
-        </a>
-      </div>
-    </section>
-  </div>
-
-
-   
-  <div id="footer"></div>
-
-
-  <script>
-    function toggleMenu(){
-      const menu = document.querySelector('nav.mainnav ul');
-      menu.classList.toggle('active');
-    }
-  </script>
+<!-- Back to Top -->
+<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/slick/slick.min.js"></script>
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
 
 <script>
     // Load header
@@ -368,27 +373,6 @@
       .then(response => response.text())
       .then(data => document.getElementById("footer").innerHTML = data);
   </script>
-
-<script>
-function shareWebsite() {
-  const shareData = {
-    title: "Prajapara News Kannada",
-    text: "Check out the latest news on Prajapara News Kannada!",
-    url: "https://yourwebsite.com"  // 👈 Replace this with your real website link
-  };
-
-  if (navigator.share) {
-    navigator.share(shareData)
-      .then(() => console.log('Shared successfully'))
-      .catch((error) => console.log('Sharing failed', error));
-  } else {
-    // Fallback for browsers that don’t support navigator.share
-    alert("Copy this link to share:\n" + shareData.url);
-  }
-}
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
