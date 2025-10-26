@@ -100,6 +100,29 @@
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <div class="social-buttons" style="display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap">
 
+<!-- Home Button -->
+<button onclick="goHome()" 
+  style="background:#FFFFFF;color:#000;padding:10px 20px;border:none;border-radius:6px;
+         font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;
+         box-shadow:0 2px 6px rgba(0,0,0,0.1)">
+  
+  <!-- Home Icon Image -->
+  <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" 
+       alt="Home" 
+       width="20" 
+       height="20" 
+       style="display:inline-block;vertical-align:middle;">
+
+  Home
+</button>
+
+<!-- JavaScript Function -->
+<script>
+function goHome() {
+  window.location.href = '/'; // Redirects to the homepage
+}
+</script>
+
   <!-- WhatsApp -->
   <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34" target="_blank" title="Join WhatsApp">
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" 
@@ -179,7 +202,6 @@ function shareWebsite() {
   
   <nav class="mainnav container">
   <ul>
-    <li><a href="index.html">🏠 Home</a></li>
     <li><a href="category.html?category_state.html">ತಾಜಾಸುದ್ದಿ</a></li>
     <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
     <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
@@ -212,6 +234,13 @@ fetch('header.html')
   .then(response => response.text())
   .then(data => document.getElementById('header').innerHTML = data);
 </script>
+
+<script>
+function goHome() {
+  window.location.href = "index.html"; // Redirects to your index.html page
+}
+</script>
+
 </body>
 </head>
 
