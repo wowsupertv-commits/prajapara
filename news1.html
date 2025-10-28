@@ -1,406 +1,216 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="kn">
 <head>
-<meta charset="utf-8"/>
-<title>Bootstrap News Template - Free HTML Templates</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Bootstrap News Template - Free HTML Templates" name="keywords"/>
-<meta content="Bootstrap News Template - Free HTML Templates" name="description"/>
-<!-- Favicon -->
-<link href="img/favicon.ico" rel="icon"/>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&amp;display=swap" rel="stylesheet"/>
-<!-- CSS Libraries -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
-<link href="lib/slick/slick.css" rel="stylesheet"/>
-<link href="lib/slick/slick-theme.css" rel="stylesheet"/>
-<!-- Template Stylesheet -->
-<link href="css/style.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prajapara News Kannada - Full Article</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.5; color: #222; background: #fff; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { max-width: 1200px; margin: 20px auto; padding: 0 16px; }
+
+    /* --- Layout --- */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .left {
+      background: #fff;
+      padding: 12px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+
+    .article-header h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+      color: #b20000;
+    }
+    .article-meta {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .article-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .article-content p {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    /* --- Right Column --- */
+    .right .trending {
+      background: #fafafa;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+
+    .trending h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #b20000;
+    }
+
+    .video-item {
+      display: flex;
+      gap: 8px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    .video-item img {
+      width: 110px;
+      height: 68px;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    /* --- Breaking News --- */
+    .breaking {
+      margin-top: 30px;
+      padding: 16px;
+      background: #f5f5f5;
+      border-radius: 4px;
+    }
+
+    .breaking h3 {
+      background: #b20000;
+      color: #fff;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+    }
+
+    .breaking ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .breaking li {
+      border-bottom: 1px solid #ddd;
+      padding: 8px 0;
+    }
+
+    .breaking a {
+      font-weight: 600;
+      color: #222;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
- <div id="header"></div>
+  <div id="header"></div>
 
 <div class="container">
     <div class="banner"><img src="ADD" alt="top banner"></div>
-
-<!-- Nav Bar End -->
-<!-- Breadcrumb Start -->
-<div class="breadcrumb-wrap">
-<div class="container">
-<ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="#">ಮುಖಪುಟ</a></li>
-<li class="breadcrumb-item"><a href="#">News</a></li>
-<li class="breadcrumb-item active">News details</li>
-</ul>
-</div>
-</div>
-
-
-<!-- Breadcrumb End -->
-<!-- Single News Start-->
-<div class="news-article">
-<div class="container">
-<div class="row">
-<div class="col-lg-8">
-<div class="sn-container">
-<div class="sn-content">
-<h1 class="sn-title">ಕಂಠಪೂರ್ತಿ ಕುಡಿದು ಬಿಗ್ ಬಾಸ್​ ನಡೆಸಿಕೊಟ್ಟ ಸಲ್ಮಾನ್ ಖಾನ್? </h1>
-<p style="color:#888;font-size:13px;">By Prajapara News • 2 hours ago</p>
-<div class="sn-img">
-<img src="img/news-825x525.jpg">
-</img></div>
-
-<p>ಪೂರ್ಣ ಲೇಖನದ ವಿಷಯ ಇಲ್ಲಿ ಬರೆಯಿರಿ. ಸಣ್ಣ ವಿವರಣೆ ಅಥವಾ ಡೆಸ್ಕ್ರಿಪ್ಷನ್ ಅನ್ನು ದೂರವಾಣಿ, ಡೆಸ್ಕ್‌ಟಾಪ್ ಅಥವಾ ಟ್ಯಾಬ್‌ನಲ್ಲಿ ಓದಲು ಸುಲಭವಾಗುವಂತೆ ರೂಪಿಸಬಹುದು.</p>
-    <p>ಇಲ್ಲಿ ಇನ್ನಷ್ಟು ಪ್ಯಾರಾಗ್ರಾಫ್‌ಗಳು, ಚಿತ್ರಗಳು, ವಿಡಿಯೋ ಅಥವಾ ಸಾಮಾಜಿಕ ಶೇರ್ ಬಟನ್‌ಗಳನ್ನು ಸೇರಿಸಬಹುದು.</p>
-
-<!-- Social Share -->
-    <div class="share-buttons" style="margin-top:20px;display:flex;gap:10px;">
-      <!-- Facebook -->
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" 
-     target="_blank" title="Share on Facebook">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" 
-         alt="Facebook" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- X / Twitter -->
-  <a href="https://twitter.com/intent/tweet?url=https://example.com&text=Check%20out%20this%20news" 
-     target="_blank" title="Share on X (Twitter)">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" 
-         alt="Twitter" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- WhatsApp -->
-  <a href="https://wa.me/?text=https://example.com" 
-     target="_blank" title="Share on WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" 
-         alt="WhatsApp" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com" 
-     target="_blank" title="Visit Instagram">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" 
-         alt="Instagram" width="32" height="32" style="border-radius:50%;">
-  </a>
-
-  <!-- Gmail -->
-  <a href="mailto:?subject=Check%20out%20this%20news&body=https://example.com" 
-     target="_blank" title="Share via Gmail">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" 
-         alt="Gmail" width="32" height="32" style="border-radius:50%;">
-  </a>
-</div>
-
-</div>
-</div>
-<div class="sn-related">
-<h2>ಸಂಬಂಧಿತ ಸುದ್ದಿ</h2>
-<div class="row sn-slider">
-<div class="col-md-4">
-<div class="sn-img">
-<img src="img/news-350x223-1.jpg">
-<div class="sn-title">
-<a href="">Interdum et fames ac ante</a>
-</div>
-</img></div>
-</div>
-<div class="col-md-4">
-<div class="sn-img">
-<img src="img/news-350x223-2.jpg"/>
-<div class="sn-title">
-<a href="">Interdum et fames ac ante</a>
-</div>
-</div>
-</div>
-<div class="col-md-4">
-<div class="sn-img">
-<img src="img/news-350x223-3.jpg"/>
-<div class="sn-title">
-<a href="">Interdum et fames ac ante</a>
-</div>
-</div>
-</div>
-<div class="col-md-4">
-<div class="sn-img">
-<img src="img/news-350x223-4.jpg"/>
-<div class="sn-title">
-<a href="">Interdum et fames ac ante</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="col-lg-4">
-
-<div class="ad">
-    <img src="Z:\prajapara\images\p1.jpg" alt="ad" style="height:240px;object-fit:cover">
+  
   </div>
 
-<div class="sidebar">
-<div class="sidebar-widget">
-<h2 class="sw-title">ಈ ವರ್ಗದಲ್ಲಿ</h2>
-<div class="news-list">
-<div class="nl-item">
-<div class="nl-img">
-<img src="img/news-350x223-1.jpg"/>
-</div>
-<div class="nl-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="nl-item">
-<div class="nl-img">
-<img src="img/news-350x223-2.jpg"/>
-</div>
-<div class="nl-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="nl-item">
-<div class="nl-img">
-<img src="img/news-350x223-3.jpg"/>
-</div>
-<div class="nl-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="nl-item">
-<div class="nl-img">
-<img src="img/news-350x223-4.jpg"/>
-</div>
-<div class="nl-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="nl-item">
-<div class="nl-img">
-<img src="img/news-350x223-5.jpg"/>
-</div>
-<div class="nl-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-</div>
-</div>
-<div class="sidebar-widget">
-<div class="image">
-<a href="https://htmlcodex.com"><img alt="Image" src="img/ads-2.jpg"/></a>
-</div>
-</div>
-<div class="sidebar-widget">
-<div class="tab-news">
-<ul class="nav nav-pills nav-justified">
-<li class="nav-item">
-<a class="nav-link active" data-toggle="pill" href="#featured">ವಿಶೇಷ</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" data-toggle="pill" href="#popular">ಜನಪ್ರಿಯ</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" data-toggle="pill" href="#latest">ಇತ್ತೀಚಿನ</a>
-</li>
-</ul>
-<div class="tab-content">
-<div class="container tab-pane active" id="featured">
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-1.jpg">
-</img></div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-2.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-3.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-4.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-5.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-</div>
-<div class="container tab-pane fade" id="popular">
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-4.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-3.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-2.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-1.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-2.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-</div>
-<div class="container tab-pane fade" id="latest">
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-3.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-4.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-5.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-4.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-<div class="tn-news">
-<div class="tn-img">
-<img src="img/news-350x223-3.jpg"/>
-</div>
-<div class="tn-title">
-<a href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sidebar-widget">
-<div class="image">
-<a href="https://htmlcodex.com"><img alt="Image" src="img/ads-2.jpg"/></a>
-</div>
-</div>
-<div class="sidebar-widget">
-<h2 class="sw-title">ಸುದ್ದಿ ವಿಭಾಗ</h2>
-<div class="category">
-<ul>
-<li><a href="">National</a><span>(98)</span></li>
-<li><a href="">International</a><span>(87)</span></li>
-<li><a href="">Economics</a><span>(76)</span></li>
-<li><a href="">Politics</a><span>(65)</span></li>
-<li><a href="">Lifestyle</a><span>(54)</span></li>
-<li><a href="">Technology</a><span>(43)</span></li>
-<li><a href="">Trades</a><span>(32)</span></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-widget">
-<div class="image">
-<a href="https://htmlcodex.com"><img alt="Image" src="img/ads-2.jpg"/></a>
-</div>
-</div>
-<div class="sidebar-widget">
-<h2 class="sw-title">ಟ್ಯಾಗ್‌ಗಳ ಮೋಡ</h2>
-<div class="tags">
-<a href="">National</a>
-<a href="">International</a>
-<a href="">Economics</a>
-<a href="">Politics</a>
-<a href="">Lifestyle</a>
-<a href="">Technology</a>
-<a href="">Trades</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Single News End-->
+  <div class="container">
+    <div class="grid">
+      <!-- Left (Full Article Section) -->
+      <section class="left">
+        <div class="article-header">
+          <h1>ಬೆಂಗಳೂರು ದೀಪಾವಳಿ ದಿನ ಟ್ರಾಫಿಕ್ ಸುಲಭಗೊಂಡಿತು</h1>
+          <div class="article-meta">By Prajapara News • 2 hours ago</div>
+        </div>
 
-<div id="footer"></div>
+        <div class="article-content">
+          <img src="Z:/prajapara/assets/images/p1.jpg" alt="news photo">
 
-<!-- Back to Top -->
-<a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/slick/slick.min.js"></script>
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
+          <p>ದೀಪಾವಳಿ ಹಬ್ಬದ ಸಂದರ್ಭದಲ್ಲಿ ಬೆಂಗಳೂರಿನ ಪ್ರಮುಖ ರಸ್ತೆಗಳ ಟ್ರಾಫಿಕ್ ದಟ್ಟಣೆ ಕಡಿಮೆಯಾಗಿದೆ. ನಾಗರಿಕರು ಮನೆಗಳಲ್ಲಿ ಹಬ್ಬ ಆಚರಿಸುತ್ತಿರುವುದರಿಂದ ವಾಹನ ಸಂಚಾರ ಹೋಲಿಸಿದರೆ ಕಡಿಮೆಯಾಗಿದೆ.</p>
 
-<script>
-    // Load header
+          <p>ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳ ಪ್ರಕಾರ, ಬೆಂಗಳೂರಿನ ಮಹತ್ವದ ಜಂಕ್ಷನ್‌ಗಳಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಕಂಡುಬರುವ ದಟ್ಟಣೆ ಇಂದು ಕಂಡುಬಂದಿಲ್ಲ. ನಗರವಾಸಿಗಳು ಬೆಳಗ್ಗೆ ಮತ್ತು ಸಂಜೆ ಸಮಯದಲ್ಲಿ ಹಬ್ಬದ ಖರೀದಿಗೆ ಮಾತ್ರ ಹೊರಟಿದ್ದರು.</p>
+
+          <p>ಸಾಮಾನ್ಯ ದಿನಗಳಲ್ಲಿ ಉಂಟಾಗುವ ಸಾರಿಗೆ ಗದ್ದಲದ ಬದಲಾಗಿ, ಇಂದು ವಾಹನ ಸಂಚಾರ ಸರಾಗವಾಗಿ ನಡೆದಿರುವುದಾಗಿ ಪೊಲೀಸರು ತಿಳಿಸಿದ್ದಾರೆ.</p>
+
+          <p>ಪೊಲೀಸರು ಸಾರ್ವಜನಿಕರಿಗೆ ಹಬ್ಬದ ಸಮಯದಲ್ಲೂ ಸುರಕ್ಷಿತವಾಗಿ ಚಾಲನೆ ಮಾಡಲು, ನಿಯಮ ಪಾಲನೆ ಮಾಡಲು ವಿನಂತಿ ಮಾಡಿದ್ದಾರೆ.</p>
+        </div>
+
+        <!-- Breaking News Section -->
+        <div class="breaking">
+          <h3>🚨 ಬ್ರೇಕಿಂಗ್ ನ್ಯೂಸ್</h3>
+          <ul>
+            <li><a href="news1.html">ಮುಂಬೈನ ಸಮುದ್ರ ತೀರದಲ್ಲಿ ಮಳೆ ತೀವ್ರ — ಎಚ್ಚರಿಕೆ ನೀಡಿದ ಹವಾಮಾನ ಇಲಾಖೆ</a></li>
+            <li><a href="news2.html">ಬೆಂಗಳೂರು ಮೆಟ್ರೋ ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ ನಾಳೆ</a></li>
+            <li><a href="news3.html">ಚಂದ್ರಯಾನ ಮಿಷನ್ ಯಶಸ್ಸು — ಇಸ್ರೋ ತಂಡಕ್ಕೆ ಅಭಿನಂದನೆಗಳು</a></li>
+            <li><a href="news4.html">ರಾಜ್ಯದಲ್ಲಿ ಹೊಸ ಹೂಡಿಕೆ ನೀತಿ ಪ್ರಕಟ — ಕೈಗಾರಿಕಾ ವಲಯ ಉತ್ಸಾಹ</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Right Column (Trending Section) -->
+      <aside class="right">
+
+<div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+
+
+        <div class="trending">
+          <h3>🔥 ಟ್ರೆಂಡಿಂಗ್ ವೀಡಿಯೋಗಳು</h3>
+          <div class="video-item">
+            <img src="Z:/prajapara/images/p1.jpg" alt="v1">
+            <div>
+              <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong>
+              <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 1.2k</div>
+            </div>
+          </div>
+          <div class="video-item">
+            <img src="Z:/prajapara/images/p1.jpg" alt="v2">
+            <div>
+              <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong>
+              <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 980</div>
+            </div>
+          </div>
+          <div class="video-item">
+            <img src="Z:/prajapara/images/p1.jpg" alt="v3">
+            <div>
+              <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong>
+              <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 850</div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </aside>
+    </div>
+  </div>
+
+
+
+  <div id="footer"></div>
+
+  <script>
+    // Load Header & Footer dynamically
     fetch("header.html")
-      .then(response => response.text())
-      .then(data => document.getElementById("header").innerHTML = data);
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data)
+      .catch(err => console.error("Header load error:", err));
 
-    // Load footer
     fetch("footer.html")
-      .then(response => response.text())
-      .then(data => document.getElementById("footer").innerHTML = data);
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data)
+      .catch(err => console.error("Footer load error:", err));
   </script>
 
 </body>
