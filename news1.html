@@ -225,6 +225,46 @@ fetch('header.html')
         order: 1;
       }
     }
+.trending {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.trending h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #222;
+}
+.video-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.video-item:hover {
+  background: #f3f3f3;
+}
+.video-item img {
+  width: 80px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.news-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 15px;
+  padding: 10px;
+}
+
+
   </style>
 </head>
 <body>
@@ -313,50 +353,65 @@ fetch('header.html')
 
       <!-- Right Sidebar -->
       <aside>
-        <div class="news-card">
-          <img src="img/news1.jpg" alt="News Thumb">
-          <h4>ಮಂಗಳೂರು: ದೀಪಾವಳಿ ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ನಗರದ ಟ್ರಾಫಿಕ್ ನಿಯಂತ್ರಣ ಕ್ರಮ ಬಲಪಡಿಸಲಾಗಿದೆ</h4>
-        </div>
-        <div class="news-card">
-          <img src="img/news2.jpg" alt="News Thumb">
-          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
-        </div>
-<div class="news-card">
-          <img src="img/news2.jpg" alt="News Thumb">
-          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
-        </div>
-<div class="news-card">
-          <img src="img/news2.jpg" alt="News Thumb">
-          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
-        </div>
-<div class="news-card">
-          <img src="img/news2.jpg" alt="News Thumb">
-          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
-        </div>
+
+<div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+
+       <div class="news-section">
+  <a href="news1.html" class="news-card">
+    <img src="img/news1.jpg" alt="News Thumb">
+    <h4>ಮಂಗಳೂರು: ದೀಪಾವಳಿ ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ನಗರದ ಟ್ರಾಫಿಕ್ ನಿಯಂತ್ರಣ ಕ್ರಮ ಬಲಪಡಿಸಲಾಗಿದೆ</h4>
+  </a>
+
+  <a href="news2.html" class="news-card">
+    <img src="img/news2.jpg" alt="News Thumb">
+    <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
+  </a>
+
+  <a href="news3.html" class="news-card">
+    <img src="img/news3.jpg" alt="News Thumb">
+    <h4>ಬೀದರ್: ರೈತರಿಗೆ ಹೊಸ ಧನಸಹಾಯ ಯೋಜನೆ ಶೀಘ್ರ ಜಾರಿಗೆ</h4>
+  </a>
+
+  <a href="news4.html" class="news-card">
+    <img src="img/news4.jpg" alt="News Thumb">
+    <h4>ಮೈಸೂರು: ಹೊಸ ಬಸ್‌ ನಿಲ್ದಾಣ ಉದ್ಘಾಟನೆಗೆ ಸಜ್ಜಾಗಿದೆ ನಗರ</h4>
+  </a>
+
+  <a href="news5.html" class="news-card">
+    <img src="img/news5.jpg" alt="News Thumb">
+    <h4>ಬೆಂಗಳೂರು: ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ಖರೀದಿ ಜೋರಾಗಿ ಮುಂದುವರಿದಿದೆ</h4>
+  </a>
+</div>
+
+ <!-- trading video -->
 <div class="trending">
-          <h3>🔥 ಟ್ರೆಂಡಿಂಗ್ ವೀಡಿಯೋಗಳು</h3>
-          <div class="video-item">
-            <img src="Z:/prajapara/images/p1.jpg" alt="v1">
-            <div>
-              <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong>
-              <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 1.2k</div>
-            </div>
-          </div>
-          <div class="video-item">
-            <img src="Z:/prajapara/images/p1.jpg" alt="v2">
-            <div>
-              <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong>
-              <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 980</div>
-            </div>
-          </div>
-          <div class="video-item">
-            <img src="Z:/prajapara/images/p1.jpg" alt="v3">
-            <div>
-              <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong>
-              <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 850</div>
-            </div>
-          </div>
-        </div>
+  <h3>🔥 ಟ್ರೆಂಡಿಂಗ್ ವೀಡಿಯೋಗಳು</h3>
+
+  <a href="video1.html" class="video-item">
+    <img src="Z:/prajapara/images/p1.jpg" alt="v1">
+    <div>
+      <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong>
+      <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 1.2k</div>
+    </div>
+  </a>
+
+  <a href="video2.html" class="video-item">
+    <img src="Z:/prajapara/images/p1.jpg" alt="v2">
+    <div>
+      <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong>
+      <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 980</div>
+    </div>
+  </a>
+
+  <a href="video3.html" class="video-item">
+    <img src="Z:/prajapara/images/p1.jpg" alt="v3">
+    <div>
+      <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong>
+      <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 850</div>
+    </div>
+  </a>
+</div>
+
 
 <div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
 

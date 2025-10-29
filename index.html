@@ -6,10 +6,15 @@
   <title>Prajapara News Kannada</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family: Arial, Helvetica, sans-serif;line-height:1.4;color:#222;background:#fff}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      scroll-behavior: smooth;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      color: #222;
+      background: #fff;
+    }
+    img { max-width: 100%; display: block; border-radius: 6px; }
 
     .topbar{background:#e8f0f4;padding:6px 12px;font-size:13px;color:#333}
     .topbar .langs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
@@ -33,11 +38,6 @@
       nav.mainnav ul.active{display:flex}
     }
 
-// Load Header
-fetch('header.html')
-  .then(response => response.text())
-  .then(data => document.getElementById('header').innerHTML = data);
-
     /* --- Trending news ticker --- */
     .ticker-wrapper{display:flex;align-items:center;background:#f5f5f5;color:#b20000;padding:8px 0;font-weight:700;overflow:hidden;white-space:nowrap;flex-wrap:wrap}
     .ticker-title{background:#b20000;color:#fff;padding:6px 12px;font-weight:700;margin-right:10px;flex-shrink:0}
@@ -58,7 +58,7 @@ fetch('header.html')
     .lead-card h2{font-size:18px;margin-bottom:8px}
 
     .small-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .small-item{display:flex;gap:8px;align-items:center}
+    .small-item{display:flex;gap:8px;align-items:center;text-decoration:none;color:#111}
     .small-item img{width:70px;height:50px;object-fit:cover;border-radius:2px}
 
     .center .live{background:#000;color:#fff;padding:0;border-radius:3px;overflow:hidden;margin-bottom:14px}
@@ -88,24 +88,56 @@ fetch('header.html')
       .small-list{grid-template-columns:1fr}
       .search{text-align:left;margin-top:10px}
     }
+
+    /* --- Sidebar Cards --- */
+    .news-card {
+      display: flex;
+      gap: 10px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: #111;
+    }
+    .news-card img {
+      width: 90px;
+      height: 60px;
+      object-fit: cover;
+    }
+    .news-card h4 {
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    /* --- Category News --- */
+    .category-news h4 {
+      font-weight: 700;
+      border-left: 4px solid #b20000;
+      padding-left: 8px;
+      margin-bottom: 8px;
+      color: #b20000;
+    }
   </style>
 </head>
+
 <body>
-
-
-   <div id="header"></div>
+  <div id="header"></div>
 
   <div class="container">
     <div class="banner"><img src="ADD" alt="top banner"></div>
 
     <div class="grid">
+      <!-- LEFT COLUMN -->
       <section class="left">
         <h3 style="margin-bottom:12px">KANNADA NEWS</h3>
 
+        <!-- Lead Article -->
         <article class="lead-card">
           <a href="news1.html" style="display:flex;gap:14px;text-decoration:none;color:inherit;flex-wrap:wrap;">
             <div class="thumb">
-              <img src="Z:\prajapara\assets\images\p1.jpg" alt="lead news">
+              <img src="Z:/prajapara/assets/images/p1.jpg" alt="lead news">
             </div>
             <div class="meta">
               <h2>Big Breaking: City Traffic Gets Smooth During Diwali</h2>
@@ -117,40 +149,103 @@ fetch('header.html')
           </a>
         </article>
 
+        <!-- Small List (Latest & State News) -->
         <div class="small-list">
           <div>
             <div style="font-weight:700;margin-bottom:8px">ಇತ್ತೀಚಿನ ಸುದ್ದಿಗಳು</div>
             <a href="news1.html" class="small-item">
-              <img src="Z:\prajapara\assets\images\p2.jpg" alt="t1">
+              <img src="Z:/prajapara/assets/images/p2.jpg" alt="t1">
               <div>ಶೀರ್ಷಿಕೆ 1 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
             </a>
             <a href="news2.html" class="small-item">
-              <img src="Z:\prajapara\assets\images\p3.jpg" alt="t2">
+              <img src="Z:/prajapara/assets/images/p3.jpg" alt="t2">
               <div>ಶೀರ್ಷಿಕೆ 2 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
             </a>
             <a href="news3.html" class="small-item">
-              <img src="Z:\prajapara\assets\images\p3.jpg" alt="t3">
+              <img src="Z:/prajapara/assets/images/p3.jpg" alt="t3">
               <div>ಶೀರ್ಷಿಕೆ 3 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
             </a>
           </div>
           <div>
             <div style="font-weight:700;margin-bottom:8px">ರಾಜ್ಯ/ದೇಶ</div>
             <a href="news4.html" class="small-item">
-              <img src="Z:\prajapara\images\p1.jpg" alt="t4">
+              <img src="Z:/prajapara/images/p1.jpg" alt="t4">
               <div>ಶೀರ್ಷಿಕೆ 4 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
             </a>
             <a href="news5.html" class="small-item">
-              <img src="Z:\prajapara\images\p1.jpg" alt="t5">
+              <img src="Z:/prajapara/images/p1.jpg" alt="t5">
               <div>ಶೀರ್ಷಿಕೆ 5 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
             </a>
             <a href="news6.html" class="small-item">
-              <img src="Z:\prajapara\images\p1.jpg" alt="t6">
+              <img src="Z:/prajapara/images/p1.jpg" alt="t6">
               <div>ಶೀರ್ಷಿಕೆ 6 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
             </a>
           </div>
         </div>
+
+        <!-- CATEGORY NEWS SECTION -->
+        <div class="category-news" style="margin-top:24px;">
+          <h3 style="margin-bottom:12px;">CATEGORY NEWS</h3>
+
+          <div class="category-block" style="margin-bottom:18px;">
+            <h4>ರಾಜ್ಯ ಸುದ್ದಿ (State News)</h4>
+            <div class="small-list">
+              <a href="state1.html" class="small-item">
+                <img src="Z:/prajapara/images/state1.jpg" alt="state1">
+                <div>ಬೆಂಗಳೂರು: ರಾಜ್ಯದಲ್ಲಿ ಮಳೆಯ ಅಬ್ಬರ ಮುಂದುವರಿದಿದೆ</div>
+              </a>
+              <a href="state2.html" class="small-item">
+                <img src="Z:/prajapara/images/state2.jpg" alt="state2">
+                <div>ಮೈಸೂರು: ಹೊಸ ಸರ್ಕಾರಿ ಯೋಜನೆಗೆ ಚಾಲನೆ</div>
+              </a>
+            </div>
+          </div>
+
+          <div class="category-block" style="margin-bottom:18px;">
+            <h4>ರಾಜಕೀಯ ಸುದ್ದಿ (Political News)</h4>
+            <div class="small-list">
+              <a href="politics1.html" class="small-item">
+                <img src="Z:/prajapara/images/politics1.jpg" alt="politics1">
+                <div>ವಿಧಾನಸಭೆಯಲ್ಲಿ ಬಜೆಟ್ ಚರ್ಚೆ ತೀವ್ರ</div>
+              </a>
+              <a href="politics2.html" class="small-item">
+                <img src="Z:/prajapara/images/politics2.jpg" alt="politics2">
+                <div>ಮುಖ್ಯಮಂತ್ರಿಗಳಿಂದ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</div>
+              </a>
+            </div>
+          </div>
+
+          <div class="category-block" style="margin-bottom:18px;">
+            <h4>ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿ (National News)</h4>
+            <div class="small-list">
+              <a href="national1.html" class="small-item">
+                <img src="Z:/prajapara/images/national1.jpg" alt="national1">
+                <div>ದೆಹಲಿ: ಸಂಸತ್ತಿನಲ್ಲಿ ಬಿಲ್ ಮಂಡನೆ</div>
+              </a>
+              <a href="national2.html" class="small-item">
+                <img src="Z:/prajapara/images/national2.jpg" alt="national2">
+                <div>ಮುಂಬೈ: ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆಯ ಹೊಸ ವರದಿ ಬಿಡುಗಡೆ</div>
+              </a>
+            </div>
+          </div>
+
+          <div class="category-block">
+            <h4>ಅಂತಾರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿ (International News)</h4>
+            <div class="small-list">
+              <a href="world1.html" class="small-item">
+                <img src="Z:/prajapara/images/world1.jpg" alt="world1">
+                <div>ಅಮೆರಿಕಾ: ಚುನಾವಣೆ ಪ್ರಚಾರ ತೀವ್ರಗೊಂಡಿದೆ</div>
+              </a>
+              <a href="world2.html" class="small-item">
+                <img src="Z:/prajapara/images/world2.jpg" alt="world2">
+                <div>ಚೀನಾ: ವ್ಯಾಪಾರ ನೀತಿಯಲ್ಲಿ ಬದಲಾವಣೆ</div>
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
+      <!-- CENTER COLUMN -->
       <aside class="center">
         <div class="live">
           <div class="label">LIVE TV</div>
@@ -159,14 +254,45 @@ fetch('header.html')
 
         <div class="trending">
           <h3>Trending Video</h3>
-          <div class="video-item"><img src="Z:\prajapara\images\p1.jpg" alt="v1"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
-          <div class="video-item"><img src="Z:\prajapara\images\p1.jpg" alt="v2"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
-          <div class="video-item"><img src="Z:\prajapara\images\p1.jpg" alt="v3"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+          <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v1"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+          <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v2"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+          <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v3"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+	   <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v3"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+           <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v3"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
+           <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v3"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
         </div>
       </aside>
 
+      <!-- RIGHT COLUMN -->
       <aside class="right">
-        <div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+        <div class="ad"><img src="Z:/prajapara/images/p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+
+        <div class="news-section">
+          <a href="news1.html" class="news-card">
+            <img src="img/news1.jpg" alt="News Thumb">
+            <h4>ಮಂಗಳೂರು: ದೀಪಾವಳಿ ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ನಗರದ ಟ್ರಾಫಿಕ್ ನಿಯಂತ್ರಣ ಕ್ರಮ ಬಲಪಡಿಸಲಾಗಿದೆ</h4>
+          </a>
+
+          <a href="news2.html" class="news-card">
+            <img src="img/news2.jpg" alt="News Thumb">
+            <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
+          </a>
+
+          <a href="news3.html" class="news-card">
+            <img src="img/news3.jpg" alt="News Thumb">
+            <h4>ಬೀದರ್: ರೈತರಿಗೆ ಹೊಸ ಧನಸಹಾಯ ಯೋಜನೆ ಶೀಘ್ರ ಜಾರಿಗೆ</h4>
+          </a>
+
+          <a href="news4.html" class="news-card">
+            <img src="img/news4.jpg" alt="News Thumb">
+            <h4>ಮೈಸೂರು: ಹೊಸ ಬಸ್‌ ನಿಲ್ದಾಣ ಉದ್ಘಾಟನೆಗೆ ಸಜ್ಜಾಗಿದೆ ನಗರ</h4>
+          </a>
+
+          <a href="news5.html" class="news-card">
+            <img src="img/news5.jpg" alt="News Thumb">
+            <h4>ಬೆಂಗಳೂರು: ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ಖರೀದಿ ಜೋರಾಗಿ ಮುಂದುವರಿದಿದೆ</h4>
+          </a>
+        </div>
 
         <div class="topstories">
           <h4 style="margin-top:12px;margin-bottom:8px">Top Stories</h4>
@@ -195,59 +321,35 @@ fetch('header.html')
     </div>
   </div>
 
-
   <div id="footer"></div>
-
-  <script src="scripts.js"></script>
 
   <script>
     function toggleMenu(){
       const menu = document.querySelector('nav.mainnav ul');
       menu.classList.toggle('active');
     }
-  </script>
 
-<script>
-    // Load header
+    // Load header and footer dynamically
     fetch("header.html")
       .then(response => response.text())
       .then(data => document.getElementById("header").innerHTML = data);
 
-    // Load footer
     fetch("footer.html")
       .then(response => response.text())
       .then(data => document.getElementById("footer").innerHTML = data);
+
+    function shareWebsite() {
+      const shareData = {
+        title: "Prajapara News Kannada",
+        text: "Check out the latest news on Prajapara News Kannada!",
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData);
+      } else {
+        alert("Share feature not supported on this browser.");
+      }
+    }
   </script>
-
-
-<script>
-function shareWebsite() {
-  const shareData = {
-    title: "Prajapara News Kannada",
-    text: "Check out the latest news on Prajapara News Kannada!",
-    url: "https://yourwebsite.com"  // 👈 Replace this with your real website link
-  };
-
-  if (navigator.share) {
-    navigator.share(shareData)
-      .then(() => console.log('Shared successfully'))
-      .catch((error) => console.log('Sharing failed', error));
-  } else {
-    // Fallback for browsers that don’t support navigator.share
-    alert("Copy this link to share:\n" + shareData.url);
-  }
-}
-</script>
-
-<script>
-    // Load header dynamically
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header').innerHTML = data)
-      .catch(err => console.error('Header load error:', err));
-  </script>
-
-
-
 </body>
 </html>
