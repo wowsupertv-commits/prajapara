@@ -4,56 +4,158 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prajapara News Kannada - Full Article</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.5; color: #222; background: #fff; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    html, body {
+      scroll-behavior: smooth;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      color: #222;
+      background: #fff;
+    }
+    img { max-width: 100%; display: block; border-radius: 6px; }
 
+    /* Container */
     .container { max-width: 1200px; margin: 20px auto; padding: 0 16px; }
 
+
+
+
     /* --- Layout --- */
-    .grid {
+    main {
       display: grid;
       grid-template-columns: 1fr 320px;
-      gap: 18px;
+      gap: 20px;
       align-items: start;
     }
-
-    .left {
+    article {
       background: #fff;
-      padding: 12px;
-      border: 1px solid #eee;
-      border-radius: 4px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 20px;
+    }
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
+    /* --- Article Header --- */
     .article-header h1 {
-      font-size: 26px;
+      font-size: 24px;
       margin-bottom: 8px;
       color: #b20000;
     }
-    .article-meta {
+    .meta {
       font-size: 13px;
-      color: #888;
+      color: #666;
       margin-bottom: 12px;
     }
 
-    .article-content img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-      margin-bottom: 12px;
+    /* --- Highlights --- */
+    .highlights {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0;
     }
-    .article-content p {
+    .highlight {
+      background: #f9fafb;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #eef2f7;
+    }
+
+    /* --- Video --- */
+    .video {
+      margin: 16px 0;
+    }
+    .video h3 {
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    /* --- Sections --- */
+    .section {
+      margin: 16px 0;
+    }
+    .section h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #0a7b21;
+    }
+    .section p {
       font-size: 16px;
       color: #333;
-      margin-bottom: 12px;
       text-align: justify;
+      margin-bottom: 10px;
     }
 
-    /* --- Right Column --- */
-    .right .trending {
+    /* --- Share Buttons --- */
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .icon.fb { background-color: #1877F2; }
+    .icon.tw { background-color: #000; }
+    .icon.ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .icon.gm { background-color: #D44638; }
+    .icon.wa { background-color: #25D366; }
+    .icon.th { background-color: #000; }
+    .icon:hover { transform: scale(1.1); opacity: 0.9; }
+
+    /* --- Breaking News --- */
+    .breaking {
+      margin-top: 30px;
+      padding: 16px;
+      background: #f5f5f5;
+      border-radius: 6px;
+    }
+    .breaking h3 {
+      background: #b20000;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+    .breaking ul { list-style: none; padding: 0; }
+    .breaking li { border-bottom: 1px solid #ddd; padding: 8px 0; }
+    .breaking a { font-weight: 600; color: #222; text-decoration: none; }
+
+    /* --- Sidebar Cards --- */
+    .news-card {
+      display: flex;
+      gap: 10px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .news-card img {
+      width: 90px;
+      height: 60px;
+      object-fit: cover;
+    }
+    .news-card h4 {
+      font-size: 14px;
+      margin: 0;
+      color: #111;
+      line-height: 1.3;
+    }
+
+.trending {
       background: #fafafa;
       padding: 10px;
       border: 1px solid #eee;
@@ -80,98 +182,86 @@
       border-radius: 3px;
     }
 
-    /* --- Breaking News --- */
-    .breaking {
-      margin-top: 30px;
-      padding: 16px;
-      background: #f5f5f5;
-      border-radius: 4px;
-    }
-
-    .breaking h3 {
-      background: #b20000;
-      color: #fff;
-      padding: 8px 12px;
-      margin-bottom: 10px;
-      border-radius: 3px;
-    }
-
-    .breaking ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .breaking li {
-      border-bottom: 1px solid #ddd;
-      padding: 8px 0;
-    }
-
-    .breaking a {
-      font-weight: 600;
-      color: #222;
-    }
-
     /* --- Responsive --- */
     @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; }
+      main {
+        grid-template-columns: 1fr;
+      }
+      aside {
+        order: 2;
+      }
+      article {
+        order: 1;
+      }
     }
-
-.social-icons a {
-  background: #f1f1f1;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-.social-icons a:hover {
-  background: #007bff;
-  color: #fff;
-}
-
   </style>
 </head>
 <body>
 
   <div id="header"></div>
 
-<div class="container">
+  <div class="container">
     <div class="banner"><img src="ADD" alt="top banner"></div>
-  
   </div>
 
   <div class="container">
-    <div class="grid">
-     <section class="left">
-  <div class="article-header">
-    <h1>ಬೆಂಗಳೂರು ದೀಪಾವಳಿ ದಿನ ಟ್ರಾಫಿಕ್ ಸುಲಭಗೊಂಡಿತು</h1>
-    <div class="article-meta">By Prajapara News • 2 hours ago</div>
-  </div>
+    <main>
+      <!-- Left: Article -->
+      <article>
+        <div class="article-header">
+          <h1>ಮೂಡಬಿದಿರೆ : ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿ ಮಾತುಕತೆ ಯಶಸ್ವಿ — ಸಂಪೂರ್ಣ ವಿವರ ಹಾಗೂ ವೀಡಿಯೊ ಇಲ್ಲಿದೆ 👇</h1>
+          <div class="meta">ವರದಿ: ಪ್ರಜಾಪರಾ ವಾರ್ತೆ | ದಕ್ಷಿಣ ಕನ್ನಡ • 28 ಅಕ್ಟೋಬರ್ 2025</div>
+        </div>
+<img src="Z:\prajapara\assets\images\p1.jpg" alt="lead news" style="margin:14px 0;height:auto;width:100%;border-radius:4px;object-fit:cover;">
 
-  <div class="article-content">
-    <img src="Z:/prajapara/assets/images/p1.jpg" alt="news photo">
+        <section class="highlights">
+          <div class="highlight">1️⃣ ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿಯ ಅಂತಿಮ ಹಂತದ ಮಾತುಕತೆ ಮಂಗಳವಾರ ನಡೆದಿದೆ.</div>
+          <div class="highlight">2️⃣ ಮಾಜಿ ಸಚಿವ ಬಿ. ರಮಾನಾಥ ರೈ ಅವರ ನೇತೃತ್ವದಲ್ಲಿ ಸಭೆ ಯಶಸ್ವಿಯಾಗಿ ಮುಕ್ತಾಯವಾಯಿತು.</div>
+          <div class="highlight">3️⃣ ಸಮಾಜದ ನಾಯಕರ ಸಹಕಾರದಿಂದ ಜೀರ್ಣೋದ್ದಾರ ಕಾರ್ಯಕ್ಕೆ ವೇಗ ಸಿಕ್ಕಿದೆ.</div>
+        </section>
 
-    <p>ದೀಪಾವಳಿ ಹಬ್ಬದ ಸಂದರ್ಭದಲ್ಲಿ ಬೆಂಗಳೂರಿನ ಪ್ರಮುಖ ರಸ್ತೆಗಳ ಟ್ರಾಫಿಕ್ ದಟ್ಟಣೆ ಕಡಿಮೆಯಾಗಿದೆ. ನಾಗರಿಕರು ಮನೆಗಳಲ್ಲಿ ಹಬ್ಬ ಆಚರಿಸುತ್ತಿರುವುದರಿಂದ ವಾಹನ ಸಂಚಾರ ಹೋಲಿಸಿದರೆ ಕಡಿಮೆಯಾಗಿದೆ.</p>
+      
+        <section class="section">
+          <h3>ಘಟನೆಯ ವಿವರ</h3>
+          <p>ಅಲೇರಿ ಶ್ರೀ ಸತ್ಯ ಸಾರಮಾನಿ ಕಾನದ ಕಟದ ಮೂಲಕ್ಷೇತ್ರ (ರಿ.), ಮಿಜಾರಿನಲ್ಲಿ ಜಾಗ ಖರೀದಿಗೆ ಸಂಬಂಧಿಸಿದ ಅಂತಿಮ ಮಾತುಕತೆ 28 ಅಕ್ಟೋಬರ್ 2025ರಂದು ಮಾಜಿ ಸಚಿವ ಬಿ. ರಮಾನಾಥ ರೈ ಅವರ ಸ್ವಗೃಹದಲ್ಲಿ ನಡೆಯಿತು. ಸಭೆಯಲ್ಲಿ ಪ್ರಮುಖ ನಾಯಕರಾದ ಚಂದ್ರಪ್ರಕಾಶ್ ಶೆಟ್ಟಿ, ಗಣೇಶ್ ಪ್ರಸಾದ್, ಮೋಹನ್ ನೆಲ್ಲಿಗುಂಡಿ, ಶಿವರಾಜ್ ಪಿ.ಬಿ ಸೇರಿದಂತೆ ಹಿರಿಯರು ಭಾಗವಹಿಸಿದರು.</p>
+          <p>ಸಭೆಯಲ್ಲಿ ಭೂಮಿ ಖರೀದಿ ಪ್ರಕ್ರಿಯೆ, ಕಾನೂನು ಭದ್ರತೆ ಹಾಗೂ ಯೋಜನಾ ಅನುಷ್ಠಾನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಚರ್ಚೆಗಳು ಯಶಸ್ವಿಯಾಗಿ ನಡೆಯಿತು.</p>
+        </section>
 
-    <p>ಟ್ರಾಫಿಕ್ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳ ಪ್ರಕಾರ, ಬೆಂಗಳೂರಿನ ಮಹತ್ವದ ಜಂಕ್ಷನ್‌ಗಳಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಕಂಡುಬರುವ ದಟ್ಟಣೆ ಇಂದು ಕಂಡುಬಂದಿಲ್ಲ. ನಗರವಾಸಿಗಳು ಬೆಳಗ್ಗೆ ಮತ್ತು ಸಂಜೆ ಸಮಯದಲ್ಲಿ ಹಬ್ಬದ ಖರೀದಿಗೆ ಮಾತ್ರ ಹೊರಟಿದ್ದರು.</p>
+        <section class="section">
+          <h3>ಸಮಾಜದ ಅಭಿಪ್ರಾಯ</h3>
+          <p>ಅತಿಥಿಗಳು ಹೇಳಿದರು: “ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರವು ಧಾರ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಪುನರುತ್ಥಾನದ ಕೇಂದ್ರವಾಗಬೇಕು. ಜಾಗ ಖರೀದಿ ಇದರ ಮೊದಲ ಹಂತ.”</p>
+        </section>
 
-    <p>ಸಾಮಾನ್ಯ ದಿನಗಳಲ್ಲಿ ಉಂಟಾಗುವ ಸಾರಿಗೆ ಗದ್ದಲದ ಬದಲಾಗಿ, ಇಂದು ವಾಹನ ಸಂಚಾರ ಸರಾಗವಾಗಿ ನಡೆದಿರುವುದಾಗಿ ಪೊಲೀಸರು ತಿಳಿಸಿದ್ದಾರೆ.</p>
+        <section class="section">
+          <h3>ಅಧಿಕಾರಿಗಳಿಗೆ ಮನವಿ</h3>
+          <p>ಸ್ಥಳೀಯ ಪ್ರತಿನಿಧಿಗಳು ಸರ್ಕಾರದಿಂದ ಹೆಚ್ಚಿನ ಸಹಕಾರವನ್ನು ಕೋರಿ ಮುಂದಿನ ಹಂತದ ಅಭಿವೃದ್ಧಿಗೆ ವೇದಿಕೆ ಸಿದ್ಧಪಡಿಸಿದ್ದಾರೆ.</p>
+        </section>
 
-    <p>ಪೊಲೀಸರು ಸಾರ್ವಜನಿಕರಿಗೆ ಹಬ್ಬದ ಸಮಯದಲ್ಲೂ ಸುರಕ್ಷಿತವಾಗಿ ಚಾಲನೆ ಮಾಡಲು, ನಿಯಮ ಪಾಲನೆ ಮಾಡಲು ವಿನಂತಿ ಮಾಡಿದ್ದಾರೆ.</p>
-  </div>
+        <div class="hashtags">#Moodbidri #AleriMoolakshetra #AdidravidhaSamaja #DakshinaKannada #PrajaparaNews</div>
 
-  <!-- Social Share Buttons -->
-  <div class="share-section" style="margin-top:20px;border-top:1px solid #ddd;padding-top:15px;">
-    <h3 style="margin-bottom:10px;">📢 ಹಂಚಿಕೊಳ್ಳಿ:</h3>
-    <div class="social-icons" style="display:flex;gap:10px;flex-wrap:wrap;">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://prajaparanews.com" target="_blank" style="text-decoration:none;font-size:18px;">📘 Facebook</a>
-      <a href="https://twitter.com/intent/tweet?url=https://prajaparanews.com&text=ಬೆಂಗಳೂರು ದೀಪಾವಳಿ ದಿನ ಟ್ರಾಫಿಕ್ ಸುಲಭಗೊಂಡಿತು" target="_blank" style="text-decoration:none;font-size:18px;">🐦 X</a>
-      <a href="https://www.instagram.com/?url=https://prajaparanews.com" target="_blank" style="text-decoration:none;font-size:18px;">📸 Instagram</a>
-      <a href="mailto:?subject=Interesting News&body=https://prajaparanews.com" style="text-decoration:none;font-size:18px;">✉️ Gmail</a>
-      <a href="https://api.whatsapp.com/send?text=https://prajaparanews.com" target="_blank" style="text-decoration:none;font-size:18px;">💬 WhatsApp</a>
-      <a href="https://www.threads.net/intent/post?url=https://prajaparanews.com" target="_blank" style="text-decoration:none;font-size:18px;">🧵 Threads</a>
-    </div>
-  </div>
+        <div class="share-section" style="margin-top:20px;border-top:1px solid #ddd;padding-top:15px;">
+          <h3 style="margin-bottom:10px;">📢 ಹಂಚಿಕೊಳ್ಳಿ:</h3>
+          
+  <div class="social-icons">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://prajaparanews.com" target="_blank" class="icon fb">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?url=https://prajaparanews.com" target="_blank" class="icon tw">
+    <i class="fab fa-x-twitter"></i>
+  </a>
+  <a href="mailto:?subject=Interesting News&body=https://prajaparanews.com" class="icon gm">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="https://api.whatsapp.com/send?text=https://prajaparanews.com" target="_blank" class="icon wa">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.threads.net/intent/post?url=https://prajaparanews.com" target="_blank" class="icon th">
+    <i class="fa-brands fa-threads"></i>
+  </a>
+</div>
+        </div>
 
-  <!-- Comment Section -->
+<!-- Comment Section -->
   <div class="comment-section" style="margin-top:30px;border-top:1px solid #ccc;padding-top:20px;">
     <h3 style="margin-bottom:10px;">💬 ಕಾಮೆಂಟ್ ಮಾಡಿ</h3>
     <form style="display:flex;flex-direction:column;gap:10px;">
@@ -180,25 +270,39 @@
       <button type="submit" style="background:#007bff;color:#fff;padding:10px;border:none;border-radius:6px;cursor:pointer;">ಕಾಮೆಂಟ್ ಸಲ್ಲಿಸಿ</button>
     </form>
   </div>
-        <!-- Breaking News Section -->
         <div class="breaking">
           <h3>🚨 ಬ್ರೇಕಿಂಗ್ ನ್ಯೂಸ್</h3>
           <ul>
-            <li><a href="news1.html">ಮುಂಬೈನ ಸಮುದ್ರ ತೀರದಲ್ಲಿ ಮಳೆ ತೀವ್ರ — ಎಚ್ಚರಿಕೆ ನೀಡಿದ ಹವಾಮಾನ ಇಲಾಖೆ</a></li>
-            <li><a href="news2.html">ಬೆಂಗಳೂರು ಮೆಟ್ರೋ ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ ನಾಳೆ</a></li>
-            <li><a href="news3.html">ಚಂದ್ರಯಾನ ಮಿಷನ್ ಯಶಸ್ಸು — ಇಸ್ರೋ ತಂಡಕ್ಕೆ ಅಭಿನಂದನೆಗಳು</a></li>
-            <li><a href="news4.html">ರಾಜ್ಯದಲ್ಲಿ ಹೊಸ ಹೂಡಿಕೆ ನೀತಿ ಪ್ರಕಟ — ಕೈಗಾರಿಕಾ ವಲಯ ಉತ್ಸಾಹ</a></li>
+            <li><a href="#">ಮುಂಬೈನ ಸಮುದ್ರ ತೀರದಲ್ಲಿ ಮಳೆ ತೀವ್ರ — ಎಚ್ಚರಿಕೆ ನೀಡಿದ ಹವಾಮಾನ ಇಲಾಖೆ</a></li>
+            <li><a href="#">ಬೆಂಗಳೂರು ಮೆಟ್ರೋ ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ ನಾಳೆ</a></li>
+            <li><a href="#">ಚಂದ್ರಯಾನ ಮಿಷನ್ ಯಶಸ್ಸು — ಇಸ್ರೋ ತಂಡಕ್ಕೆ ಅಭಿನಂದನೆಗಳು</a></li>
           </ul>
         </div>
-      </section>
+      </article>
 
-      <!-- Right Column (Trending Section) -->
-      <aside class="right">
-
-<div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
-
-
-        <div class="trending">
+      <!-- Right Sidebar -->
+      <aside>
+        <div class="news-card">
+          <img src="img/news1.jpg" alt="News Thumb">
+          <h4>ಮಂಗಳೂರು: ದೀಪಾವಳಿ ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ನಗರದ ಟ್ರಾಫಿಕ್ ನಿಯಂತ್ರಣ ಕ್ರಮ ಬಲಪಡಿಸಲಾಗಿದೆ</h4>
+        </div>
+        <div class="news-card">
+          <img src="img/news2.jpg" alt="News Thumb">
+          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
+        </div>
+<div class="news-card">
+          <img src="img/news2.jpg" alt="News Thumb">
+          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
+        </div>
+<div class="news-card">
+          <img src="img/news2.jpg" alt="News Thumb">
+          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
+        </div>
+<div class="news-card">
+          <img src="img/news2.jpg" alt="News Thumb">
+          <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
+        </div>
+<div class="trending">
           <h3>🔥 ಟ್ರೆಂಡಿಂಗ್ ವೀಡಿಯೋಗಳು</h3>
           <div class="video-item">
             <img src="Z:/prajapara/images/p1.jpg" alt="v1">
@@ -223,18 +327,22 @@
           </div>
         </div>
 
+<div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
 
+<div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+
+<div class="ad"><img src="Z:\prajapara\images\p1.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
 
       </aside>
-    </div>
+    </main>
   </div>
-
-
-
+ 
   <div id="footer"></div>
 
   <script>
     // Load Header & Footer dynamically
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // ensure always loads from top
+
     fetch("header.html")
       .then(res => res.text())
       .then(data => document.getElementById("header").innerHTML = data)
@@ -245,6 +353,5 @@
       .then(data => document.getElementById("footer").innerHTML = data)
       .catch(err => console.error("Footer load error:", err));
   </script>
-
 </body>
 </html>
