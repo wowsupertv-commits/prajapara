@@ -193,7 +193,38 @@ function shareWebsite() {
   }
 }
 
+.ad-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 18px 0;
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+  }
 
+  .ad-box img {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* Responsive (Mobile) */
+  @media (max-width: 768px) {
+    .ad-box {
+      margin: 14px 0;
+      padding: 6px;
+    }
+
+    .ad-box img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 </script>
 
 
@@ -235,6 +266,12 @@ function shareWebsite() {
       </span>
     </div>
   </div>
+
+<div class="ad-box container">
+  <a href="#" target="_blank">
+    <img src="assets/images/ad-banner.jpg" alt="Advertisement">
+  </a>
+</div>
 
 <script>
 fetch('header.html')
