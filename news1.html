@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prajapara News Kannada</title>
- <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -16,10 +16,9 @@
     }
     img { max-width: 100%; display: block; border-radius: 6px; }
 
-    /* Container */
     .container { max-width: 1200px; margin: 20px auto; padding: 0 16px; }
 
- .topbar{background:#e8f0f4;padding:6px 12px;font-size:13px;color:#333}
+    .topbar{background:#e8f0f4;padding:6px 12px;font-size:13px;color:#333}
     .topbar .langs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 
     .header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #eee;flex-wrap:wrap}
@@ -27,7 +26,7 @@
     .logo img{height:46px}
 
     .search{min-width:220px;text-align:right;flex:1}
-/* Mobile menu */
+
     .menu-toggle{display:none;font-size:22px;cursor:pointer}
     nav.mainnav{background:#fff;padding:8px 20px;border-bottom:4px solid #f5f5f5}
     nav.mainnav ul{display:flex;gap:14px;flex-wrap:wrap;list-style:none;font-weight:600}
@@ -40,19 +39,12 @@
       nav.mainnav ul.active{display:flex}
     }
 
-// Load Header
-fetch('header.html')
-  .then(response => response.text())
-  .then(data => document.getElementById('header').innerHTML = data);
-
-/* --- Trending news ticker --- */
     .ticker-wrapper{display:flex;align-items:center;background:#f5f5f5;color:#b20000;padding:8px 0;font-weight:700;overflow:hidden;white-space:nowrap;flex-wrap:wrap}
     .ticker-title{background:#b20000;color:#fff;padding:6px 12px;font-weight:700;margin-right:10px;flex-shrink:0}
     .ticker{overflow:hidden;flex:1}
     .ticker span{display:inline-block;padding-left:100%;animation:scroll-left 20s linear infinite}
     @keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-    /* --- Layout --- */
     main {
       display: grid;
       grid-template-columns: 1fr 320px;
@@ -71,7 +63,6 @@ fetch('header.html')
       gap: 16px;
     }
 
-    /* --- Article Header --- */
     .article-header h1 {
       font-size: 24px;
       margin-bottom: 8px;
@@ -81,14 +72,30 @@ fetch('header.html')
       font-size: 13px;
       color: #666;
       margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    /* --- Highlights --- */
-    .highlights {
-      display: grid;
-      gap: 8px;
-      margin: 12px 0;
+    /* Share Button */
+    #shareBtn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.3s;
     }
+    #shareBtn:hover { background-color: #0056b3; }
+
+    .highlights { display: grid; gap: 8px; margin: 12px 0; }
     .highlight {
       background: #f9fafb;
       padding: 10px;
@@ -96,58 +103,10 @@ fetch('header.html')
       border: 1px solid #eef2f7;
     }
 
-    /* --- Video --- */
-    .video {
-      margin: 16px 0;
-    }
-    .video h3 {
-      margin-bottom: 8px;
-      color: #111;
-    }
+    .section { margin: 16px 0; }
+    .section h3 { margin-bottom: 8px; font-size: 18px; color: #0a7b21; }
+    .section p { font-size: 16px; color: #333; text-align: justify; margin-bottom: 10px; }
 
-    /* --- Sections --- */
-    .section {
-      margin: 16px 0;
-    }
-    .section h3 {
-      margin-bottom: 8px;
-      font-size: 18px;
-      color: #0a7b21;
-    }
-    .section p {
-      font-size: 16px;
-      color: #333;
-      text-align: justify;
-      margin-bottom: 10px;
-    }
-
-    /* --- Share Buttons --- */
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      font-size: 20px;
-      color: #fff;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .icon.fb { background-color: #1877F2; }
-    .icon.tw { background-color: #000; }
-    .icon.ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-    .icon.gm { background-color: #D44638; }
-    .icon.wa { background-color: #25D366; }
-    .icon.th { background-color: #000; }
-    .icon:hover { transform: scale(1.1); opacity: 0.9; }
-
-    /* --- Breaking News --- */
     .breaking {
       margin-top: 30px;
       padding: 16px;
@@ -165,7 +124,6 @@ fetch('header.html')
     .breaking li { border-bottom: 1px solid #ddd; padding: 8px 0; }
     .breaking a { font-weight: 600; color: #222; text-decoration: none; }
 
-    /* --- Sidebar Cards --- */
     .news-card {
       display: flex;
       gap: 10px;
@@ -174,165 +132,94 @@ fetch('header.html')
       padding: 10px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     }
-    .news-card img {
-      width: 90px;
-      height: 60px;
-      object-fit: cover;
-    }
-    .news-card h4 {
-      font-size: 14px;
-      margin: 0;
-      color: #111;
-      line-height: 1.3;
-    }
+    .news-card img { width: 90px; height: 60px; object-fit: cover; }
+    .news-card h4 { font-size: 14px; margin: 0; color: #111; line-height: 1.3; }
 
-.trending {
-      background: #fafafa;
-      padding: 10px;
-      border: 1px solid #eee;
-      border-radius: 4px;
+    .trending {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-
-    .trending h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #b20000;
-    }
-
+    .trending h3 { margin-bottom: 12px; font-size: 18px; color: #222; }
     .video-item {
       display: flex;
-      gap: 8px;
-      padding: 8px 0;
-      border-bottom: 1px solid #f1f1f1;
+      align-items: center;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: inherit;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background 0.3s;
     }
-
+    .video-item:hover { background: #f3f3f3; }
     .video-item img {
-      width: 110px;
-      height: 68px;
+      width: 80px;
+      height: 55px;
       object-fit: cover;
-      border-radius: 3px;
+      border-radius: 6px;
+      margin-right: 10px;
     }
 
-    /* --- Responsive --- */
     @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-      aside {
-        order: 2;
-      }
-      article {
-        order: 1;
-      }
+      main { grid-template-columns: 1fr; }
+      aside { order: 2; }
+      article { order: 1; }
     }
-.trending {
-  background: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.trending h3 {
-  margin-bottom: 12px;
-  font-size: 18px;
-  color: #222;
-}
-.video-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  text-decoration: none;
-  color: inherit;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background 0.3s;
-}
-.video-item:hover {
-  background: #f3f3f3;
-}
-.video-item img {
-  width: 80px;
-  height: 55px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-right: 10px;
-}
-
-.news-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 15px;
-  padding: 10px;
-}
-
-
   </style>
 </head>
 <body>
 
   <div id="header"></div>
 
-  
   <div class="container">
     <main>
-     <!-- Left: Article -->
-<article>
-  <div class="article-header" style="position: relative;">
-    <h1>ಮೂಡಬಿದಿರೆ : ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿ ಮಾತುಕತೆ ಯಶಸ್ವಿ — ಸಂಪೂರ್ಣ ವಿವರ ಹಾಗೂ ವೀಡಿಯೊ ಇಲ್ಲಿದೆ 👇</h1>
-    <div class="meta" style="display: flex; justify-content: space-between; align-items: center;">
-      <span>ವರದಿ: ಪ್ರಜಾಪರಾ ವಾರ್ತೆ | ದಕ್ಷಿಣ ಕನ್ನಡ • 28 ಅಕ್ಟೋಬರ್ 2025</span>
-      <button id="shareBtn" style="
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        padding: 6px 12px;
-        cursor: pointer;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      ">
-        <i class="fas fa-share-alt"></i> ಹಂಚಿಕೊಳ್ಳಿ
-      </button>
-    </div>
-  </div>
+      <!-- Left: Article -->
+      <article>
+        <div class="article-header">
+          <h1>ಮೂಡಬಿದಿರೆ : ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿ ಮಾತುಕತೆ ಯಶಸ್ವಿ — ಸಂಪೂರ್ಣ ವಿವರ ಹಾಗೂ ವೀಡಿಯೊ ಇಲ್ಲಿದೆ 👇</h1>
+          <div class="meta">
+            <span>ವರದಿ: ಪ್ರಜಾಪರಾ ವಾರ್ತೆ | ದಕ್ಷಿಣ ಕನ್ನಡ • 28 ಅಕ್ಟೋಬರ್ 2025</span>
+            <button id="shareBtn"><i class="fas fa-share-alt"></i> ಹಂಚಿಕೊಳ್ಳಿ</button>
+          </div>
+        </div>
 
-  <img src="Z:\prajapara\assets\images\p1.jpg" alt="lead news" style="margin:14px 0;height:auto;width:100%;border-radius:4px;object-fit:cover;">
+        <img src="Z:\prajapara\assets\images\p1.jpg" alt="lead news" style="margin:14px 0;height:auto;width:100%;border-radius:4px;object-fit:cover;">
 
-  <section class="highlights">
-    <div class="highlight">1️⃣ ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿಯ ಅಂತಿಮ ಹಂತದ ಮಾತುಕತೆ ಮಂಗಳವಾರ ನಡೆದಿದೆ.</div>
-    <div class="highlight">2️⃣ ಮಾಜಿ ಸಚಿವ ಬಿ. ರಮಾನಾಥ ರೈ ಅವರ ನೇತೃತ್ವದಲ್ಲಿ ಸಭೆ ಯಶಸ್ವಿಯಾಗಿ ಮುಕ್ತಾಯವಾಯಿತು.</div>
-    <div class="highlight">3️⃣ ಸಮಾಜದ ನಾಯಕರ ಸಹಕಾರದಿಂದ ಜೀರ್ಣೋದ್ದಾರ ಕಾರ್ಯಕ್ಕೆ ವೇಗ ಸಿಕ್ಕಿದೆ.</div>
-  </section>
+        <section class="highlights">
+          <div class="highlight">1️⃣ ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿಯ ಅಂತಿಮ ಹಂತದ ಮಾತುಕತೆ ಮಂಗಳವಾರ ನಡೆದಿದೆ.</div>
+          <div class="highlight">2️⃣ ಮಾಜಿ ಸಚಿವ ಬಿ. ರಮಾನಾಥ ರೈ ಅವರ ನೇತೃತ್ವದಲ್ಲಿ ಸಭೆ ಯಶಸ್ವಿಯಾಗಿ ಮುಕ್ತಾಯವಾಯಿತು.</div>
+          <div class="highlight">3️⃣ ಸಮಾಜದ ನಾಯಕರ ಸಹಕಾರದಿಂದ ಜೀರ್ಣೋದ್ದಾರ ಕಾರ್ಯಕ್ಕೆ ವೇಗ ಸಿಕ್ಕಿದೆ.</div>
+        </section>
 
-  <section class="section">
-    <h3>ಘಟನೆಯ ವಿವರ</h3>
-    <p>ಅಲೇರಿ ಶ್ರೀ ಸತ್ಯ ಸಾರಮಾನಿ ಕಾನದ ಕಟದ ಮೂಲಕ್ಷೇತ್ರ (ರಿ.), ಮಿಜಾರಿನಲ್ಲಿ ಜಾಗ ಖರೀದಿಗೆ ಸಂಬಂಧಿಸಿದ ಅಂತಿಮ ಮಾತುಕತೆ 28 ಅಕ್ಟೋಬರ್ 2025ರಂದು ಮಾಜಿ ಸಚಿವ ಬಿ. ರಮಾನಾಥ ರೈ ಅವರ ಸ್ವಗೃಹದಲ್ಲಿ ನಡೆಯಿತು. ಸಭೆಯಲ್ಲಿ ಪ್ರಮುಖ ನಾಯಕರಾದ ಚಂದ್ರಪ್ರಕಾಶ್ ಶೆಟ್ಟಿ, ಗಣೇಶ್ ಪ್ರಸಾದ್, ಮೋಹನ್ ನೆಲ್ಲಿಗುಂಡಿ, ಶಿವರಾಜ್ ಪಿ.ಬಿ ಸೇರಿದಂತೆ ಹಿರಿಯರು ಭಾಗವಹಿಸಿದರು.</p>
-    <p>ಸಭೆಯಲ್ಲಿ ಭೂಮಿ ಖರೀದಿ ಪ್ರಕ್ರಿಯೆ, ಕಾನೂನು ಭದ್ರತೆ ಹಾಗೂ ಯೋಜನಾ ಅನುಷ್ಠಾನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಚರ್ಚೆಗಳು ಯಶಸ್ವಿಯಾಗಿ ನಡೆಯಿತು.</p>
-  </section>
+        <section class="section">
+          <h3>ಘಟನೆಯ ವಿವರ</h3>
+          <p>ಅಲೇರಿ ಶ್ರೀ ಸತ್ಯ ಸಾರಮಾನಿ ಕಾನದ ಕಟದ ಮೂಲಕ್ಷೇತ್ರ (ರಿ.), ಮಿಜಾರಿನಲ್ಲಿ ಜಾಗ ಖರೀದಿಗೆ ಸಂಬಂಧಿಸಿದ ಅಂತಿಮ ಮಾತುಕತೆ 28 ಅಕ್ಟೋಬರ್ 2025ರಂದು ಮಾಜಿ ಸಚಿವ ಬಿ. ರಮಾನಾಥ ರೈ ಅವರ ಸ್ವಗೃಹದಲ್ಲಿ ನಡೆಯಿತು. ಸಭೆಯಲ್ಲಿ ಪ್ರಮುಖ ನಾಯಕರಾದ ಚಂದ್ರಪ್ರಕಾಶ್ ಶೆಟ್ಟಿ, ಗಣೇಶ್ ಪ್ರಸಾದ್, ಮೋಹನ್ ನೆಲ್ಲಿಗುಂಡಿ, ಶಿವರಾಜ್ ಪಿ.ಬಿ ಸೇರಿದಂತೆ ಹಿರಿಯರು ಭಾಗವಹಿಸಿದರು.</p>
+          <p>ಸಭೆಯಲ್ಲಿ ಭೂಮಿ ಖರೀದಿ ಪ್ರಕ್ರಿಯೆ, ಕಾನೂನು ಭದ್ರತೆ ಹಾಗೂ ಯೋಜನಾ ಅನುಷ್ಠಾನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಚರ್ಚೆಗಳು ಯಶಸ್ವಿಯಾಗಿ ನಡೆಯಿತು.</p>
+        </section>
 
-  <section class="section">
-    <h3>ಸಮಾಜದ ಅಭಿಪ್ರಾಯ</h3>
-    <p>ಅತಿಥಿಗಳು ಹೇಳಿದರು: “ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರವು ಧಾರ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಪುನರುತ್ಥಾನದ ಕೇಂದ್ರವಾಗಬೇಕು. ಜಾಗ ಖರೀದಿ ಇದರ ಮೊದಲ ಹಂತ.”</p>
-  </section>
+        <section class="section">
+          <h3>ಸಮಾಜದ ಅಭಿಪ್ರಾಯ</h3>
+          <p>ಅತಿಥಿಗಳು ಹೇಳಿದರು: “ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರವು ಧಾರ್ಮಿಕ ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಪುನರುತ್ಥಾನದ ಕೇಂದ್ರವಾಗಬೇಕು. ಜಾಗ ಖರೀದಿ ಇದರ ಮೊದಲ ಹಂತ.”</p>
+        </section>
 
-  <section class="section">
-    <h3>ಅಧಿಕಾರಿಗಳಿಗೆ ಮನವಿ</h3>
-    <p>ಸ್ಥಳೀಯ ಪ್ರತಿನಿಧಿಗಳು ಸರ್ಕಾರದಿಂದ ಹೆಚ್ಚಿನ ಸಹಕಾರವನ್ನು ಕೋರಿ ಮುಂದಿನ ಹಂತದ ಅಭಿವೃದ್ಧಿಗೆ ವೇದಿಕೆ ಸಿದ್ಧಪಡಿಸಿದ್ದಾರೆ.</p>
-  </section>
+        <section class="section">
+          <h3>ಅಧಿಕಾರಿಗಳಿಗೆ ಮನವಿ</h3>
+          <p>ಸ್ಥಳೀಯ ಪ್ರತಿನಿಧಿಗಳು ಸರ್ಕಾರದಿಂದ ಹೆಚ್ಚಿನ ಸಹಕಾರವನ್ನು ಕೋರಿ ಮುಂದಿನ ಹಂತದ ಅಭಿವೃದ್ಧಿಗೆ ವೇದಿಕೆ ಸಿದ್ಧಪಡಿಸಿದ್ದಾರೆ.</p>
+        </section>
 
-  <div class="hashtags">#Moodbidri #AleriMoolakshetra #AdidravidhaSamaja #DakshinaKannada #PrajaparaNews</div>
-</article>
+        <div class="hashtags">#Moodbidri #AleriMoolakshetra #AdidravidhaSamaja #DakshinaKannada #PrajaparaNews</div>
 
-<!-- Comment Section -->
-  <div class="comment-section" style="margin-top:30px;border-top:1px solid #ccc;padding-top:20px;">
-    <h3 style="margin-bottom:10px;">💬 ಕಾಮೆಂಟ್ ಮಾಡಿ</h3>
-    <form style="display:flex;flex-direction:column;gap:10px;">
-      <input type="text" placeholder="ನಿಮ್ಮ ಹೆಸರು" style="padding:10px;border:1px solid #ccc;border-radius:6px;" required>
-      <textarea placeholder="ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಇಲ್ಲಿ ಬರೆಯಿರಿ..." rows="4" style="padding:10px;border:1px solid #ccc;border-radius:6px;" required></textarea>
-      <button type="submit" style="background:#007bff;color:#fff;padding:10px;border:none;border-radius:6px;cursor:pointer;">ಕಾಮೆಂಟ್ ಸಲ್ಲಿಸಿ</button>
-    </form>
-  </div>
+        <!-- Comment Section -->
+        <div class="comment-section" style="margin-top:30px;border-top:1px solid #ccc;padding-top:20px;">
+          <h3 style="margin-bottom:10px;">💬 ಕಾಮೆಂಟ್ ಮಾಡಿ</h3>
+          <form style="display:flex;flex-direction:column;gap:10px;">
+            <input type="text" placeholder="ನಿಮ್ಮ ಹೆಸರು" style="padding:10px;border:1px solid #ccc;border-radius:6px;" required>
+            <textarea placeholder="ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಇಲ್ಲಿ ಬರೆಯಿರಿ..." rows="4" style="padding:10px;border:1px solid #ccc;border-radius:6px;" required></textarea>
+            <button type="submit" style="background:#007bff;color:#fff;padding:10px;border:none;border-radius:6px;cursor:pointer;">ಕಾಮೆಂಟ್ ಸಲ್ಲಿಸಿ</button>
+          </form>
+        </div>
+
         <div class="breaking">
           <h3>🚨 ಬ್ರೇಕಿಂಗ್ ನ್ಯೂಸ್</h3>
           <ul>
@@ -346,88 +233,63 @@ fetch('header.html')
       <!-- Right Sidebar -->
       <aside>
 
-<div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+        <div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
 
-       <div class="news-section">
-  <a href="news1.html" class="news-card">
-    <img src="img/news1.jpg" alt="News Thumb">
-    <h4>ಮಂಗಳೂರು: ದೀಪಾವಳಿ ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ನಗರದ ಟ್ರಾಫಿಕ್ ನಿಯಂತ್ರಣ ಕ್ರಮ ಬಲಪಡಿಸಲಾಗಿದೆ</h4>
-  </a>
+        <div class="news-section">
+          <a href="news1.html" class="news-card">
+            <img src="img/news1.jpg" alt="News Thumb">
+            <h4>ಮಂಗಳೂರು: ದೀಪಾವಳಿ ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ನಗರದ ಟ್ರಾಫಿಕ್ ನಿಯಂತ್ರಣ ಕ್ರಮ ಬಲಪಡಿಸಲಾಗಿದೆ</h4>
+          </a>
+          <a href="news2.html" class="news-card">
+            <img src="img/news2.jpg" alt="News Thumb">
+            <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
+          </a>
+          <a href="news3.html" class="news-card">
+            <img src="img/news3.jpg" alt="News Thumb">
+            <h4>ಬೀದರ್: ರೈತರಿಗೆ ಹೊಸ ಧನಸಹಾಯ ಯೋಜನೆ ಶೀಘ್ರ ಜಾರಿಗೆ</h4>
+          </a>
+          <a href="news4.html" class="news-card">
+            <img src="img/news4.jpg" alt="News Thumb">
+            <h4>ಮೈಸೂರು: ಹೊಸ ಬಸ್‌ ನಿಲ್ದಾಣ ಉದ್ಘಾಟನೆಗೆ ಸಜ್ಜಾಗಿದೆ ನಗರ</h4>
+          </a>
+          <a href="news5.html" class="news-card">
+            <img src="img/news5.jpg" alt="News Thumb">
+            <h4>ಬೆಂಗಳೂರು: ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ಖರೀದಿ ಜೋರಾಗಿ ಮುಂದುವರಿದಿದೆ</h4>
+          </a>
+        </div>
 
-  <a href="news2.html" class="news-card">
-    <img src="img/news2.jpg" alt="News Thumb">
-    <h4>ಉಡುಪಿ: ಮೀನುಗಾರರ ಹಿತಕ್ಕಾಗಿ ರಾಜ್ಯ ಸರ್ಕಾರ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</h4>
-  </a>
+        <div class="trending">
+          <h3>🔥 ಟ್ರೆಂಡಿಂಗ್ ವೀಡಿಯೋಗಳು</h3>
+          <a href="video1.html" class="video-item">
+            <img src="Z:/prajapara/images/p1.jpg" alt="v1">
+            <div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong><div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 1.2k</div></div>
+          </a>
+          <a href="video2.html" class="video-item">
+            <img src="Z:/prajapara/images/p1.jpg" alt="v2">
+            <div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong><div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 980</div></div>
+          </a>
+          <a href="video3.html" class="video-item">
+            <img src="Z:/prajapara/images/p1.jpg" alt="v3">
+            <div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 850</div></div>
+          </a>
+        </div>
 
-  <a href="news3.html" class="news-card">
-    <img src="img/news3.jpg" alt="News Thumb">
-    <h4>ಬೀದರ್: ರೈತರಿಗೆ ಹೊಸ ಧನಸಹಾಯ ಯೋಜನೆ ಶೀಘ್ರ ಜಾರಿಗೆ</h4>
-  </a>
-
-  <a href="news4.html" class="news-card">
-    <img src="img/news4.jpg" alt="News Thumb">
-    <h4>ಮೈಸೂರು: ಹೊಸ ಬಸ್‌ ನಿಲ್ದಾಣ ಉದ್ಘಾಟನೆಗೆ ಸಜ್ಜಾಗಿದೆ ನಗರ</h4>
-  </a>
-
-  <a href="news5.html" class="news-card">
-    <img src="img/news5.jpg" alt="News Thumb">
-    <h4>ಬೆಂಗಳೂರು: ಹಬ್ಬದ ಪ್ರಯುಕ್ತ ಖರೀದಿ ಜೋರಾಗಿ ಮುಂದುವರಿದಿದೆ</h4>
-  </a>
-</div>
-
- <!-- trading video -->
-<div class="trending">
-  <h3>🔥 ಟ್ರೆಂಡಿಂಗ್ ವೀಡಿಯೋಗಳು</h3>
-
-  <a href="video1.html" class="video-item">
-    <img src="Z:/prajapara/images/p1.jpg" alt="v1">
-    <div>
-      <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong>
-      <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 1.2k</div>
-    </div>
-  </a>
-
-  <a href="video2.html" class="video-item">
-    <img src="Z:/prajapara/images/p1.jpg" alt="v2">
-    <div>
-      <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong>
-      <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 980</div>
-    </div>
-  </a>
-
-  <a href="video3.html" class="video-item">
-    <img src="Z:/prajapara/images/p1.jpg" alt="v3">
-    <div>
-      <strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong>
-      <div style="font-size:13px;color:#666">ವೀಕ್ಷಣೆ 850</div>
-    </div>
-  </a>
-</div>
-
-
-<div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
-
-<div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
-
-<div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
+        <div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
 
       </aside>
     </main>
   </div>
- 
-  <div id="footer"></div>
-<script src="scripts.js"></script>
 
-<script>
+  <div id="footer"></div>
+
+  <script>
     function toggleMenu(){
       const menu = document.querySelector('nav.mainnav ul');
       menu.classList.toggle('active');
     }
-  </script>
 
-  <script>
     // Load Header & Footer dynamically
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // ensure always loads from top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     fetch("header.html")
       .then(res => res.text())
@@ -438,6 +300,27 @@ fetch('header.html')
       .then(res => res.text())
       .then(data => document.getElementById("footer").innerHTML = data)
       .catch(err => console.error("Footer load error:", err));
+
+    // Web Share Button
+    document.addEventListener("DOMContentLoaded", () => {
+      const shareBtn = document.getElementById("shareBtn");
+      shareBtn.addEventListener("click", async () => {
+        const shareData = {
+          title: "ಮೂಡಬಿದಿರೆ : ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿ ಮಾತುಕತೆ ಯಶಸ್ವಿ",
+          text: "ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿ ಮಾತುಕತೆ ಯಶಸ್ವಿಯಾಗಿ ಮುಕ್ತಾಯವಾಯಿತು — ಸಂಪೂರ್ಣ ವಿವರ ನೋಡಿ 👇",
+          url: "https://prajaparanews.com"
+        };
+        try {
+          if (navigator.share) {
+            await navigator.share(shareData);
+          } else {
+            alert("Sharing not supported on this browser.");
+          }
+        } catch (err) {
+          console.log("Share failed:", err);
+        }
+      });
+    });
   </script>
 </body>
 </html>
