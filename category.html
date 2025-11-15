@@ -211,15 +211,18 @@ const params = new URLSearchParams(window.location.search);
 const category = params.get('category') || 'state';
 
 const categoryNames = {
-  state: "ರಾಜ್ಯ", national: "ರಾಷ್ಟ್ರೀಯ", world: "ವಿದೇಶ",
-  medical: "ವೈದ್ಯಕೀಯ", finance: "ಆರ್ಥಿಕ", viral: "ವೈರಲ್‌ ಸುದ್ದಿ", filmi: "ಫಿಲ್ಮೀ ಮಾತು"
+ update : "ಇತ್ತೀಚಿನ  ಸುದ್ದಿ", state: "ರಾಜ್ಯ", national: "ರಾಷ್ಟ್ರೀಯ", world: "ವಿದೇಶ",
+  medical: "ವೈದ್ಯಕೀಯ", finance: "ಆರ್ಥಿಕ", viral: "ವೈರಲ್‌ ಸುದ್ದಿ", filmy: "ಫಿಲ್ಮೀ ಮಾತು"
 };
 document.getElementById('categoryTitle').innerText = categoryNames[category];
 
 const newsByCategory = {
+  update: [
+    {title: "ಇತ್ತೀಚಿನ  ಸುದ್ದಿ 1", link: "news1.html", desc: "ಇದು ರಾಜ್ಯದ ಪ್ರಮುಖ ಸುದ್ದಿಯ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ"},
+    {title: "ಇತ್ತೀಚಿನ  ಸುದ್ದಿ 2", link: "news2.html", desc: "ಇದು ಮತ್ತೊಂದು ಚಿಕ್ಕ ಸುದ್ದಿಯ ವಿವರಣೆ"}
+  ],
   state: [
-    {title: "ರಾಜ್ಯ ಸುದ್ದಿ 1", link: "news1.html", desc: "ಇದು ರಾಜ್ಯದ ಪ್ರಮುಖ ಸುದ್ದಿಯ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ"},
-    {title: "ರಾಜ್ಯ ಸುದ್ದಿ 2", link: "news2.html", desc: "ಇದು ಮತ್ತೊಂದು ಚಿಕ್ಕ ಸುದ್ದಿಯ ವಿವರಣೆ"}
+    {title: "ರಾಜ್ಯ ಸುದ್ದಿ 1", link: "news1.html", desc: "ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿಯ ವಿವರ"}
   ],
   national: [
     {title: "ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿ 1", link: "news1.html", desc: "ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿಯ ವಿವರ"}
@@ -236,7 +239,7 @@ const newsByCategory = {
   viral: [
     {title: "ವೈರಲ್ ಸುದ್ದಿ 1", link: "news1.html", desc: "ವೈರಲ್ ಸುದ್ದಿಯ ವಿವರ"}
   ],
-  filmi: [
+  filmy: [
     {title: "ಫಿಲ್ಮೀ ಸುದ್ದಿ 1", link: "news1.html", desc: "ಫಿಲ್ಮೀ ಸುದ್ದಿಯ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ"}
   ]
 };

@@ -166,6 +166,17 @@
       aside { order: 2; }
       article { order: 1; }
     }
+
+ body { font-family: Arial, sans-serif; padding: 20px; background: #f4f6f8; }
+    h1 { text-align: center; color: #b10018; }
+    #lastUpdate { text-align: center; margin: 10px; font-size: 0.9em; color: #555; }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 8px 12px; border: 1px solid #ddd; }
+    th { background: #333; color: #fff; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .leading { color: green; font-weight: bold; }
+    .declared { color: blue; font-weight: bold; }
+    .trailing { color: red; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -233,6 +244,22 @@
       <!-- Right Sidebar -->
       <aside>
 
+ <h1>Bihar Assembly Elections 2025 - Live Results</h1>
+   <table id="resultsTable">
+    <thead>
+      <tr>
+        <th>Party</th>
+        <th>Won</th>
+        <th>Leading</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be populated here -->
+    </tbody>
+  </table>
+
+
         <div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
 
         <div class="news-section">
@@ -287,6 +314,66 @@
       const menu = document.querySelector('nav.mainnav ul');
       menu.classList.toggle('active');
     }
+
+// URL of the official ECI results page
+    const SOURCE_URL = 'https://results.eci.gov.in/ResultAcGenNov2025/index.htm';
+
+    async function fetchAndParse() {
+      try {
+        const resp = await fetch(SOURCE_URL, { mode: 'cors' });
+        const text = await resp.text();
+
+        // Create DOM parser
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+
+        // Example: parse the Party-Wise Results table
+        // Adjust selectors based on actual page structure
+        const rows = doc.querySelectorAll('table:nth-of-type(1) tbody tr');
+        const data = [];
+
+        rows.forEach(tr => {
+          const tds = tr.querySelectorAll('td');
+          if (tds.length >= 4) {
+            const party = tds[0].textContent.trim();
+            const won = tds[1].textContent.trim();
+            const leading = tds[2].textContent.trim();
+            const total = tds[3].textContent.trim();
+            data.push({ party, won, leading, total });
+          }
+        });
+
+        // Update UI
+        const tbody = document.querySelector('#resultsTable tbody');
+        tbody.innerHTML = '';
+        data.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${item.party}</td>
+            <td>${item.won}</td>
+            <td>${item.leading}</td>
+            <td>${item.total}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+
+        // Last updated timestamp
+        const timeElem = doc.querySelector('#lastUpdated, div:contains("Last Updated")');
+        let tstamp = new Date().toLocaleTimeString();
+        if (timeElem) { tstamp = timeElem.textContent.trim(); }
+        document.getElementById('lastUpdate').textContent = 'Last update: ' + tstamp;
+
+      } catch (err) {
+        console.error('Error fetching/parsing results:', err);
+        document.getElementById('lastUpdate').textContent = 'Failed to load data.';
+      }
+    }
+
+    // Initial load
+    fetchAndParse();
+
+    // Refresh every 30 seconds
+    setInterval(fetchAndParse, 30 * 1000);
 
     // Load Header & Footer dynamically
     window.scrollTo({ top: 0, behavior: 'smooth' });
