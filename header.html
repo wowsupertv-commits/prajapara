@@ -46,17 +46,16 @@
       gap:12px;
       margin-bottom:10px;
     }
-    .logo img{
-      height:46px;
-    }
+    .logo img{height:46px;}
 
-   
     /* --- Navigation --- */
     nav.mainnav{
       background:#fff;
       padding:8px 0;
       border-bottom:4px solid #f5f5f5;
-      overflow:hidden;
+      overflow-x:auto;       /* ← FIXED */
+      white-space:nowrap;    /* ← FIXED */
+      -webkit-overflow-scrolling: touch;
     }
 
     nav.mainnav ul{
@@ -64,35 +63,35 @@
       gap:14px;
       list-style:none;
       font-weight:600;
-      justify-content:flex-start;
-      overflow-x:auto;
-      white-space:nowrap;
       padding:6px 4px;
+      flex-wrap:nowrap;      /* ← FIXED to prevent wrap in mobile */
+      white-space:nowrap;
+      overflow-x:auto;
       scrollbar-width:thin;
       scrollbar-color:#ccc transparent;
     }
 
-    @media(max-width:768px){
-      nav.mainnav ul{
-        scrollbar-width:none;
-      }
-      nav.mainnav ul::-webkit-scrollbar{
-        display:none;
-      }
+    nav.mainnav ul::-webkit-scrollbar{
+      height:6px;
+    }
+    nav.mainnav ul::-webkit-scrollbar-thumb{
+      background:#ccc;
+      border-radius:3px;
     }
 
     nav.mainnav li{
       padding:6px 8px;
       border-radius:3px;
-      flex-shrink:0;
+      flex-shrink:0;        /* ← Ensures scrollable buttons on mobile */
     }
+
     nav.mainnav li a:hover{
       background:#f7f7f7;
       padding:6px 8px;
       border-radius:3px;
     }
 
-    /* --- News Ticker --- */
+    /* --- Ticker --- */
     .ticker-wrapper{
       display:flex;
       align-items:center;
@@ -134,7 +133,7 @@
       font-size:14px;
     }
 
-    /* 🔽 Smaller buttons for mobile + desktop */
+    /* Buttons */
     .btn-small{
       background:#fff;
       color:#000;
@@ -156,7 +155,6 @@
       background:#fff;
       padding:5px;
     }
-
   </style>
 </head>
 
@@ -184,58 +182,45 @@
     </div>
 
     <div class="social-buttons" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-
-      <!-- Smaller Home Button -->
       <button onclick="goHome()" class="btn-small">
         <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="16"> Home
       </button>
 
-      <!-- WhatsApp -->
       <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34" target="_blank">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="icon-btn">
       </a>
-
-      <!-- Facebook -->
       <a href="https://www.facebook.com/prajaparanews" target="_blank">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="icon-btn">
       </a>
-
-      <!-- Instagram -->
       <a href="https://www.instagram.com/prajaparanews/" target="_blank">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="icon-btn">
       </a>
-
-      <!-- X -->
       <a href="https://x.com/prajaparanews" target="_blank">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" class="icon-btn">
       </a>
-
-      <!-- YouTube -->
       <a href="https://www.youtube.com/@prajaparanews" target="_blank">
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="icon-btn">
       </a>
 
-      <!-- Smaller Share Button -->
       <button onclick="shareWebsite()" class="btn-small">
         <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" width="16"> Share
       </button>
-
     </div>
   </header>
 
-  <!-- Navigation -->
+  <!-- Navigation (Fixed for Mobile = Desktop) -->
   <nav class="mainnav container">
     <ul>
-      <li><a href="category.html?category_update.html">ಇತ್ತೀಚಿನ ಸುದ್ದಿಗಳು</a></li>
-      <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
-      <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
-      <li><a href="category.html?category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
-      <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
-      <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
-      <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
-      <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
-      <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
-      <li><a href="category.html?category_filmy.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
+      <li><a href="category_update.html">ಇತ್ತೀಚಿನ ಸುದ್ದಿಗಳು</a></li>
+      <li><a href="category_state.html">ರಾಜ್ಯ</a></li>
+      <li><a href="category_political.html">ರಾಜಕೀಯ</a></li>
+      <li><a href="category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
+      <li><a href="category_world.html">ವಿದೇಶ</a></li>
+      <li><a href="category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
+      <li><a href="category_finance.html">ಆರ್ಥಿಕ</a></li>
+      <li><a href="category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
+      <li><a href="category_sports.html">ಕ್ರೀಡೆ</a></li>
+      <li><a href="category_filmy.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
     </ul>
   </nav>
 
