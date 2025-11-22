@@ -4,154 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prajapara News Kannada</title>
- <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:Arial,Helvetica,sans-serif;line-height:1.5;background:#fff;color:#222;}
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:Arial, Helvetica, sans-serif; line-height:1.5; background:#fff; color:#222; }
 
-    a{text-decoration:none;color:inherit;}
-    img{max-width:100%;display:block;border-radius:4px;}
+    a { text-decoration:none; color:inherit; }
+    img { max-width:100%; display:block; border-radius:4px; }
 
-    .container{max-width:1200px;margin:20px auto;padding:0 16px;}
+    .container { max-width:1200px; margin:20px auto; padding:0 16px; }
 
-    /* GRID → Left + Center merged (article), Right = top stories */
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 300px;
-      gap:22px;
-      align-items:start;
+    /* GRID */
+    .grid { display:grid; grid-template-columns:1fr 300px; gap:22px; align-items:start; }
+
+    @media(max-width:860px){
+      .grid { grid-template-columns:1fr; }
     }
 
- /* Mobile menu */
-    .menu-toggle{display:none;font-size:22px;cursor:pointer}
-    nav.mainnav{background:#fff;padding:8px 20px;border-bottom:4px solid #f5f5f5}
-    nav.mainnav ul{display:flex;gap:14px;flex-wrap:wrap;list-style:none;font-weight:600}
-    nav.mainnav li{padding:6px 8px;border-radius:3px}
-    nav.mainnav li a:hover{background:#f7f7f7}
+    /* NAVIGATION */
+    nav.mainnav { background:#fff; padding:8px 20px; border-bottom:4px solid #f5f5f5; }
+    nav.mainnav ul { display:flex; gap:14px; list-style:none; font-weight:600; }
+    .menu-toggle { display:none; font-size:22px; cursor:pointer; }
 
-    @media (max-width:768px){
+    @media(max-width:768px){
       .menu-toggle{display:block}
       nav.mainnav ul{display:none;flex-direction:column;width:100%;margin-top:8px}
       nav.mainnav ul.active{display:flex}
     }
 
     /* ARTICLE */
-    .article-box{
-      background:#fff;
-      padding:10px;
-    }
+    .article-box { background:#fff; padding:10px; }
+    .article-title { font-size:28px; font-weight:700; margin-bottom:10px; line-height:1.3; }
+    .article-meta { font-size:14px; color:#666; margin-bottom:16px; }
 
-    .article-title{
-      font-size:28px;
-      font-weight:700;
-      margin-bottom:10px;
-      line-height:1.3;
-    }
+    .article-img { margin:18px 0; border-radius:6px; }
 
-    .article-meta{
-      font-size:14px;
-      color:#666;
-      margin-bottom:16px;
-    }
-
-    .article-img{
-      width:100%;
-      height:auto;
-      margin-bottom:18px;
-    }
-
-    .highlights{
+    /* HIGHLIGHTS */
+    .highlights {
       background:#f7f7f7;
       padding:14px;
       border-left:4px solid #b20000;
       margin-bottom:20px;
     }
 
-    .highlights ul{
-      padding-left:16px;
-    }
-
-    .article-content{
-      font-size:17px;
-      margin-bottom:24px;
-    }
+    .highlights ul { padding-left:16px; }
 
     /* TAGS */
-    .tags{
-      margin-top:20px;
-      font-size:14px;
-    }
-    .tags span{
-      background:#eee;
-      padding:5px 10px;
+    .tags span {
+      background:#ffffff;
+      padding:6px 10px;
       border-radius:3px;
       margin-right:6px;
       display:inline-block;
-    }
-
-    /* SHARE BUTTON */
-    .share-btn{
-      background:#ff6b35;
-      color:#fff;
-      padding:10px 16px;
-      font-size:15px;
-      border:none;
-      border-radius:6px;
-      cursor:pointer;
-      margin-top:15px;
-    }
-
-    /* RIGHT COLUMN → TOP STORIES */
-    .right .topstories{
       margin-top:10px;
     }
 
-    .topstories h4{
-      font-size:18px;
-      margin-bottom:10px;
-      border-bottom:2px solid #f1f1f1;
-      padding-bottom:6px;
-    }
+    /* SHARE TOOLBAR */
+  .share-toolbar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
 
-    .topstories ul{list-style:none;padding:0;margin:0;}
+.share-btn {
+  cursor: pointer;
+  border: none;
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
-    .topstories li{
-      display:flex;
-      gap:10px;
-      padding:10px 0;
-      border-bottom:1px solid #eee;
-      align-items:center;
-    }
+.share-btn:hover {
+  background: #eaeaea;
+}
 
-    .topstories img{
-      width:60px;height:60px;object-fit:cover;border-radius:4px;
-    }
 
-    /* Responsive */
-    @media(max-width:860px){
-      .grid{
-        grid-template-columns:1fr;
-      }
-    }
-
-.breaking {
-      margin-top: 30px;
-      padding: 16px;
-      background: #f5f5f5;
+    .more-menu { position: relative; }
+    .more-panel {
+      position: absolute;
+      top: 38px;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
       border-radius: 6px;
+      padding: 8px;
+      width: 130px;
+      display: none;
+      z-index: 50;
+    }
+    .more-item {
+      padding: 6px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .more-item:hover { background:#eee; }
+
+    @media(max-width:560px){
+      .share-btn span { display:none; }
+    }
+
+    /* BREAKING */
+    .breaking {
+      margin-top:30px;
+      padding:16px;
+      background:#fff4f4;
+      border-left:4px solid red;
+      border-radius:6px;
     }
     .breaking h3 {
-      background: #b20000;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 3px;
-      margin-bottom: 10px;
+      background:#b20000;
+      color:#fff;
+      padding:8px 12px;
+      border-radius:3px;
+      margin-bottom:10px;
     }
-    .breaking ul { list-style: none; padding: 0; }
-    .breaking li { border-bottom: 1px solid #ddd; padding: 8px 0; }
-    .breaking a { font-weight: 600; color: #222; text-decoration: none; }
-
   </style>
 </head>
 
@@ -161,44 +136,38 @@
 
 <div class="container">
 
-  <div class="grid">
+<div class="grid">
 
-    <!-- ---------------------- ARTICLE SECTION (LEFT + CENTER MERGED) ---------------------- -->
+<!-- ARTICLE LEFT -->
 <section class="article-box">
 
   <h1 class="article-title">ಉದಾಹರಣೆ ಸುದ್ದಿ: ಬೆಂಗಳೂರು ನಗರದಲ್ಲಿ ಭಾರೀ ಮಳೆಯ ಅಬ್ಬರ</h1>
 
-  <!-- Meta + Share Button (Right Aligned) -->
-  <div class="meta" style="
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;">
-      
-    <span>ವರದಿ: ಪ್ರಜಾಪರಾ ವಾರ್ತೆ | ದಕ್ಷಿಣ ಕನ್ನಡ • 28 ಅಕ್ಟೋಬರ್ 2025</span>
+  <div class="article-meta" style="display:flex;justify-content:space-between;align-items:center;">
+      <span>ವರದಿ: ಪ್ರಜಾಪರಾ ವಾರ್ತೆ | ದಕ್ಷಿಣ ಕನ್ನಡ • 28 ಅಕ್ಟೋಬರ್ 2025</span>
 
-    <!-- Share Button (Professional Style) -->
-    <button id="shareBtn" style="
-        background:#023467;
-        color:#fff;
-        border:none;
-        padding:8px 14px;
-        border-radius:6px;
-        cursor:pointer;
-        font-size:14px;
-        display:flex;
-        align-items:center;
-        gap:6px;
-        box-shadow:0 2px 5px rgba(0,0,0,0.2);">
-      <i class="fas fa-share-alt"></i> ಹಂಚಿಕೊಳ್ಳಿ
-    </button>
-
+      <button id="shareBtn" style="
+        background:#023467;color:#fff;border:none;
+        padding:8px 14px;border-radius:6px;cursor:pointer;
+        font-size:14px;display:flex;align-items:center;gap:6px;">
+        ಹಂಚಿಕೊಳ್ಳಿ
+      </button>
   </div>
 
-  <!-- Image -->
-  <img src="Z:/prajapara/images/p1.jpg" class="article-img" alt="news image" style="margin-top:15px;border-radius:8px;width:100%;">
+<!-- SHARE TOOLBAR (TOP) -->
+<div class="share-toolbar share-toolbar-top">
+  <button class="share-btn" data-action="pdf">📄 <span>PDF</span></button>
+  <button class="share-btn" data-action="copy">🔗 <span>Copy link</span></button>
+  <button class="share-btn" data-action="x">𝕏 <span>X</span></button>
+  <button class="share-btn" data-action="fb">📘 <span>Facebook</span></button>
+  <button class="share-btn" data-action="threads"># <span>Threads</span></button>
+  <button class="share-btn" data-action="whatsapp">💬 <span>WhatsApp</span></button>
+</div>
 
-  <!-- Highlights -->
+
+  
+  <img src="Z:/prajapara/images/p1.jpg" class="article-img" alt="news image">
+
   <div class="highlights">
     <strong>ಹೈಲೈಟ್ಸ್:</strong>
     <ul>
@@ -208,7 +177,6 @@
     </ul>
   </div>
 
-  <!-- Full Article Content -->
   <div class="article-content">
     ಬೆಂಗಳೂರಿನಲ್ಲಿ ಕಳೆದ 24 ಗಂಟೆಗಳಿಂದ ಭಾರೀ ಮಳೆ ಸುರಿಯುತ್ತಿದ್ದು,
     ನಗರದ ಹಲವೆಡೆ ನೀರು ನಿಂತು ಸಂಚಾರ ಸಂಪೂರ್ಣವಾಗಿ ಅಸ್ತವ್ಯಸ್ತವಾಗಿದೆ.
@@ -220,231 +188,130 @@
     ಕಾರ್ಯಾಚರಣೆ ಮುಂದುವರೆಸಿದ್ದಾರೆ.
   </div>
 
-  <!-- Tags -->
-  <div class="tags" style="margin-top:15px;">
+  <div class="tags">
     <span>#BangaloreRains</span>
     <span>#WeatherUpdate</span>
     <span>#KarnatakaNews</span>
   </div>
 
-  <!-- ---------------- COMMENT SECTION ---------------- -->
-  <div class="comment-box" style="
-      margin-top:25px;
-      padding:15px;
-      border:1px solid #ddd;
-      border-radius:8px;">
-      
-    <h3 style="margin-bottom:10px;">💬 ಕಾಮೆಂಟ್ ಮಾಡಿ</h3>
+<!-- SHARE TOOLBAR (BOTTOM) -->
+<div class="share-toolbar share-toolbar-bottom">
+  <button class="share-btn" data-action="pdf">📄 <span>PDF</span></button>
+  <button class="share-btn" data-action="copy">🔗 <span>Copy link</span></button>
+  <button class="share-btn" data-action="x">𝕏 <span>X</span></button>
+  <button class="share-btn" data-action="fb">📘 <span>Facebook</span></button>
+  <button class="share-btn" data-action="threads"># <span>Threads</span></button>
+  <button class="share-btn" data-action="whatsapp">💬 <span>WhatsApp</span></button>
+</div>
 
-    <textarea placeholder="ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಇಲ್ಲಿ ಬರೆಯಿರಿ..." 
-      style="width:100%;height:90px;padding:10px;border-radius:6px;border:1px solid #ccc;font-size:14px;"></textarea>
 
-    <button style="
-        margin-top:10px;
-        padding:8px 16px;
-        background:#0b66c2;
-        color:#fff;
-        border:none;
-        border-radius:6px;
-        cursor:pointer;">
+  <!-- COMMENTS -->
+  <div class="comment-box" style="margin-top:25px;padding:15px;border:1px solid #ddd;border-radius:8px;">
+    <h3>💬 ಕಾಮೆಂಟ್ ಮಾಡಿ</h3>
+    <textarea placeholder="ನಿಮ್ಮ ಕಾಮೆಂಟ್ ಇಲ್ಲಿ ಬರೆಯಿರಿ..." style="width:100%;height:90px;padding:10px;border-radius:6px;border:1px solid #ccc;font-size:14px;"></textarea>
+    <button style="margin-top:10px;padding:8px 16px;background:#0b66c2;color:#fff;border:none;border-radius:6px;cursor:pointer;">
       Submit
     </button>
   </div>
 
-  <div class="breaking" style="
-    background:#fff4f4;
-    border-left:4px solid red;
-    padding:15px;
-    border-radius:6px;">
-
-  <h3 style="margin-bottom:10px;">🚨 ಬ್ರೇಕಿಂಗ್ ನ್ಯೂಸ್</h3>
-
-  <ul style="list-style:none;padding:0;margin:0;">
-    
-    <!-- CLICKABLE ROW -->
-    <li style="margin-bottom:8px;">
-      <a href="#"
-         style="
-           display:block;
-           padding:10px;
-           background:#ffffff;
-           border-radius:5px;
-           text-decoration:none;
-           color:#333;
-           font-weight:500;
-           border:1px solid #eee;
-           transition:0.2s;">
-        ಮುಂಬೈನ ಸಮುದ್ರ ತೀರದಲ್ಲಿ ಮಳೆ ತೀವ್ರ — ಎಚ್ಚರಿಕೆ ನೀಡಿದ ಹವಾಮಾನ ಇಲಾಖೆ
-      </a>
-    </li>
-
-    <!-- CLICKABLE ROW -->
-    <li style="margin-bottom:8px;">
-      <a href="#"
-         style="
-           display:block;
-           padding:10px;
-           background:#ffffff;
-           border-radius:5px;
-           text-decoration:none;
-           color:#333;
-           font-weight:500;
-           border:1px solid #eee;
-           transition:0.2s;">
-        ಬೆಂಗಳೂರು ಮೆಟ್ರೋ ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ ನಾಳೆ
-      </a>
-    </li>
-
-    <!-- CLICKABLE ROW -->
-    <li>
-      <a href="#"
-         style="
-           display:block;
-           padding:10px;
-           background:#ffffff;
-           border-radius:5px;
-           text-decoration:none;
-           color:#333;
-           font-weight:500;
-           border:1px solid #eee;
-           transition:0.2s;">
-        ಚಂದ್ರಯಾನ ಮಿಷನ್ ಯಶಸ್ಸು — ಇಸ್ರೋ ತಂಡಕ್ಕೆ ಅಭಿನಂದನೆಗಳು
-      </a>
-    </li>
-
-  </ul>
-
-</div>
+  <!-- BREAKING -->
+  <div class="breaking">
+    <h3>🚨 ಬ್ರೇಕಿಂಗ್ ನ್ಯೂಸ್</h3>
+    <ul>
+      <li><a href="#">ಮುಂಬೈನ ಸಮುದ್ರ ತೀರದಲ್ಲಿ ಮಳೆ ತೀವ್ರ — ಎಚ್ಚರಿಕೆ ನೀಡಿದ ಹವಾಮಾನ ಇಲಾಖೆ</a></li>
+      <li><a href="#">ಬೆಂಗಳೂರು ಮೆಟ್ರೋ ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ ನಾಳೆ</a></li>
+      <li><a href="#">ಚಂದ್ರಯಾನ ಮಿಷನ್ ಯಶಸ್ಸು — ಇಸ್ರೋ ತಂಡಕ್ಕೆ ಅಭಿನಂದನೆಗಳು</a></li>
+    </ul>
+  </div>
 
 </section>
 
-
-    <!-- ---------------------- RIGHT SIDEBAR (TOP STORIES) ---------------------- -->
-    <aside class="right">
-
-<div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
-
-  <div class="topstories">
-  <h4>Top Stories</h4>
-
-  <ul style="list-style:none;margin:0;padding:0;">
-
-    <li style="margin-bottom:8px;">
-      <a href="#"
-         style="display:flex;align-items:center;gap:8px;
-                text-decoration:none;color:#222;
-                padding:6px;border-radius:6px;
-                transition:0.2s;border:1px solid #eee;">
-
-        <img src="Z:/prajapara/images/state1.jpg"
-             style="width:55px;height:45px;border-radius:4px;object-fit:cover;">
-
-        <div style="font-size:13px;line-height:1.3;">
-          ಮಂಗಳೂರು: ರಸ್ತೆ ದುರಸ್ತಿ ಕಾಮಗಾರಿ ವೇಗ
-        </div>
-
-      </a>
-    </li>
-
-    <li style="margin-bottom:8px;">
-      <a href="#"
-         style="display:flex;align-items:center;gap:8px;
-                text-decoration:none;color:#222;
-                padding:6px;border-radius:6px;
-                transition:0.2s;border:1px solid #eee;">
-
-        <img src="Z:/prajapara/images/state2.jpg"
-             style="width:55px;height:45px;border-radius:4px;object-fit:cover;">
-
-        <div style="font-size:13px;line-height:1.3;">
-          ಬೆಂಗಳೂರು ಮೆಟ್ರೋ: ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ
-        </div>
-
-      </a>
-    </li>
-
-    <li>
-      <a href="#"
-         style="display:flex;align-items:center;gap:8px;
-                text-decoration:none;color:#222;
-                padding:6px;border-radius:6px;
-                transition:0.2s;border:1px solid #eee;">
-
-        <img src="Z:/prajapara/images/world1.jpg"
-             style="width:55px;height:45px;border-radius:4px;object-fit:cover;">
-
-        <div style="font-size:13px;line-height:1.3;">
-          ಅಮೆರಿಕ ಚುನಾವಣೆ: ಪ್ರಚಾರ ತೀವ್ರ
-        </div>
-
-      </a>
-    </li>
-
-  </ul>
-</div>
-
-
-    </aside>
-
+<!-- RIGHT SIDEBAR -->
+<aside class="right">
+  <div class="ad">
+    <img src="Z:/prajapara/assets/images/a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover;">
   </div>
 
+  <div class="topstories">
+    <h4>Top Stories</h4>
+    <ul>
+      <li><a href="#"><img src="Z:/prajapara/images/state1.jpg"><div>ಮಂಗಳೂರು: ರಸ್ತೆ ದುರಸ್ತಿ ಕಾಮಗಾರಿ ವೇಗ</div></a></li>
+      <li><a href="#"><img src="Z:/prajapara/images/state2.jpg"><div>ಬೆಂಗಳೂರು ಮೆಟ್ರೋ: ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ</div></a></li>
+      <li><a href="#"><img src="Z:/prajapara/images/world1.jpg"><div>ಅಮೆರಿಕ ಚುನಾವಣೆ: ಪ್ರಚಾರ ತೀವ್ರ</div></a></li>
+    </ul>
+  </div>
+</aside>
+
+</div>
 </div>
 
 <div id="footer"></div>
 
-<script>
-    function toggleMenu(){
-      const menu = document.querySelector('nav.mainnav ul');
-      menu.classList.toggle('active');
-    }
-  </script>
-
 
 <script>
-      // Load header and footer dynamically
-    fetch("header.html")
-      .then(response => response.text())
-      .then(data => document.getElementById("header").innerHTML = data);
 
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => document.getElementById("footer").innerHTML = data);
+/* LOAD HEADER + FOOTER */
+fetch("header.html").then(r => r.text()).then(d => header.innerHTML = d);
+fetch("footer.html").then(r => r.text()).then(d => footer.innerHTML = d);
 
-  // Share Function
-  function shareArticle(){
-    const shareData = {
-      title: document.title,
-      text: "Check out this article on Prajapara News Kannada",
-      url: window.location.href
-    };
-    if(navigator.share){
-      navigator.share(shareData);
-    } else {
-      alert("Copy link: " + window.location.href);
-    }
-  }
+/* MAIN SHARE BUTTON */
+document.getElementById("shareBtn").onclick = async () => {
+  const shareData = { title: document.title, text: "Prajapara News — Read full article", url: location.href };
+  if (navigator.share) await navigator.share(shareData);
+  else alert("Your browser does not support native sharing.");
+};
+</script>
+<script>
+document.querySelectorAll(".share-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const action = btn.getAttribute("data-action");
+        const pageURL = window.location.href;
 
-// Web Share Button
-    document.addEventListener("DOMContentLoaded", () => {
-      const shareBtn = document.getElementById("shareBtn");
-      shareBtn.addEventListener("click", async () => {
-        const shareData = {
-          title: "ಮೂಡಬಿದಿರೆ : ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿ ಮಾತುಕತೆ ಯಶಸ್ವಿ",
-          text: "ಅಲೇರಿ ಮೂಲಕ್ಷೇತ್ರ ಜಾಗ ಖರೀದಿ ಮಾತುಕತೆ ಯಶಸ್ವಿಯಾಗಿ ಮುಕ್ತಾಯವಾಯಿತು — ಸಂಪೂರ್ಣ ವಿವರ ನೋಡಿ 👇",
-          url: "https://prajaparanews.com"
-        };
-        try {
-          if (navigator.share) {
-            await navigator.share(shareData);
-          } else {
-            alert("Sharing not supported on this browser.");
-          }
-        } catch (err) {
-          console.log("Share failed:", err);
+        // PDF
+        if (action === "pdf") {
+            window.print();
         }
-      });
-    });
 
+        // Copy Link
+        if (action === "copy") {
+            navigator.clipboard.writeText(pageURL);
+            alert("Link Copied!");
+        }
+
+        // X (Twitter)
+        if (action === "x") {
+            window.open(`https://twitter.com/intent/tweet?url=${pageURL}`, "_blank");
+        }
+
+        // Facebook
+        if (action === "fb") {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${pageURL}`, "_blank");
+        }
+
+        // Threads
+        if (action === "threads") {
+            window.open(`https://www.threads.net/intent/post?text=${pageURL}`, "_blank");
+        }
+
+        // WhatsApp
+        if (action === "whatsapp") {
+            window.open(`https://wa.me/?text=${pageURL}`, "_blank");
+        }
+    });
+});
+</script>
+
+
+<script>
+/* MORE MENU */
+document.getElementById("btn-more").onclick = () => {
+  document.getElementById("more-panel").style.display =
+    document.getElementById("more-panel").style.display === "block" ? "none" : "block";
+};
+
+document.getElementById("more-mail").onclick = () => location.href = "mailto:?subject=Check this&body=" + encodeURIComponent(location.href);
+document.getElementById("more-whatsapp").onclick = () => window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(location.href));
+document.getElementById("more-print").onclick = () => window.print();
 </script>
 
 </body>
