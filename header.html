@@ -8,126 +8,201 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:Arial, Helvetica, sans-serif;background:#fff;color:#222;}
-
     a{text-decoration:none;color:inherit;}
     img{max-width:100%;display:block;}
-
     .container{max-width:1200px;margin:auto;padding:0 16px;}
 
     /* TOPBAR */
     .topbar{
-      background:#e8f0f4;padding:6px 12px;font-size:13px;
+      background:#e8f0f4;
+      padding:6px 12px;
+      font-size:13px;
     }
     .topbar .langs{
-      display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      flex-wrap:wrap;
     }
 
-    /* HEADER */
+    /* HEADER (Yellow Box Only Behind Content) */
     header.header{
-      padding:14px 0;
+      width:100%;
+      background:#d2e5ee;
+      padding:18px 0;
+      display:flex;
+      justify-content:center;
+    }
+
+    .header-content{
+      background:#d2e5ee;          /* YELLOW BEHIND LOGO + ICONS ONLY */
+      padding:14px 22px;
+      border-radius:12px;
+      width:92%;
+      max-width:1200px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       flex-wrap:wrap;
-      gap:10px;
+      gap:14px;
     }
 
-    /* LOGO */
     .logo-area{
-      display:flex;align-items:center;gap:12px;
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
-    .logo img{height:48px;}
+    .logo img{height:52px;}
 
-    /* SOCIAL BUTTONS */
     .social-buttons{
-      display:flex;gap:20px;flex-wrap:wrap;align-items:center;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
-    /* SOCIAL BUTTONS MOVE DOWN IN MOBILE */
+    .icon-btn{
+      background:hsl(204, 69%, 90%);
+      border:none;
+      padding:10px;
+      border-radius:6px;
+      cursor:pointer;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .circle-icon{
+      width:34px;
+      height:34px;
+      background:hsl(204, 69%, 90%);
+      padding:6px;
+      border-radius:50%;
+    }
+
     @media (max-width:768px){
-      .logo-area{
-        width:100%;justify-content:center;order:1;
+      .header-content{
+        flex-direction:column;
+        text-align:center;
       }
-      .social-buttons{
-        width:100%;justify-content:center;order:2;margin-top:10px;
-      }
+      .social-buttons{justify-content:center;}
     }
 
-    /* DIVIDER LINE */
     .divider-line{
       width:100%;
       height:1px;
       background:#e5e5e5;
-      margin:-5px 0 1px;
+      margin:0 0 10px;
     }
 
-/* CATEGORY NAVIGATION */
-nav.mainnav{
-  background:#fff;
-  padding:10px 0;
-  border-bottom:4px solid #f5f5f5;
-  overflow-x:auto;
-  overflow-y:hidden;
-  white-space:nowrap;
-  -webkit-overflow-scrolling: touch;
-  text-align:center; /* Keeps items centered visually */
-}
+    /* CATEGORY NAV */
+    nav.mainnav{
+      background:#fff;
+      padding:10px 0;
+      border-bottom:4px solid #f5f5f5;
+      overflow-x:auto;
+      white-space:nowrap;
+      -webkit-overflow-scrolling: touch;
+      text-align:center;
+    }
 
-nav.mainnav ul{
-  list-style:none;
-  display:inline-flex;         /* IMPORTANT: inline-flex keeps center + scroll */
-  gap:35px;
-  justify-content:center;
-  align-items:center;
-  padding:0 20px;
-  min-width:max-content;        /* Enables full scroll left-right */
-}
+    nav.mainnav ul{
+      list-style:none;
+      display:inline-flex;
+      gap:35px;
+      justify-content:center;
+      align-items:center;
+      padding:0 20px;
+      min-width:max-content;
+    }
 
-nav.mainnav li a{
-  display:inline-block;
-  font-weight:600;
-  padding:6px 0;
-}
+    nav.mainnav li a{
+      font-weight:600;
+      padding:6px 0;
+      display:inline-block;
+    }
 
-nav.mainnav li a:hover{
-  background:#f2f2f2;
-  padding:6px 8px;
-  border-radius:6px;
-}
+    nav.mainnav li a:hover{
+      background:#f2f2f2;
+      padding:6px 8px;
+      border-radius:6px;
+    }
 
-/* MOBILE OPTIMIZATION */
-@media (max-width:768px){
-  nav.mainnav ul{
-    gap:24px;   /* Reduce space on small screens */
-  }
-}
+    @media (max-width:768px){
+      nav.mainnav ul{ gap:24px; }
+    }
 
-
-    /* TICKER */
+    /* NEWS TICKER */
     .ticker-wrapper{
-      display:flex;align-items:center;background:#f5f5f5;
-      padding:8px 0;margin-top:14px;font-weight:700;color:#b20000;
+      display:flex;
+      align-items:center;
+      background:#f5f5f5;
+      padding:8px 0;
+      margin-top:14px;
+      font-weight:700;
+      color:#b20000;
       white-space:nowrap;
     }
+
+    /* Desktop: TRADING NEWS | Mobile: TN */
     .ticker-title{
-      background:#b20000;color:#fff;padding:6px 12px;margin-right:10px;
+      background:#b20000;
+      color:#fff;
+      padding:6px 12px;
+      margin-right:10px;
+      font-size:14px;
     }
+
+    .ticker-title::after{
+      content:"📢 TRADING NEWS";
+    }
+
+    @media (max-width:768px){
+      .ticker-title::after{
+        content:"📢 TN";        /* MOBILE SHORT TITLE */
+      }
+    }
+
     .ticker{flex:1;overflow:hidden;}
     .ticker span{
       display:inline-block;
       padding-left:100%;
       animation:scroll-left 18s linear infinite;
     }
+
     @keyframes scroll-left{
       0%{transform:translateX(0);}
       100%{transform:translateX(-100%);}
     }
 
-    /* AD BOX */
     .ad-box{text-align:center;margin:18px auto;}
+
+    .category-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-menu li {
+  position: relative;
+  padding: 0 12px;
+}
+
+.category-menu li + li {
+  border-left: 1px solid #dcdcdc; /* Divider line */
+}
+
+.category-menu a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
+}
 
   </style>
 </head>
+
 <body>
 
   <!-- TOPBAR -->
@@ -140,60 +215,58 @@ nav.mainnav li a:hover{
   </div>
 
   <!-- HEADER -->
-  <header class="header container">
+  <header class="header">
+    <div class="header-content">
 
-    <!-- LOGO -->
-    <div class="logo-area">
-      <a href="index.html" style="display:flex;align-items:center;gap:12px;">
-        <img src="assets/images/logo.png">
+      <div class="logo-area">
+        <img src="assets/images/logo.png" class="logo">
         <div>
           <div style="font-weight:1000;font-size:20px;">ಪ್ರಜಾಪರ ನ್ಯೂಸ್</div>
-          <div style="font-size:12px;color:#666;">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
+          <div style="font-size:12px;color:#555;">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
         </div>
-      </a>
+      </div>
+
+      <!-- SOCIAL BUTTONS -->
+      <div class="social-buttons">
+
+        <button onclick="goHome()" class="icon-btn">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="20">
+        </button>
+
+        <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="circle-icon">
+        </a>
+
+        <a href="https://www.facebook.com/prajaparanews">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="circle-icon">
+        </a>
+
+        <a href="https://www.instagram.com/prajaparanews/">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="circle-icon">
+        </a>
+
+        <a href="https://x.com/prajaparanews">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" class="circle-icon">
+        </a>
+
+        <a href="https://www.youtube.com/@prajaparanews">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="circle-icon">
+        </a>
+
+        <button onclick="shareWebsite()" class="icon-btn">
+          <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" width="20">
+        </button>
+
+      </div>
     </div>
-
-    <!-- SOCIAL MEDIA BUTTONS -->
-    <div class="social-buttons">
-
-      <button onclick="goHome()" style="background:#fff;border:none;padding:10px;border-radius:6px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="20">
-      </button>
-
-      <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
-      </a>
-
-      <a href="https://www.facebook.com/prajaparanews">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
-      </a>
-
-      <a href="https://www.instagram.com/prajaparanews/">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
-      </a>
-
-      <a href="https://x.com/prajaparanews">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
-      </a>
-
-      <a href="https://www.youtube.com/@prajaparanews">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
-      </a>
-
-      <button onclick="shareWebsite()" style="background:#fff;border:none;padding:10px;border-radius:6px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-        <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" width="20">
-      </button>
-
-    </div>
-
   </header>
 
-  <!-- DIVIDER LINE -->
   <div class="divider-line"></div>
 
-  <!-- CATEGORY NAVIGATION -->
-  <nav class="mainnav">
-    <ul>
+  <!-- NAVIGATION -->
+<nav class="mainnav">
+  <div class="container">
+    <ul class="category-menu">
       <li><a href="category.html?category_update.html">ತಾಜಾಸುದ್ದಿ</a></li>
       <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
       <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
@@ -201,23 +274,27 @@ nav.mainnav li a:hover{
       <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
       <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
       <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
-      <li><a href="category.html?category_viral.html">ವೈರಲ್ ಸುದ್ದಿ</a></li>
+      <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
       <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
       <li><a href="category.html?category_filmy.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
     </ul>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- TICKER -->
   <div class="container">
     <div class="ticker-wrapper">
-      <div class="ticker-title">📢 TRADING NEWS</div>
-      <div class="ticker"><span>
-        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 1</a> •
-        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 2</a> •
-        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 3</a> •
-        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 4</a> •
-        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 5</a> 🔥
-      </span></div>
+      <div class="ticker-title"></div>
+      <div class="ticker">
+        <span>
+          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 1</a> •
+          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 2</a> •
+          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 3</a> •
+          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 4</a> •
+          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 5</a> 🔥
+        </span>
+      </div>
     </div>
   </div>
 
