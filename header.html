@@ -4,147 +4,137 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prajapara News Kannada</title>
-  <link rel="stylesheet" href="styles.css">
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.4; color: #222; background: #fff; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
- .header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #eee;flex-wrap:wrap}
-    .logo{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-    .logo img{height:46px}
-.topbar{background:#e8f0f4;padding:6px 12px;font-size:13px;color:#333}
-    .topbar .langs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:Arial, Helvetica, sans-serif;background:#fff;color:#222;}
 
-    /* --- Topbar --- */
-    .topbar {
-      background: #e8f0f4;
-      padding: 6px 12px;
-      font-size: 13px;
-      color: #333;
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+
+    .container{max-width:1200px;margin:auto;padding:0 16px;}
+
+    /* TOPBAR */
+    .topbar{
+      background:#e8f0f4;padding:6px 12px;font-size:13px;
     }
-    .topbar .langs {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .topbar .langs{
+      display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
     }
 
-    /* --- NAVIGATION --- */
-    .menu-toggle {
-      display: none;
-      cursor: pointer;
-      font-size: 28px;
-      margin-left: auto;
-      padding-left: 12px;
+    /* HEADER */
+    header.header{
+      padding:14px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
-    nav.mainnav {
-      background: #fff;
-      padding: 8px 0;
-      border-bottom: 4px solid #f5f5f5;
+    /* LOGO */
+    .logo-area{
+      display:flex;align-items:center;gap:12px;
     }
-    nav.mainnav ul {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      list-style: none;
-      font-weight: 600;
-      justify-content: center;
-    }
-    nav.mainnav li { padding: 6px 8px; border-radius: 3px; }
-    nav.mainnav li a:hover { background: #f7f7f7; }
+    .logo img{height:48px;}
 
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      nav.mainnav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 8px;
+    /* SOCIAL BUTTONS */
+    .social-buttons{
+      display:flex;gap:20px;flex-wrap:wrap;align-items:center;
+    }
+
+    /* SOCIAL BUTTONS MOVE DOWN IN MOBILE */
+    @media (max-width:768px){
+      .logo-area{
+        width:100%;justify-content:center;order:1;
       }
-      nav.mainnav ul.active { display: flex; }
+      .social-buttons{
+        width:100%;justify-content:center;order:2;margin-top:10px;
+      }
     }
 
-    /* --- TICKER --- */
-    .ticker-wrapper {
-      display: flex;
-      align-items: center;
-      background: #f5f5f5;
-      color: #b20000;
-      padding: 8px 0;
-      font-weight: 700;
-      overflow: hidden;
-      white-space: nowrap;
-      flex-wrap: wrap;
-      margin-top: 10px;
+    /* DIVIDER LINE */
+    .divider-line{
+      width:100%;
+      height:1px;
+      background:#e5e5e5;
+      margin:-5px 0 1px;
     }
 
-    .ticker-title {
-      background: #b20000;
-      color: #fff;
-      padding: 6px 12px;
-      font-weight: 700;
-      margin-right: 10px;
-      flex-shrink: 0;
+/* CATEGORY NAVIGATION */
+nav.mainnav{
+  background:#fff;
+  padding:10px 0;
+  border-bottom:4px solid #f5f5f5;
+  overflow-x:auto;
+  overflow-y:hidden;
+  white-space:nowrap;
+  -webkit-overflow-scrolling: touch;
+  text-align:center; /* Keeps items centered visually */
+}
+
+nav.mainnav ul{
+  list-style:none;
+  display:inline-flex;         /* IMPORTANT: inline-flex keeps center + scroll */
+  gap:35px;
+  justify-content:center;
+  align-items:center;
+  padding:0 20px;
+  min-width:max-content;        /* Enables full scroll left-right */
+}
+
+nav.mainnav li a{
+  display:inline-block;
+  font-weight:600;
+  padding:6px 0;
+}
+
+nav.mainnav li a:hover{
+  background:#f2f2f2;
+  padding:6px 8px;
+  border-radius:6px;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width:768px){
+  nav.mainnav ul{
+    gap:24px;   /* Reduce space on small screens */
+  }
+}
+
+
+    /* TICKER */
+    .ticker-wrapper{
+      display:flex;align-items:center;background:#f5f5f5;
+      padding:8px 0;margin-top:14px;font-weight:700;color:#b20000;
+      white-space:nowrap;
+    }
+    .ticker-title{
+      background:#b20000;color:#fff;padding:6px 12px;margin-right:10px;
+    }
+    .ticker{flex:1;overflow:hidden;}
+    .ticker span{
+      display:inline-block;
+      padding-left:100%;
+      animation:scroll-left 18s linear infinite;
+    }
+    @keyframes scroll-left{
+      0%{transform:translateX(0);}
+      100%{transform:translateX(-100%);}
     }
 
-    .ticker { overflow: hidden; flex: 1; }
-
-    .ticker span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll-left 20s linear infinite;
-    }
-
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    footer {
-      padding: 24px 16px;
-      text-align: center;
-      color: #777;
-      font-size: 14px;
-    }
-
-    /* HEADER FIX */
-    header.header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 12px 0;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-    }
-
-    .social-buttons {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+    /* AD BOX */
+    .ad-box{text-align:center;margin:18px auto;}
 
   </style>
 </head>
-
 <body>
 
-  <!-- Topbar -->
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="langs">
-      <a href="https://wowsupertv-commits.github.io/DI-APP-TV/">🔴 LIVE</a> &nbsp; | &nbsp;
-      <a href="#footer">📞 Contact</a> &nbsp; | &nbsp;
+      <a href="https://wowsupertv-commits.github.io/DI-APP-TV/">🔴 LIVE</a> |
+      <a href="#footer">📞 Contact</a> |
       <a href="login.html">🌐 login</a>
     </div>
   </div>
@@ -152,120 +142,100 @@
   <!-- HEADER -->
   <header class="header container">
 
-    <!-- LOGO + MENU TOGGLE -->
+    <!-- LOGO -->
     <div class="logo-area">
-
-      <div class="logo">
-        <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
-          <img src="assets/images/logo.png" alt="logo">
-          <div>
-            <div style="font-weight:1000;font-size:20px;">ಪ್ರಜಾಪರ ನ್ಯೂಸ್</div>
-            <div style="font-size:12px;color:#666;">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
-          </div>
-        </a>
-      </div>
-
-      <!-- MENU TOGGLE MOVED HERE -->
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;">
+        <img src="assets/images/logo.png">
+        <div>
+          <div style="font-weight:1000;font-size:20px;">ಪ್ರಜಾಪರ ನ್ಯೂಸ್</div>
+          <div style="font-size:12px;color:#666;">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
+        </div>
+      </a>
     </div>
 
-    <!-- Social Buttons -->
+    <!-- SOCIAL MEDIA BUTTONS -->
     <div class="social-buttons">
 
-      <button onclick="goHome()" style="background:#fff;color:#000;padding:10px 10px;border:none;border-radius:6px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="20" height="20"> Home
+      <button onclick="goHome()" style="background:#fff;border:none;padding:10px;border-radius:6px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="20">
       </button>
 
-      <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" style="width:33px;height:33px;border-radius:50%;background:#fff;padding:6px;">
+      <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
       </a>
 
-      <a href="https://www.facebook.com/prajaparanews" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" style="width:33px;height:33px;border-radius:50%;background:#fff;padding:6px;">
+      <a href="https://www.facebook.com/prajaparanews">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
       </a>
 
-      <a href="https://www.instagram.com/prajaparanews/" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" style="width:33px;height:33px;border-radius:50%;background:#fff;padding:6px;">
+      <a href="https://www.instagram.com/prajaparanews/">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
       </a>
 
-      <a href="https://x.com/prajaparanews" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" style="width:33px;height:33px;border-radius:50%;background:#fff;padding:6px;">
+      <a href="https://x.com/prajaparanews">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
       </a>
 
-      <a href="https://www.youtube.com/@prajaparanews" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" style="width:33px;height:33px;border-radius:50%;background:#fff;padding:6px;">
+      <a href="https://www.youtube.com/@prajaparanews">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" style="width:34px;height:34px;background:#fff;padding:6px;border-radius:50%;">
       </a>
 
-      <button onclick="shareWebsite()" style="background:#fff;color:#000;padding:10px 10px;border:none;border-radius:6px;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 0px 6px rgba(0,0,0,0.1);">
-        <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" width="20" height="20"> Share
+      <button onclick="shareWebsite()" style="background:#fff;border:none;padding:10px;border-radius:6px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" width="20">
       </button>
+
     </div>
+
   </header>
 
-  <!-- NAVIGATION -->
+  <!-- DIVIDER LINE -->
+  <div class="divider-line"></div>
+
+  <!-- CATEGORY NAVIGATION -->
   <nav class="mainnav">
-    <div class="container">
-      <ul>
-        <li><a href="category.html?category_update.html">ತಾಜಾಸುದ್ದಿ</a></li>
+    <ul>
+      <li><a href="category.html?category_update.html">ತಾಜಾಸುದ್ದಿ</a></li>
       <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
       <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
       <li><a href="category.html?category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
       <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
       <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
       <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
-      <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
+      <li><a href="category.html?category_viral.html">ವೈರಲ್ ಸುದ್ದಿ</a></li>
       <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
       <li><a href="category.html?category_filmy.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
-      </ul>
-    </div>
+    </ul>
   </nav>
 
   <!-- TICKER -->
   <div class="container">
     <div class="ticker-wrapper">
       <div class="ticker-title">📢 TRADING NEWS</div>
-      <div class="ticker">
-        <span>
-          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 1</a> • 
-          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 2</a> • 
-          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 3</a> • 
-          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 4</a> • 
-          <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 5</a> 🔥
-        </span>
-      </div>
+      <div class="ticker"><span>
+        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 1</a> •
+        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 2</a> •
+        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 3</a> •
+        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 4</a> •
+        <a href="#">ಪ್ರಮುಖ ಸುದ್ದಿ 5</a> 🔥
+      </span></div>
     </div>
   </div>
 
   <!-- AD -->
   <div class="ad-box container">
-    <a href="#" target="_blank">
-      <img src="Z:/prajapara/assets/images/a1.jpg">
-    </a>
+    <img src="Z:/prajapara/assets/images/a1.jpg">
   </div>
 
-  
-  <!-- JS -->
   <script>
-    function goHome() {
-      window.location.href = "index.html";
-    }
-
-    function shareWebsite() {
-      if (navigator.share) {
+    function goHome(){ window.location.href="index.html"; }
+    function shareWebsite(){
+      if(navigator.share){
         navigator.share({
-          title: document.title,
-          text: "Check out this website!",
-          url: window.location.href
-        }).catch(console.error);
-      } else {
-        alert("Sharing not supported on this browser.");
-      }
-    }
-
-    function toggleMenu() {
-      const navList = document.querySelector('nav.mainnav ul');
-      navList.classList.toggle('active');
+          title:document.title,
+          text:"Check out this website!",
+          url:window.location.href
+        });
+      } else { alert("Sharing not supported."); }
     }
   </script>
 
