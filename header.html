@@ -25,7 +25,7 @@
       flex-wrap:wrap;
     }
 
-    /* HEADER (Yellow Box Only Behind Content) */
+    /* HEADER */
     header.header{
       width:100%;
       background:#d2e5ee;
@@ -35,7 +35,7 @@
     }
 
     .header-content{
-      background:#d2e5ee;          /* YELLOW BEHIND LOGO + ICONS ONLY */
+      background:#d2e5ee;
       padding:14px 22px;
       border-radius:12px;
       width:92%;
@@ -54,11 +54,13 @@
     }
     .logo img{height:52px;}
 
+    /* SOCIAL BUTTONS */
     .social-buttons{
       display:flex;
       gap:20px;
-      flex-wrap:wrap;
-      align-items:center;
+      flex-wrap:nowrap;      /* <--- FIXED: No wrapping */
+      overflow-x:auto;       /* <--- Mobile horizontal scroll */
+      padding-bottom:4px;
     }
 
     .icon-btn{
@@ -68,6 +70,7 @@
       border-radius:6px;
       cursor:pointer;
       box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      flex:0 0 auto;
     }
 
     .circle-icon{
@@ -76,6 +79,7 @@
       background:hsl(204, 69%, 90%);
       padding:6px;
       border-radius:50%;
+      flex:0 0 auto;
     }
 
     @media (max-width:768px){
@@ -83,7 +87,9 @@
         flex-direction:column;
         text-align:center;
       }
-      .social-buttons{justify-content:center;}
+      .social-buttons{
+        justify-content:flex-start;
+      }
     }
 
     .divider-line{
@@ -100,7 +106,6 @@
       border-bottom:4px solid #f5f5f5;
       overflow-x:auto;
       white-space:nowrap;
-      -webkit-overflow-scrolling: touch;
       text-align:center;
     }
 
@@ -142,7 +147,6 @@
       white-space:nowrap;
     }
 
-    /* Desktop: TRADING NEWS | Mobile: TN */
     .ticker-title{
       background:#b20000;
       color:#fff;
@@ -157,7 +161,7 @@
 
     @media (max-width:768px){
       .ticker-title::after{
-        content:"📢 TN";        /* MOBILE SHORT TITLE */
+        content:"📢 TN";
       }
     }
 
@@ -175,31 +179,31 @@
 
     .ad-box{text-align:center;margin:18px auto;}
 
+    /* CATEGORY DIVIDER LINES */
     .category-menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.category-menu li {
-  position: relative;
-  padding: 0 12px;
-}
+    .category-menu li {
+      position: relative;
+      padding: 0 12px;
+    }
 
-.category-menu li + li {
-  border-left: 1px solid #dcdcdc; /* Divider line */
-}
+    .category-menu li + li {
+      border-left: 1px solid #dcdcdc;
+    }
 
-.category-menu a {
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  font-size: 15px;
-}
-
+    .category-menu a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      font-size: 15px;
+    }
   </style>
 </head>
 
@@ -264,23 +268,22 @@
   <div class="divider-line"></div>
 
   <!-- NAVIGATION -->
-<nav class="mainnav">
-  <div class="container">
-    <ul class="category-menu">
-      <li><a href="category.html?category_update.html">ತಾಜಾಸುದ್ದಿ</a></li>
-      <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
-      <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
-      <li><a href="category.html?category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
-      <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
-      <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
-      <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
-      <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
-      <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
-      <li><a href="category.html?category_filmy.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
-    </ul>
-  </div>
-</nav>
-
+  <nav class="mainnav">
+    <div class="container">
+      <ul class="category-menu">
+        <li><a href="category.html?category_update.html">ತಾಜಾಸುದ್ದಿ</a></li>
+        <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
+        <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
+        <li><a href="category.html?category_national.html">ರಾಷ್ಟ್ರೀಯ</a></li>
+        <li><a href="category.html?category_world.html">ವಿದೇಶ</a></li>
+        <li><a href="category.html?category_medical.html">ವೈದ್ಯಕೀಯ</a></li>
+        <li><a href="category.html?category_finance.html">ಆರ್ಥಿಕ</a></li>
+        <li><a href="category.html?category_viral.html">ವೈರಲ್‌ ಸುದ್ದಿ</a></li>
+        <li><a href="category.html?category_sports.html">ಕ್ರೀಡೆ</a></li>
+        <li><a href="category.html?category_filmy.html">ಫಿಲ್ಮೀ ಮಾತು</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- TICKER -->
   <div class="container">
@@ -312,7 +315,9 @@
           text:"Check out this website!",
           url:window.location.href
         });
-      } else { alert("Sharing not supported."); }
+      } else {
+        alert("Sharing not supported.");
+      }
     }
   </script>
 
