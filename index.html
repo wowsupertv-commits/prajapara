@@ -4,342 +4,333 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prajapara News Kannada</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.4; color: #222; background: #fff; }
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
 
-    .search{min-width:220px;text-align:right;flex:1}
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial, Helvetica, sans-serif;background:#fff;color:#222;line-height:1.5;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;border-radius:4px;}
 
-  
+.container{
+  max-width:1400px;
+  margin:20px auto;
+  padding:0 15px;
+}
 
-    .ticker-wrapper{display:flex;align-items:center;background:#f5f5f5;color:#b20000;padding:8px 0;font-weight:700;overflow:hidden;white-space:nowrap;flex-wrap:wrap}
-    .ticker-title{background:#b20000;color:#fff;padding:6px 12px;font-weight:700;margin-right:10px;flex-shrink:0}
-    .ticker{overflow:hidden;flex:1}
-    .ticker span{display:inline-block;padding-left:100%;animation:scroll-left 20s linear infinite}
-    @keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+/* 4 COLUMN GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 0.8fr;
+  gap:18px;
+  align-items:start;
+}
 
-    .container{max-width:1200px;margin:20px auto;padding:0 16px}
-    .banner{background:#f3f3f3;padding:12px;margin-bottom:18px;display:flex;justify-content:center}
-    .banner img{height:90px;object-fit:cover}
+/* ---------------- LEFT COLUMN ---------------- */
+.left h3{margin-bottom:12px;font-size:20px;color:#b20000;}
 
-    .grid{display:grid;grid-template-columns:1fr 360px 300px;gap:18px;align-items:start}
-    .left{padding:6px}
-    .lead-card{display:flex;gap:14px;border-bottom:1px solid #eee;padding-bottom:14px;margin-bottom:14px;flex-wrap:wrap}
-    .lead-card .thumb{flex:0 0 320px}
-    .lead-card .thumb img{height:180px;object-fit:cover;border-radius:2px;width:100%}
-    .lead-card .meta{flex:1;min-width:220px}
-    .lead-card h2{font-size:18px;margin-bottom:8px}
+.lead-card{
+  display:flex;
+  gap:15px;
+  margin-bottom:16px;
+  border-bottom:1px solid #eee;
+  padding-bottom:15px;
+}
+.lead-card img{width:320px;height:190px;object-fit:cover;}
+.lead-card h2{font-size:18px;margin-bottom:8px;}
 
-    .small-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .small-item{display:flex;gap:8px;align-items:center;text-decoration:none;color:#111}
-    .small-item img{width:70px;height:50px;object-fit:cover;border-radius:2px}
+.small-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.small-item{
+  display:flex;
+  gap:10px;
+  font-size:14px;
+  color:#111;
+  align-items:centre;
+}
+.small-item img{width:80px;height:55px;object-fit:cover;}
 
-    .center .live{background:#000;color:#fff;padding:0;border-radius:3px;overflow:hidden;margin-bottom:14px}
-    .center .live .label{background:#d62828;color:#fff;padding:10px 12px;font-weight:700}
-    .center .live .player{height:220px;background:#111;display:flex;align-items:center;justify-content:center;color:#999}
+/* ---------------- COLUMN 2 (Category / Latest) ---------------- */
+.col2 h4{
+  font-weight:700;
+  background:#b20000;
+  color:#fff;
+  padding:6px 10px;
+  margin:14px 0 10px;
+  border-radius:3px;
+}
 
-    .trending{margin-top:14px}
-    .trending h3{margin-bottom:8px}
-    .trending .video-item{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #f1f1f1}
-    .trending .video-item img{width:110px;height:68px;object-fit:cover}
+/* ---------------- COLUMN 3 (LIVE TV + TRENDING) ---------------- */
+.live{
+  border-radius:5px;
+  overflow:hidden;
+  background:#000;
+  margin-bottom:18px;
+}
+.live .label{
+  background:#d62828;
+  color:white;
+  padding:5px;
+  font-weight:700;
+}
+.live .player{
+  height:150px;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-    .right .ad{background:#fafafa;padding:10px;border:1px solid #eee}
-    .topstories{margin-top:14px}
-    .topstories li{display:flex;gap:8px;padding:10px 0;align-items:center;border-bottom:1px solid #f2f2f2}
-    .topstories img{width:56px;height:56px;border-radius:4px;object-fit:cover}
+.trending h3{margin-bottom:10px;}
+.video-item{
+  display:flex;
+  gap:10px;
+  border-bottom:1px solid #eee;
+  padding:10px 0;
+}
+.video-item img{width:120px;height:70px;object-fit:cover;}
 
-    footer{padding:24px 16px;text-align:center;color:#777;font-size:14px}
+/* ---------------- COLUMN 4 (Ads, Top Stories, Weather) ---------------- */
+.right .ad img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  margin-bottom:20px;
+}
 
-    @media (max-width:1100px){
-      .grid{grid-template-columns:1fr 320px}
-    }
-    @media (max-width:860px){
-      .grid{grid-template-columns:1fr}
-      .banner img{height:70px}
-      .lead-card .thumb{flex:0 0 100%}
-      .lead-card .thumb img{height:160px}
-      .small-list{grid-template-columns:1fr}
-      .search{text-align:left;margin-top:10px}
-    }
+.topstories h4{
+  background:#b20000;
+  color:#fff;
+  padding:8px;
+  margin-bottom:10px;
+  border-radius:3px;
+}
 
-    .category-news h4 {
-      font-weight: 700;
-      border-left: 4px solid #b20000;
-      padding-left: 8px;
-      margin-bottom: 8px;
-      color: #b20000;
-    }
-  </style>
+.topstories li{
+  display:flex;
+  gap:10px;
+  padding:8px;
+  border:1px solid #eee;
+  border-radius:6px;
+  margin-bottom:10px;
+  align-items:center;
+  transition:0.2s;
+}
+.topstories img{width:60px;height:50px;object-fit:cover;border-radius:4px;}
+.topstories li:hover{background:#fafafa;}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:1200px){
+  .grid{
+    grid-template-columns:1.3fr 1fr 1fr 0.7fr;
+  }
+}
+
+@media(max-width:990px){
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:760px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+  .lead-card{flex-direction:column;}
+  .lead-card img{width:100%;height:180px;}
+}
+</style>
 </head>
 
 <body>
-  <div id="header"></div>
 
-  <div class="container">
-    
-    <div class="grid">
-      <!-- LEFT COLUMN -->
-      <section class="left">
-        <h3 style="margin-bottom:12px">KANNADA NEWS</h3>
+<!-- HEADER LOAD -->
+<div id="header"></div>
 
-        <article class="lead-card">
-          <a href="news1.html" style="display:flex;gap:14px;text-decoration:none;color:inherit;flex-wrap:wrap;">
-            <div class="thumb">
-              <img src="Z:/prajapara/assets/images/p1.jpg" alt="lead news">
-            </div>
-            <div class="meta">
-              <h2>Big Breaking: City Traffic Gets Smooth During Diwali</h2>
-              <p style="color:#555;margin-bottom:8px;font-size:14px">
-                ಸಣ್ಣ ವಿವರಣೆ ಅಥವಾ ಡೆಸ್ಕ್ರಿಪ್ಷನ್ — ವರದಿಯನ್ನು ಕೆಳಗೆ ವಿತರಿಸಲು ಬಳಸಬಹುದು.
-              </p>
-              <p style="font-size:13px;color:#888">ಮೂಲ: ಪ್ರಜಾಪರ ನ್ಯೂಸ್ • 2 hours ago</p>
-            </div>
-          </a>
-        </article>
+<div class="container">
 
-        <div class="small-list">
-          <div>
-            <div style="font-weight:700;margin-bottom:8px">ಇತ್ತೀಚಿನ ಸುದ್ದಿಗಳು</div>
-            <a href="news1.html" class="small-item">
-              <img src="Z:/prajapara/assets/images/p2.jpg" alt="t1">
-              <div>ಶೀರ್ಷಿಕೆ 1 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-            </a>
-            <a href="news2.html" class="small-item">
-              <img src="Z:/prajapara/assets/images/p3.jpg" alt="t2">
-              <div>ಶೀರ್ಷಿಕೆ 2 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-            </a>
-            <a href="news3.html" class="small-item">
-              <img src="Z:/prajapara/assets/images/p3.jpg" alt="t3">
-              <div>ಶೀರ್ಷಿಕೆ 3 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-            </a>
-          </div>
-          <div>
-            <div style="font-weight:700;margin-bottom:8px">ರಾಜ್ಯ/ದೇಶ</div>
-            <a href="news4.html" class="small-item">
-              <img src="Z:/prajapara/images/p1.jpg" alt="t4">
-              <div>ಶೀರ್ಷಿಕೆ 4 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-            </a>
-            <a href="news5.html" class="small-item">
-              <img src="Z:/prajapara/images/p1.jpg" alt="t5">
-              <div>ಶೀರ್ಷಿಕೆ 5 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-            </a>
-            <a href="news6.html" class="small-item">
-              <img src="Z:/prajapara/images/p1.jpg" alt="t6">
-              <div>ಶೀರ್ಷಿಕೆ 6 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
-            </a>
-          </div>
-        </div>
+<div class="grid">
 
-        <div class="category-news" style="margin-top:24px;">
-          <h3 style="margin-bottom:12px;">CATEGORY NEWS</h3>
+<!-- ------------------------------------------------ LEFT COLUMN ------------------------------------------------ -->
+<section class="left">
+<h3>KANNADA NEWS</h3>
 
-          <div class="category-block" style="margin-bottom:18px;">
-            <h4>ರಾಜ್ಯ ಸುದ್ದಿ (State News)</h4>
-            <div class="small-list">
-              <a href="state1.html" class="small-item">
-                <img src="Z:/prajapara/images/state1.jpg" alt="state1">
-                <div>ಬೆಂಗಳೂರು: ರಾಜ್ಯದಲ್ಲಿ ಮಳೆಯ ಅಬ್ಬರ ಮುಂದುವರಿದಿದೆ</div>
-              </a>
-              <a href="state2.html" class="small-item">
-                <img src="Z:/prajapara/images/state2.jpg" alt="state2">
-                <div>ಮೈಸೂರು: ಹೊಸ ಸರ್ಕಾರಿ ಯೋಜನೆಗೆ ಚಾಲನೆ</div>
-              </a>
-            </div>
-          </div>
-
-          <div class="category-block" style="margin-bottom:18px;">
-            <h4>ರಾಜಕೀಯ ಸುದ್ದಿ (Political News)</h4>
-            <div class="small-list">
-              <a href="politics1.html" class="small-item">
-                <img src="Z:/prajapara/images/politics1.jpg" alt="politics1">
-                <div>ವಿಧಾನಸಭೆಯಲ್ಲಿ ಬಜೆಟ್ ಚರ್ಚೆ ತೀವ್ರ</div>
-              </a>
-              <a href="politics2.html" class="small-item">
-                <img src="Z:/prajapara/images/politics2.jpg" alt="politics2">
-                <div>ಮುಖ್ಯಮಂತ್ರಿಗಳಿಂದ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</div>
-              </a>
-            </div>
-          </div>
-
-          <div class="category-block" style="margin-bottom:18px;">
-            <h4>ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿ (National News)</h4>
-            <div class="small-list">
-              <a href="national1.html" class="small-item">
-                <img src="Z:/prajapara/images/national1.jpg" alt="national1">
-                <div>ದೆಹಲಿ: ಸಂಸತ್ತಿನಲ್ಲಿ ಬಿಲ್ ಮಂಡನೆ</div>
-              </a>
-              <a href="national2.html" class="small-item">
-                <img src="Z:/prajapara/images/national2.jpg" alt="national2">
-                <div>ಮುಂಬೈ: ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆಯ ಹೊಸ ವರದಿ ಬಿಡುಗಡೆ</div>
-              </a>
-            </div>
-          </div>
-
-          <div class="category-block">
-            <h4>ಅಂತಾರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿ (International News)</h4>
-            <div class="small-list">
-              <a href="world1.html" class="small-item">
-                <img src="Z:/prajapara/images/world1.jpg" alt="world1">
-                <div>ಅಮೆರಿಕಾ: ಚುನಾವಣೆ ಪ್ರಚಾರ ತೀವ್ರಗೊಂಡಿದೆ</div>
-              </a>
-              <a href="world2.html" class="small-item">
-                <img src="Z:/prajapara/images/world2.jpg" alt="world2">
-                <div>ಚೀನಾ: ವ್ಯಾಪಾರ ನೀತಿಯಲ್ಲಿ ಬದಲಾವಣೆ</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CENTER COLUMN (UPDATED LIVE TV PLAYER) -->
-      <aside class="center">
-        <div class="live">
-          <div class="label">LIVE TV</div>
-
-          <!-- UPDATED LIVE PLAYER -->
-          <div class="player">
-            <video id="liveTV" controls autoplay width="100%" height="100%" style="background:#000;"></video>
-          </div>
-        </div>
-
-        <!-- HLS Player Script -->
-        <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            var video = document.getElementById('liveTV');
-            var videoSrc = "http://awaazindia.livebox.co.in/AwaazIndaTVhls/Live.m3u8";
-
-            if (Hls.isSupported()) {
-              var hls = new Hls();
-              hls.loadSource(videoSrc);
-              hls.attachMedia(video);
-              hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                video.play();
-              });
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-              video.src = videoSrc;
-              video.play();
-            }
-          });
-        </script>
-
-        <div class="trending">
-          <h3>Trending Video</h3>
-          <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v1"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
-          <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v2"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
-          <div class="video-item"><img src="Z:/prajapara/images/p1.jpg" alt="v3"><div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><div style="font-size:13px;color:#666">ವಿವರಣೆ ಅಥವಾ ವೀಕ್ಷಣೆ ಟೈಮ್</div></div></div>
-        </div>
-      </aside>
-
-      <!-- RIGHT COLUMN -->
-      <aside class="right">
-        <div class="ad"><img src="Z:\prajapara\assets\images\a3.jpg" alt="ad" style="width:100%;height:240px;object-fit:cover"></div>
-
-        
-
-        <div class="topstories">
-          <h4>Top Stories</h4>
-
-          <ul style="list-style:none;margin:0;padding:0;">
-
-            <li style="margin-bottom:8px;">
-              <a href="#"
-                 style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#222;
-                        padding:6px;border-radius:6px;transition:0.2s;border:1px solid #eee;">
-
-                <img src="Z:/prajapara/images/state1.jpg"
-                     style="width:55px;height:45px;border-radius:4px;object-fit:cover;">
-
-                <div style="font-size:13px;line-height:1.3;">
-                  ಮಂಗಳೂರು: ರಸ್ತೆ ದುರಸ್ತಿ ಕಾಮಗಾರಿ ವೇಗ
-                </div>
-
-              </a>
-            </li>
-
-            <li style="margin-bottom:8px;">
-              <a href="#"
-                 style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#222;
-                        padding:6px;border-radius:6px;transition:0.2s;border:1px solid #eee;">
-
-                <img src="Z:/prajapara/images/state2.jpg"
-                     style="width:55px;height:45px;border-radius:4px;object-fit:cover;">
-
-                <div style="font-size:13px;line-height:1.3;">
-                  ಬೆಂಗಳೂರು ಮೆಟ್ರೋ: ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ
-                </div>
-
-              </a>
-            </li>
-
-            <li>
-              <a href="#"
-                 style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#222;
-                        padding:6px;border-radius:6px;transition:0.2s;border:1px solid #eee;">
-
-                <img src="Z:/prajapara/images/world1.jpg"
-                     style="width:55px;height:45px;border-radius:4px;object-fit:cover;">
-
-                <div style="font-size:13px;line-height:1.3;">
-                  ಅಮೆರಿಕ ಚುನಾವಣೆ: ಪ್ರಚಾರ ತೀವ್ರ
-                </div>
-
-              </a>
-            </li>
-
-          </ul>
-        </div>
-
-        <a class="weatherwidget-io" href="https://forecast7.com/en/12d97n77d59/bengaluru/"
-           data-label_1="BENGALURU" data-label_2="WEATHER" data-theme="original">BENGALURU WEATHER</a>
-        <script>
-        !function(d,s,id){
-          var js,fjs=d.getElementsByTagName(s)[0];
-          if(!d.getElementById(id)){
-            js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js,fjs);
-          }
-        }(document,'script','weatherwidget-io-js');
-        </script>
-
-      </aside>
-    </div>
+<article class="lead-card">
+  <img src="Z:/prajapara/assets/images/p1.jpg">
+  <div>
+    <h2>Big Breaking: City Traffic Gets Smooth During Diwali</h2>
+    <p style="color:#555;font-size:14px">ಸಣ್ಣ ವಿವರಣೆ ಅಥವಾ ಡೆಸ್ಕ್ರಿಪ್ಷನ್ — ವರದಿಯನ್ನು ಕೆಳಗೆ ವಿತರಿಸಲು ಬಳಸಬಹುದು.</p>
+    <p style="font-size:13px;color:#888">ಮೂಲ: ಪ್ರಜಾಪರ ನ್ಯೂಸ್ • 2 hours ago</p>
   </div>
+</article>
 
-  <div id="footer"></div>
+<!-- Latest News -->
+<h3 style="margin-top:20px;color:#b20000;">ಇತ್ತೀಚಿನ ಸುದ್ದಿಗಳು</h3>
+<div class="small-list">
+  <a class="small-item" href="news1.html">
+    <img src="Z:/prajapara/assets/images/p2.jpg">
+    <div>ಶೀರ್ಷಿಕೆ 1 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+  </a>
 
+  <a class="small-item" href="news2.html">
+    <img src="Z:/prajapara/assets/images/p3.jpg">
+    <div>ಶೀರ್ಷಿಕೆ 2 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+  </a>
+
+  <a class="small-item" href="news3.html">
+    <img src="Z:/prajapara/assets/images/p3.jpg">
+    <div>ಶೀರ್ಷಿಕೆ 3 — ಚಿಕ್ಕ ವಿವರಣೆ</div>
+  </a>
+</div>
+</section>
+
+<!-- ------------------------------------------------ COLUMN 2 ------------------------------------------------ -->
+<section class="col2">
+<h4>ರಾಜ್ಯ ಸುದ್ದಿ (State News)</h4>
+<div class="small-list">
+  <a class="small-item" href="state1.html">
+    <img src="Z:/prajapara/images/state1.jpg">
+    <div>ಬೆಂಗಳೂರು: ರಾಜ್ಯದಲ್ಲಿ ಮಳೆಯ ಅಬ್ಬರ ಮುಂದುವರಿದಿದೆ</div>
+  </a>
+
+  <a class="small-item" href="state2.html">
+    <img src="Z:/prajapara/images/state2.jpg">
+    <div>ಮೈಸೂರು: ಹೊಸ ಸರ್ಕಾರಿ ಯೋಜನೆಗೆ ಚಾಲನೆ</div>
+  </a>
+</div>
+
+<h4>ರಾಜಕೀಯ ಸುದ್ದಿ (Political News)</h4>
+<div class="small-list">
+  <a class="small-item" href="politics1.html">
+    <img src="Z:/prajapara/images/politics1.jpg">
+    <div>ವಿಧಾನಸಭೆಯಲ್ಲಿ ಬಜೆಟ್ ಚರ್ಚೆ ತೀವ್ರ</div>
+  </a>
+  <a class="small-item" href="politics2.html">
+    <img src="Z:/prajapara/images/politics2.jpg">
+    <div>ಮುಖ್ಯಮಂತ್ರಿಗಳಿಂದ ಹೊಸ ಯೋಜನೆ ಘೋಷಣೆ</div>
+  </a>
+</div>
+
+<h4>ರಾಷ್ಟ್ರೀಯ ಸುದ್ದಿ (National)</h4>
+<div class="small-list">
+  <a class="small-item" href="national1.html">
+    <img src="Z:/prajapara/images/national1.jpg">
+    <div>ದೆಹಲಿ: ಸಂಸತ್ತಿನಲ್ಲಿ ಬಿಲ್ ಮಂಡನೆ</div>
+  </a>
+
+  <a class="small-item" href="national2.html">
+    <img src="Z:/prajapara/images/national2.jpg">
+    <div>ಮುಂಬೈ: ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆಯ ವರದಿ</div>
+  </a>
+</div>
+
+</section>
+
+<!-- ------------------------------------------------ COLUMN 3 ------------------------------------------------ -->
+<aside class="center">
+<div class="live">
+  <div class="label">LIVE TV</div>
+  <div class="player">
+    <video id="liveTV" controls autoplay width="100%" height="100%"></video>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-    function toggleMenu(){
-      const menu = document.querySelector('nav.mainnav ul');
-      menu.classList.toggle('active');
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  var video = document.getElementById("liveTV");
+  var videoSrc = "http://awaazindia.livebox.co.in/AwaazIndaTVhls/Live.m3u8";
+
+  if(Hls.isSupported()){
+    var hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+  } else if(video.canPlayType("application/vnd.apple.mpegurl")){
+    video.src = videoSrc;
+  }
+});
 </script>
 
+<div class="trending">
+<h3>Trending Video</h3>
+
+<div class="video-item">
+  <img src="Z:/prajapara/images/p1.jpg">
+  <div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 1</strong><br><span style="font-size:13px;color:#777">ವಿವರಣೆ ಅಥವಾ ಸಮಯ</span></div>
+</div>
+
+<div class="video-item">
+  <img src="Z:/prajapara/images/p1.jpg">
+  <div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 2</strong><br><span style="font-size:13px;color:#777">ವಿವರಣೆ ಅಥವಾ ಸಮಯ</span></div>
+</div>
+
+<div class="video-item">
+  <img src="Z:/prajapara/images/p1.jpg">
+  <div><strong>ವೀಡಿಯೊ ಶೀರ್ಷಿಕೆ 3</strong><br><span style="font-size:13px;color:#777">ವಿವರಣೆ ಅಥವಾ ಸಮಯ</span></div>
+</div>
+
+</div>
+</aside>
+
+<!-- ------------------------------------------------ COLUMN 4 ------------------------------------------------ -->
+<aside class="right">
+
+<div class="ad">
+  <img src="Z:/prajapara/assets/images/a3.jpg">
+</div>
+
+<div class="topstories">
+<h4>Top Stories</h4>
+<ul style="list-style:none;padding:0;">
+
+  <li>
+    <img src="Z:/prajapara/images/state1.jpg">
+    <div style="font-size:13px;">ಮಂಗಳೂರು: ರಸ್ತೆ ದುರಸ್ತಿ ಕಾಮಗಾರಿ ವೇಗ</div>
+  </li>
+
+  <li>
+    <img src="Z:/prajapara/images/state2.jpg">
+    <div style="font-size:13px;">ಬೆಂಗಳೂರು ಮೆಟ್ರೋ: ಹೊಸ ಮಾರ್ಗ ಉದ್ಘಾಟನೆ</div>
+  </li>
+
+  <li>
+    <img src="Z:/prajapara/images/world1.jpg">
+    <div style="font-size:13px;">ಅಮೆರಿಕ ಚುನಾವಣೆ: ಪ್ರಚಾರ ತೀವ್ರ</div>
+  </li>
+
+</ul>
+</div>
+
+<!-- Weather Widget -->
+<a class="weatherwidget-io"
+   href="https://forecast7.com/en/12d97n77d59/bengaluru/"
+   data-label_1="BENGALURU" data-label_2="WEATHER"
+   data-theme="original">Weather</a>
+
 <script>
-    fetch("header.html")
-      .then(response => response.text())
-      .then(data => document.getElementById("header").innerHTML = data);
+!function(d,s,id){
+  var js,fjs=d.getElementsByTagName(s)[0];
+  if(!d.getElementById(id)){
+    js=d.createElement(s);js.id=id;
+    js.src='https://weatherwidget.io/js/widget.min.js';
+    fjs.parentNode.insertBefore(js,fjs);
+  }
+}(document,'script','weatherwidget-io-js');
+</script>
 
-    fetch("footer.html")
-      .then(response => response.text())
-      .then(data => document.getElementById("footer").innerHTML = data);
+</aside>
 
-    function shareWebsite() {
-      const shareData = {
-        title: "Prajapara News Kannada",
-        text: "Check out the latest news on Prajapara News Kannada!",
-        url: window.location.href
-      };
-      if (navigator.share) {
-        navigator.share(shareData);
-      } else {
-        alert("Share feature not supported on this browser.");
-      }
-    }
+</div>
+</div>
+
+<!-- FOOTER LOAD -->
+<div id="footer"></div>
+
+<script>
+fetch("header.html").then(r=>r.text()).then(d=>header.innerHTML=d);
+fetch("footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
 </script>
 
 </body>
