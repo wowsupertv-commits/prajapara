@@ -25,52 +25,56 @@
       flex-wrap:wrap;
     }
 
-    /* HEADER */
+    /* HEADER NEW */
     header.header{
-      width:100%;
       background:#d2e5ee;
-      padding:18px 0;
+      width:100%;
+      padding:6px 0;
       display:flex;
       justify-content:center;
     }
 
     .header-content{
-      background:#d2e5ee;
-      padding:14px 22px;
-      border-radius:12px;
       width:92%;
       max-width:1200px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      flex-wrap:wrap;
-      gap:14px;
+      gap:10px;
+      padding:0 12px;
     }
 
+    /* LOGO AREA */
     .logo-area{
       display:flex;
-      align-items:center;
-      gap:12px;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:2px;
     }
-    .logo img{height:52px;}
+
+    .logo img{
+      height:60px;
+    }
+
+    .tagline{
+      font-size:11px;
+      color:#555;
+      margin-left:3px;
+    }
 
     /* SOCIAL BUTTONS */
-    .social-buttons{
+    .social-wrapper{
       display:flex;
-      gap:20px;
-      flex-wrap:nowrap;      /* <--- FIXED: No wrapping */
-      overflow-x:auto;       /* <--- Mobile horizontal scroll */
-      padding-bottom:4px;
+      flex-direction:column;
+      align-items:flex-end;
     }
 
-    .icon-btn{
-      background:hsl(204, 69%, 90%);
-      border:none;
-      padding:10px;
-      border-radius:6px;
-      cursor:pointer;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);
-      flex:0 0 auto;
+    .social-buttons{
+      display:flex;
+      gap:8px;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      padding-bottom:2px;
     }
 
     .circle-icon{
@@ -82,13 +86,33 @@
       flex:0 0 auto;
     }
 
+    .icon-btn{
+      background:hsl(204, 60%, 90%);
+      border:none;
+      padding:2px;
+      border-radius:6px;
+      cursor:pointer;
+      flex:0 0 auto;
+    }
+
+    /* SOCIAL TEXT */
+    .social-text{
+      font-size:11.2px;
+      margin-top:4px;
+      color:#333;
+      font-weight:600;
+      letter-spacing:0.5px;
+    }
+
+    /* MOBILE — KEEP ONE ROW */
     @media (max-width:768px){
       .header-content{
-        flex-direction:column;
-        text-align:center;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
       }
-      .social-buttons{
-        justify-content:flex-start;
+      .social-wrapper{
+        align-items:flex-end;
       }
     }
 
@@ -102,7 +126,7 @@
     /* CATEGORY NAV */
     nav.mainnav{
       background:#fff;
-      padding:10px 0;
+      padding:0;
       border-bottom:4px solid #f5f5f5;
       overflow-x:auto;
       white-space:nowrap;
@@ -121,7 +145,6 @@
 
     nav.mainnav li a{
       font-weight:600;
-      padding:6px 0;
       display:inline-block;
     }
 
@@ -131,17 +154,17 @@
       border-radius:6px;
     }
 
-    @media (max-width:768px){
-      nav.mainnav ul{ gap:24px; }
+    @media(max-width:768px){
+      nav.mainnav ul{ gap:12px; }
     }
 
-    /* NEWS TICKER */
+    /* TICKER */
     .ticker-wrapper{
       display:flex;
       align-items:center;
       background:#f5f5f5;
-      padding:8px 0;
-      margin-top:14px;
+      padding:1px 0;
+      margin-top:1px;
       font-weight:700;
       color:#b20000;
       white-space:nowrap;
@@ -160,9 +183,7 @@
     }
 
     @media (max-width:768px){
-      .ticker-title::after{
-        content:"📢 TN";
-      }
+      .ticker-title::after{ content:"📢"; }
     }
 
     .ticker{flex:1;overflow:hidden;}
@@ -179,30 +200,29 @@
 
     .ad-box{text-align:center;margin:18px auto;}
 
-    /* CATEGORY DIVIDER LINES */
-    .category-menu {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .category-menu{
+      display:flex;
+      gap:0;
+      flex-wrap:wrap;
+      list-style:none;
+      padding:0;
+      margin:0;
     }
 
-    .category-menu li {
-      position: relative;
-      padding: 0 12px;
+    .category-menu li{
+      padding:0 12px;
+      position:relative;
     }
 
-    .category-menu li + li {
-      border-left: 1px solid #dcdcdc;
+    .category-menu li + li{
+      border-left:1px solid #dcdcdc;
     }
 
-    .category-menu a {
-      text-decoration: none;
-      color: #000;
-      font-weight: 600;
-      font-size: 15px;
+    .category-menu a{
+      text-decoration:none;
+      color:#000;
+      font-weight:600;
+      font-size:15px;
     }
   </style>
 </head>
@@ -218,50 +238,55 @@
     </div>
   </div>
 
-  <!-- HEADER -->
+  <!-- HEADER UPDATED -->
   <header class="header">
     <div class="header-content">
 
+      <!-- LOGO & TAGLINE -->
       <div class="logo-area">
-        <img src="assets/images/logo.png" class="logo">
-        <div>
-          <div style="font-weight:1000;font-size:20px;">ಪ್ರಜಾಪರ ನ್ಯೂಸ್</div>
-          <div style="font-size:12px;color:#555;">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
+        <div class="logo">
+          <img src="assets/images/logo.png">
         </div>
+        <div class="tagline">ಸರ್ವ ಜನರ ಏಕ ಧ್ವನಿ</div>
       </div>
 
-      <!-- SOCIAL BUTTONS -->
-      <div class="social-buttons">
+      <!-- SOCIAL WRAPPER -->
+      <div class="social-wrapper">
 
-        <button onclick="goHome()" class="icon-btn">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="20">
-        </button>
+        <!-- SOCIAL BUTTONS -->
+        <div class="social-buttons">
 
-        <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="circle-icon">
-        </a>
+          <a href="https://whatsapp.com/channel/0029Va97j9u2UPBGDGHTdI34">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="circle-icon">
+          </a>
 
-        <a href="https://www.facebook.com/prajaparanews">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="circle-icon">
-        </a>
+          <a href="https://www.facebook.com/prajaparanews">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="circle-icon">
+          </a>
 
-        <a href="https://www.instagram.com/prajaparanews/">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="circle-icon">
-        </a>
+          <a href="https://www.instagram.com/prajaparanews/">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="circle-icon">
+          </a>
 
-        <a href="https://x.com/prajaparanews">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" class="circle-icon">
-        </a>
+          <a href="https://x.com/prajaparanews">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" class="circle-icon">
+          </a>
 
-        <a href="https://www.youtube.com/@prajaparanews">
-          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="circle-icon">
-        </a>
+          <a href="https://www.youtube.com/@prajaparanews">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="circle-icon">
+          </a>
 
-        <button onclick="shareWebsite()" class="icon-btn">
-          <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" width="20">
-        </button>
+          <button onclick="shareWebsite()" class="icon-btn">
+            <img src="https://cdn-icons-png.flaticon.com/512/929/929610.png" width="20">
+          </button>
+
+        </div>
+
+        <!-- SOCIAL TEXT BELOW -->
+        <div class="social-text">SUBSCRIBE • FOLLOW • SHARE • LIKE</div>
 
       </div>
+
     </div>
   </header>
 
@@ -271,6 +296,7 @@
   <nav class="mainnav">
     <div class="container">
       <ul class="category-menu">
+        <li><a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" width="20"></a></li>
         <li><a href="category.html?category_update.html">ತಾಜಾಸುದ್ದಿ</a></li>
         <li><a href="category.html?category_state.html">ರಾಜ್ಯ</a></li>
         <li><a href="category.html?category_political.html">ರಾಜಕೀಯ</a></li>
@@ -301,13 +327,12 @@
     </div>
   </div>
 
-  <!-- AD -->
+  <!-- AD BOX -->
   <div class="ad-box container">
     <img src="Z:/prajapara/assets/images/a1.jpg">
   </div>
 
   <script>
-    function goHome(){ window.location.href="index.html"; }
     function shareWebsite(){
       if(navigator.share){
         navigator.share({
