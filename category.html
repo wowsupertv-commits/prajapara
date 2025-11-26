@@ -149,17 +149,16 @@ img{max-width:100%;display:block;border-radius:4px;}
 
 <h3 id="categoryTitle">ವರ್ಗ</h3>
 
-<!-- Lead News -->
-<article class="lead-card">
+<!-- CLICKABLE Lead News -->
+<a href="news1.html" class="lead-card">
   <img id="leadImg" src="">
   <div>
     <h2 id="leadHeading">Loading...</h2>
     <p style="color:#555;font-size:14px" id="leadDesc"></p>
     <p style="font-size:13px;color:#888">ಮೂಲ: ಪ್ರಜಾಪರ ನ್ಯೂಸ್ • 1 hour ago</p>
   </div>
-</article>
+</a>
 
-<!-- Category News List -->
 <h3 style="margin:15px 0;color:#000;font-size:18px;">ಇತರೆ ಸುದ್ದಿ</h3>
 
 <div class="small-list" id="newsList"></div>
@@ -225,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <aside class="right">
 
 <div class="ad">
-  <img src="Z:/prajapara/assets/images/a3.jpg">
+  <a href="#"><img src="Z:/prajapara/assets/images/a3.jpg"></a>
 </div>
 
 <div class="topstories">
@@ -256,6 +255,7 @@ fetch("footer.html").then(r=>r.text()).then(d=>footer.innerHTML=d);
 
 <!-- 🔥 CATEGORY AUTO-LOADER SCRIPT -->
 <script>
+
 const categoryNames = {
   latest: "ತಾಜಾ ಸುದ್ದಿ",
   state: "ರಾಜ್ಯ",
@@ -275,17 +275,16 @@ const cat = url.get("cat") || "latest";
 document.getElementById("categoryTitle").innerText = categoryNames[cat];
 document.getElementById("pageTitle").innerText = categoryNames[cat] + " - Prajapara News";
 
-// DYNAMIC FAKE DATA (Replace with your backend)
 document.getElementById("leadImg").src = "Z:/prajapara/assets/images/p1.jpg";
 document.getElementById("leadHeading").innerText = categoryNames[cat] + " — ಮುಖ್ಯ ವಾರ್ತೆ";
 document.getElementById("leadDesc").innerText = "ಈ ವಿಭಾಗಕ್ಕೆ ಸಂಬಂಧಪಟ್ಟ ಪ್ರಮುಖ ಸುದ್ದಿಯ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ.";
 
-// Fill repeatable items
+
 function fillList(id, count){
   let box = document.getElementById(id);
   for(let i=1;i<=count;i++){
     box.innerHTML += `
-      <a class="small-item" href="#">
+      <a class="small-item" href="news${i}.html">
         <img src="Z:/prajapara/images/state${(i%4)+1}.jpg">
         <div>${categoryNames[cat]} ಸುದ್ದಿ ${i}</div>
       </a>
@@ -297,17 +296,19 @@ fillList("newsList", 6);
 fillList("latestNews", 3);
 fillList("mostRead", 3);
 
-// Top Stories
+
 let ts = document.getElementById("topStories");
 for(let i=1;i<=4;i++){
   ts.innerHTML += `
-    <li>
-      <img src="Z:/prajapara/images/state${(i%4)+1}.jpg">
-      <div>${categoryNames[cat]} — ಟಾಪ್ ಸ್ಟೋರಿ ${i}</div>
-    </li>
+    <a href="news${i}.html">
+      <li>
+        <img src="Z:/prajapara/images/state${(i%4)+1}.jpg">
+        <div>${categoryNames[cat]} — ಟಾಪ್ ಸ್ಟೋರಿ ${i}</div>
+      </li>
+    </a>
   `;
 }
-</script>
 
+</script>
 </body>
 </html>
